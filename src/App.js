@@ -6,6 +6,8 @@ import Signup from './user/pages/Signup';
 import Navbar from './shared/components/Navbar';
 import Footer from './shared/components/Footer';
 import Post from './post/pages/Post';
+import Profile from './user/pages/Profile';
+import NewPost from './post/pages/NewPost';
 
 function App() {
 
@@ -22,6 +24,12 @@ function App() {
         </Route>
         <Route path="/signup" exact>
           <Signup />
+        </Route>
+        <Route path="/user/:userId" exact>
+          <Profile />
+        </Route>
+        <Route path="/create" exact>
+          <NewPost />
         </Route>
         <Route path="/posts/:postId" exact>
           <Post />
