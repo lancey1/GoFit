@@ -25,7 +25,7 @@ function Navbar() {
             </li>
 
             <li className={`${styles.li}`}>
-                <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/user/:userId' exact>Profile</NavLink>
+                <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/:userId' exact>Profile</NavLink>
             </li>
 
 

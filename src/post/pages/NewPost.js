@@ -2,9 +2,9 @@ import React from "react";
 
 const NewPost = props => {
     return (
-        <div>
+        <p>
             creating new post page
-        </div>
+        </p>
     )
 }
 

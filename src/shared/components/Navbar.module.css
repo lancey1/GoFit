@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  background-color: antiquewhite;
 }
 
 .navlinks {
@@ -20,7 +21,7 @@
 }
 
 .li {
-  margin: 2rem;
+  margin: 1rem;
   list-style: none;
 }
 
