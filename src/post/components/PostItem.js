@@ -3,25 +3,26 @@
 
 import { useHistory } from "react-router-dom";
 import PostCard from "../../shared/UI/PostCard";
+import "./postItem.css";
 
 function PostItem(props) {
+  console.log({ props });
+  //* Get image, title, likes count, creator info from props(PostList)
 
-    //* Get image, title, likes count, creator info from props(PostList)
+  const history = useHistory();
 
-    const history = useHistory();
+  //? Click on a post card will take you to the post detail
+  const postClickHandler = () => {
+    history.push(`/posts/:postId`);
+  };
 
-    //? Click on a post card will take you to the post detail
-    const postClickHandler = () => {
-        history.push(`/posts/:postId`);
-    }
-
-    return (
-        <PostCard onClick={postClickHandler}>
-            <h2>Image</h2>
-            <h4>Title</h4>
-            <p>Creator avatar and name + likes</p>
-        </PostCard>
-    )
-};
+  return (
+    <PostCard onClick={postClickHandler}>
+      <img className= "avatarlist" src={props.avatar} alt="" />
+      <p>{props.username}</p>
+      <img className= "postImagelist" src={props.postImage} alt="" />
+    </PostCard>
+  );
+}
 
 export default PostItem;

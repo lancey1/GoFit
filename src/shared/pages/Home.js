@@ -2,7 +2,7 @@
 
 import React, { Fragment } from "react";
 import PostsContainer from '../UI/PostsContainer'
-import PostItem from '../../post/components/PostItem';
+import PostList from '../../post/components/PostList';
 
 function Home() {
     return (
@@ -15,9 +15,7 @@ function Home() {
                 <li>NearBy</li>
             </ul>
             <PostsContainer>
-                <PostItem />
-                <PostItem />
-                <PostItem />
+                <PostList/>
             </PostsContainer>
         </React.Fragment>
 

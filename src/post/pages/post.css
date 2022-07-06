@@ -1,0 +1,29 @@
+.avatar{
+  max-height: 100px;
+  max-width: 100px;
+  border-radius: 100%;
+}
+.postImage{
+  max-height: 500px;
+  max-width: 300px;
+}
+
+.thumbsUp{
+  color:blue;
+  border:none;
+  background: none;
+  border: 40px;
+}
+
+.thumbsDown{
+  color:red;
+  border:none;
+  background: none;
+  border: 40px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: horizontal;
+  align-items: center;
+}
