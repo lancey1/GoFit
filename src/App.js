@@ -10,6 +10,7 @@ import Profile from './user/pages/Profile';
 import NewPost from './post/pages/NewPost';
 import CollectionPosts from './collection/pages/CollectionPosts';
 import NewCollection from './collection/pages/NewCollection';
+import Home from './shared/pages/Home';
 
 function App() {
 
@@ -17,9 +18,10 @@ function App() {
     <div className="App">
       <Navbar />
 
+
       <Switch>
         <Route path="/" exact>
-          <PostList />
+          <Home />
         </Route>
 
         <Route path="/login" exact>
