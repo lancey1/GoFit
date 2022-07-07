@@ -1,12 +1,10 @@
 import React from "react";
-import { ImageTool } from "./editTool";
 
 const NewPost = (props) => {
   return (
-    <p>
-      <ImageTool />
-      creating new post page
-    </p>
+    <main>
+      <p>creating new post page</p>
+    </main>
   );
 };
 

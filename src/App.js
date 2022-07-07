@@ -11,6 +11,7 @@ import NewPost from './post/pages/NewPost';
 import CollectionPosts from './collection/pages/CollectionPosts';
 import NewCollection from './collection/pages/NewCollection';
 import Home from './shared/pages/Home';
+import Messenger from './user/pages/Messenger';
 
 function App() {
 
@@ -36,6 +37,10 @@ function App() {
           <NewPost />
         </Route>
 
+        <Route path="/messenger" exact>
+          <Messenger />
+        </Route>
+
         <Route path="/:userId" exact>
           <Profile />
         </Route>
@@ -47,7 +52,6 @@ function App() {
         <Route path="/:userId/create_collection" exact>
           <NewCollection />
         </Route>
-
 
         <Route path="/:userId/collections/:collectionId" exact>
           <CollectionPosts />

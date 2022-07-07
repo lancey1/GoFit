@@ -30,6 +30,7 @@ function PostList() {
     return (
       <PostItem
         key={elm.id}
+        id = {elm.id}
         avatar={elm.avatar}
         username={elm.username}
         postImage={elm.postImage}

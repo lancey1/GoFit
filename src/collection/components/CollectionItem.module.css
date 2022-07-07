@@ -2,4 +2,16 @@
   background-color: antiquewhite;
   margin: 0.4rem 0;
   padding: 0.4rem 0;
+  font-size: .5em;
+  max-width: 250px;
+  max-height: 250px;
+}
+.col_img {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.col_cont {
+  display:flex;
+  flex-direction: row;
 }

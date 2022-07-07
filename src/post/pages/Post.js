@@ -23,7 +23,7 @@ function Post(props) {
 
   return (
     <Fragment>
-      <h1>{postId}</h1>
+      <h1>Post {postId}</h1>
       <img className="avatar" src={post.avatar} alt="" />
       <p className="username">{post.username} </p>
       <img className="postImage" src={post.postImage} alt="" />

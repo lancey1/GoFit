@@ -28,6 +28,9 @@ function Navbar() {
                 <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/:userId' exact>Profile</NavLink>
             </li>
 
+            <li className={`${styles.li}`}>
+                <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/messenger' exact>Messenger</NavLink>
+            </li>
 
         </header>
     )
