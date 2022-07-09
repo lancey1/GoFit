@@ -44,6 +44,17 @@ function Signup() {
 
   const formSubmotHandler = async (event) => {
     event.preventDefault();
+
+    if (!email || !name || !password || !confirmPassword || !age || !city) {
+      setError('Please check your inputs.');
+      return;
+    }
+
+    if(password!==confirmPassword){
+      setError(`Passwords do not matches.`);
+      return;
+    }
+
     try {
       setIsLoading(true);
       const response = await fetch('http://localhost:5000/api/user/signup', {
