@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import ErrorModal from "../../shared/components/ErrorModal";
 import styles from './Signup.module.css';
 
 function Signup() {
@@ -14,6 +15,8 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [age, setAge] = useState('');
   const [city, setCity] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const emailOnChangeHandler = (event) => {
     setEmail(event.target.value);
@@ -42,6 +45,7 @@ function Signup() {
   const formSubmotHandler = async (event) => {
     event.preventDefault();
     try {
+      setIsLoading(true);
       const response = await fetch('http://localhost:5000/api/user/signup', {
         method: 'POST',
         headers: {
@@ -51,16 +55,20 @@ function Signup() {
           name, email, password, image: 'dummy', age, address: city
         })
       });
-
       const responseData = await response.json();
+      setIsLoading(false);
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      }
       console.log(responseData);
       auth.login();
       history.push('/user/:userId');
 
     } catch (error) {
       console.log(error);
+      setError(error.message || 'Unexpected error occured.');
     }
-
+    setIsLoading(false);
 
   }
 
@@ -68,6 +76,8 @@ function Signup() {
   return (
     <div>
       <h2>User Register</h2>
+
+      {error && <ErrorModal error={error} onClear={() => { setError(false) }} />}
 
       <form className={`${styles.form}`} onSubmit={formSubmotHandler}>
         <div>
