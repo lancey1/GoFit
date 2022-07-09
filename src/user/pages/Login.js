@@ -1,44 +1,36 @@
-import React from "react";
-import Grid from '@material-ui/core/Grid';
-
-import phone_img from '../../images/9364675fb26a.svg';
-import meme_logo from '../../images/memestagram.png'
-
-import './login.css'
+import React, { Fragment, useState } from "react";
+import styles from './Login.module.css';
 
 function Login() {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const emailOnChangeHandler = (event) => {
+    setEmail(event.target.value);
+  }
+
+  const passwordOnChangeHandler = (event) => {
+    setPassword(event.target.value);
+  }
+
+
   return (
-    <main id="main-login">
-    <form action="/login" method="post">
-      <div>
-        <Grid container>
-          <Grid item xs={3}>
-          </Grid>
-          <Grid item xs={6}>
-            <div className="main-login-page">
-              <div>
-                <img src={phone_img} width="454px" alt="" />
-              </div>
-              <div>
-                <div className="login_right_component">
-                  <img className="login_logo" src={meme_logo} alt="" />
-                    <div className="login_signin">
-                      <input className="login_text" type="text" placeholder="Username or Email" /> 
-                      <input className="login_text" type="password" placeholder="Password" />
-                      <button className="login_button">Login</button>
-                    </div>
-                  </div>
-                <div>
-              </div>
-            </div>
-          </div>
-          </Grid>
-          <Grid item xs={3}>
-          </Grid>
-        </Grid>     
+    <div>
+      <form>
+        <div>
+          <label htmlFor="user-email">Email</label>
+          <input type='email' id="user-email" onChange={emailOnChangeHandler} value={email} />
         </div>
-    </form>
-    </main>
+
+        <div>
+          <label htmlFor='user-password'>Password</label>
+          <input type='password' id="user-password" value={password} onChange={passwordOnChangeHandler} />
+        </div>
+
+        <button >Login</button>
+      </form>
+    </div>
   );
 }
 

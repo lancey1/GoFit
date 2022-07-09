@@ -50,7 +50,7 @@ function Signup() {
       return;
     }
 
-    if(password!==confirmPassword){
+    if (password !== confirmPassword) {
       setError(`Passwords do not matches.`);
       return;
     }
@@ -86,7 +86,6 @@ function Signup() {
 
   return (
     <div>
-      <h2>User Register</h2>
 
       {error && <ErrorModal error={error} onClear={() => { setError(false) }} />}
 
@@ -121,11 +120,10 @@ function Signup() {
           <input type='text' id="user-city" value={city} onChange={cityOnChangeHandler} />
         </div>
 
-        <button >Create Account</button>
+        <button >Register</button>
 
       </form>
 
-      <h1>User</h1>
     </div>
   );
 }
