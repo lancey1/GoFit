@@ -1,15 +1,33 @@
-.App {
-  text-align: center;
-}
-
 html {
   margin: 0 auto;
-  max-width: 850px;
-  width: 80%;
+  min-width: 500px;
+  width: 100%;
   color: rgb(60, 60, 60);
 }
 
 a {
   color: gray;
   text-decoration: none;
+}
+
+svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  align-self: center;
+  color: gray;
+}
+
+h4 {
+  padding: 0;
+  margin: 0;
+  color: rgb(30, 30, 30);
+}
+
+p {
+  color: gray;
+}
+
+#main-section {
+  width: 80%;
+  margin-inline-start: 19%;
 }

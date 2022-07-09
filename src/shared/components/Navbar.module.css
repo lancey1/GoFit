@@ -1,9 +1,12 @@
 .header {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: antiquewhite;
+  background-color: white;
+  width: 18%;
+  height: 100vh;
+  position: fixed;
 }
 
 .navlinks {
@@ -23,11 +26,6 @@
 .li {
   margin: 1rem;
   list-style: none;
-}
-
-.header {
-  margin-block-start: 1rem;
-  margin-block-end: 1rem;
 }
 
 .active {

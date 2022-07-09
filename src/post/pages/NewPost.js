@@ -14,7 +14,19 @@ function NewPost(props){
     <main>
       <h3>New Post</h3>
       <div className={`${styles.container}`}>
-        <div className={`${styles.input}`}>
+        <form>
+          
+          <label>Title</label>
+          <input></input>
+        </form>
+      </div>
+    </main>
+  );
+};
+export default NewPost;
+
+
+{/* <div className={`${styles.input}`}>
           <input accept="image/*" type="file" onChange={imageChange} />
         </div>
         {selectedImage && (
@@ -36,9 +48,4 @@ function NewPost(props){
             <input type="text" placeholder="Add a Location" />
             <button>Submit</button>
           </form>
-        </div>
-      </div>
-    </main>
-  );
-};
-export default NewPost;
+        </div> */}

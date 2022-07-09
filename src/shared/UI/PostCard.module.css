@@ -1,7 +1,8 @@
 .card {
-  background-color: antiquewhite;
+  background-color: white;
   margin: 0 auto;
   width: 100%;
-  object-fit: contain;
+  border-radius: 5px;
+  overflow: auto;
+  list-style: none;
 }
-

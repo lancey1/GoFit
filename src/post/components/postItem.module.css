@@ -1,0 +1,49 @@
+.avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 10px;
+  align-self: center;
+  margin-inline-start: 1rem;
+  margin-inline-end: 0.5rem;
+}
+
+.h4 {
+  margin: 1rem;
+  text-align: start;
+  color: rgb(70, 70, 70);
+  font-weight: 600;
+  margin-block-end: 0.6rem;
+}
+
+.image {
+  width: 100%;
+  object-fit: contain;
+}
+
+.creatorinfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.imageandname {
+  display: flex;
+  flex-direction: row;
+}
+
+.likes {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  padding-inline-end: 1rem;
+}
+
+.likes p {
+  padding-inline-start: 0.5rem;
+}
+
+.clickable:hover {
+  cursor: pointer;
+  color: rgb(70, 70, 70);
+}
