@@ -3,17 +3,19 @@
 
 import React, { Fragment, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import "./post.css";
+
+const post = {
+  avatar:
+    "https://preview.redd.it/3fc3wd5xwf171.png?auto=webp&s=efea2e1ae32067ea07fc547585f64a95171c7902",
+  username: "Bob Pants",
+  postImage: "https://i.redd.it/t7s70gt3qkd41.jpg",
+  description: "This is the post's description",
+};
 
 function Post(props) {
   //* http://localhost:3002/posts/3 ===> postId = 3
-  const post = {
-    avatar:
-      "https://preview.redd.it/3fc3wd5xwf171.png?auto=webp&s=efea2e1ae32067ea07fc547585f64a95171c7902",
-    username: "Bob Pants",
-    postImage: "https://i.redd.it/t7s70gt3qkd41.jpg",
-    description: "This is the post's description",
-  };
 
   const params = useParams();
   const { postId } = params;
@@ -23,6 +25,7 @@ function Post(props) {
 
   return (
     <Fragment>
+
       <h1>Post {postId}</h1>
       <img className="avatar" src={post.avatar} alt="" />
       <p className="username">{post.username} </p>
@@ -46,6 +49,7 @@ function Post(props) {
       <h2>{post.description}</h2>
       <input type="text" placeholder="comments" />
       <h2>Comments with replies if any</h2>
+
     </Fragment>
   );
 }

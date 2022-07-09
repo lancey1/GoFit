@@ -12,8 +12,10 @@ import NewCollection from './collection/pages/NewCollection';
 import Home from './shared/pages/Home';
 import MainLayout from './shared/UI/MainLayout';
 
+
 function App() {
 
+  console.log(process.env.REACT_APP_GOOGLE_API_KEY)
   return (
 
     <MainLayout>
@@ -36,7 +38,7 @@ function App() {
             <NewPost />
           </Route>
 
-          <Route path="/:userId" exact>
+          <Route path="/user/:userId" exact>
             <Profile />
           </Route>
 
