@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import styles from './Navbar.module.css';
 
 function Navbar() {
     //* logo(home), add, search bar, following, explore, profile
+
+    const auth = useContext(AuthContext);
+
     return (
         <header className={styles.header}>
+
 
 
             <div className={`${styles.homediv}`}>
                 <li className={`${styles.li}`}>
                     <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/' exact>Home</NavLink>
                 </li>
+                {auth.isLoggedIn && <p>Logged in</p>}
+                {!auth.isLoggedIn && <p>Need login</p>}
             </div>
 
             <div className={`${styles.navdiv}`}>
@@ -19,7 +26,7 @@ function Navbar() {
                 <li className={`${styles.li}`}>
                     <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/user/:userId' exact>Profile</NavLink>
                 </li>
-                
+
                 <li className={`${styles.li}`}>
                     <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/create' exact>Create Post</NavLink>
                 </li>
