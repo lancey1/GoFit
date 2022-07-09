@@ -3,6 +3,6 @@
   margin: 0 auto;
   width: 100%;
   border-radius: 5px;
-  overflow: auto;
+  overflow: hidden;
   list-style: none;
 }
