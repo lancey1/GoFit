@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from './UserInfo.module.css';
 
 const UserInfo = props => {
@@ -29,7 +30,7 @@ const UserInfo = props => {
                             </div>
                         </div>
                         <p>{user.bio}</p>
-                        <hr className={`${styles.hr}`}/>
+                        <hr className={`${styles.hr}`} />
 
                         <p>Age {user.age}</p>
                         <p>{userAddress}</p>
@@ -41,7 +42,8 @@ const UserInfo = props => {
                                 <p><em>Likes</em> <b>{user.likes} </b> </p>
                             </div>
 
-                            <button>Edit Profile</button>
+                            <button onClick={props.onShowEditPage}>Edit Profile</button>
+
                         </div>
 
                     </div>

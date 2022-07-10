@@ -1,0 +1,38 @@
+.container {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 8rem;
+}
+
+.image{
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.text_input {
+  font-size: 1.5rem;
+  width: 30rem;
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: rgb(30, 30, 30);
+  padding-bottom: 0.4rem;
+  padding-inline-start: 1rem;
+  padding-block-start: 2rem;
+  font-style: italic;
+}
+
+.input_label {
+  display: flex;
+  flex-direction: column;
+}
+
+.input_label label {
+  padding-inline-start: 1rem;
+}
+
+.text_input:focus {
+  border-color: green;
+}

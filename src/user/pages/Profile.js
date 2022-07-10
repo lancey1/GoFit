@@ -5,15 +5,22 @@ import Content from "../components/Content";
 import ErrorModal from "../../shared/components/ErrorModal";
 import { AuthContext } from "../../context/AuthContext";
 import styles from './Profile.module.css';
+import EditProfile from "../components/EditProfile";
 
 const Profile = props => {
 
     const [error, setError] = useState(null);
     const [user, setUser] = useState(null);
     const [posts, setPosts] = useState(null);
+    const [showEditPage, setShowEditPage] = useState(false);
 
     const params = useParams();
     const { userId } = params;
+
+    const showEditPageHandler = () => {
+        setShowEditPage(true);
+        console.log('set')
+    }
 
     useEffect(() => {
         (async () => {
@@ -33,17 +40,21 @@ const Profile = props => {
                 setError(error.message);
             }
         })();
-    }, [userId]);
+    },[userId, showEditPage]);
 
     return (
         <div>
 
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
 
-            <UserInfo user={user} />
-            
+            {!showEditPage &&
+                <div>
+                    <UserInfo user={user} onShowEditPage={showEditPageHandler} />
+                    <Content />
+                </div>
+            }
 
-            <Content />
+            {showEditPage && <EditProfile user={user} onBackToProfile={() => setShowEditPage(false)} />}
 
         </div>
 

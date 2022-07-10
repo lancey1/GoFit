@@ -51,7 +51,7 @@ function Navbar() {
 
             <div className={`${styles.logoutdiv}`}>
                 <li className={`${styles.li}`}>
-                    <button>Logout</button>
+                    <button onClick={auth.logout}>Logout</button>
                 </li>
             </div>
 

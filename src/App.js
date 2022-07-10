@@ -11,6 +11,7 @@ import NewCollection from './collection/pages/NewCollection';
 import Home from './shared/pages/Home';
 import { AuthContext } from './context/AuthContext';
 import { useCallback, useEffect, useState } from 'react';
+import EditProfile from './user/components/EditProfile';
 
 let logoutTimer;
 
