@@ -116,9 +116,10 @@ function EditProfile(props) {
                 body: JSON.stringify({
                     name: name,
                     bio: bio,
+                    age: age,
                     gender: gender,
-                    gymMembership: gymMembershipArr,
-                    athleteTypes: athleteTypesArr,
+                    gymMembership: gymMembership,
+                    athleteTypes: athleteTypes,
                     address: address
                 })
             });
@@ -168,12 +169,12 @@ function EditProfile(props) {
                 </div>
 
                 <div className={`${styles.input_label}`}>
-                    <input className={`${styles.text_input}`} type='text' placeholder={gymMembershipPlaceHolder} value={gymMembership.join(', ')} onChange={gymChangeHandler} ref={gymMembershipRef} />
+                    <input className={`${styles.text_input}`} type='text' value={gymMembership.join(',')} onChange={gymChangeHandler} ref={gymMembershipRef} />
                     <label>Gym Membership (separate by coma)</label>
                 </div>
 
                 <div className={`${styles.input_label}`}>
-                    <input className={`${styles.text_input}`} type='text' placeholder={athleteTypesPlaceHolder} value={athleteTypes.join(', ')} onChange={athleteTypesChangeHandler} ref={athleteTypesRef} />
+                    <input className={`${styles.text_input}`} type='text' value={athleteTypes.join(',')} onChange={athleteTypesChangeHandler} ref={athleteTypesRef} />
                     <label>AthleteTypes (separate by coma)</label>
                 </div>
 
