@@ -46,8 +46,8 @@ function Login() {
       if (!response.ok) {
         throw new Error(responseData.message);
       };
-      auth.login();
-      history.push('/user/:userId');
+      auth.login(responseData.user.id, responseData.user.name, responseData.token);
+      history.push(`/user/${responseData.user.id}`);
     } catch (error) {
       setError(error.message || 'Unexpected error occured.');
     };

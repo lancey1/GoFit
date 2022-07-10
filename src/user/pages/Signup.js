@@ -2,12 +2,15 @@ import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import ErrorModal from "../../shared/components/ErrorModal";
+import ImageUpload from "../../shared/components/ImageUpload";
 import styles from './Signup.module.css';
 
 function Signup() {
 
   const auth = useContext(AuthContext);
   const history = useHistory();
+
+  const [image, setImage] = useState();
 
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -42,10 +45,17 @@ function Signup() {
     setCity(event.target.value);
   }
 
+  const imageOnInputHandler = (event, pickedFile, isValid) => {
+    if (isValid) {
+      setImage(pickedFile);
+      console.log(pickedFile);
+    };
+  }
+
   const formSubmotHandler = async (event) => {
     event.preventDefault();
 
-    if (!email || !name || !password || !confirmPassword || !age || !city) {
+    if (!email || !name || !password || !confirmPassword || !age || !city || !image) {
       setError('Please check your inputs.');
       return;
     }
@@ -56,15 +66,17 @@ function Signup() {
     }
 
     try {
+      const formData = new FormData();
+      formData.append('email', email);
+      formData.append('name', name);
+      formData.append('password', password);
+      formData.append('image', image);
+      formData.append('age', age);
+      formData.append('address', city);
       setIsLoading(true);
       const response = await fetch('http://localhost:5000/api/user/signup', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name, email, password, image: 'dummy', age, address: city
-        })
+        body: formData
       });
       const responseData = await response.json();
       setIsLoading(false);
@@ -72,8 +84,8 @@ function Signup() {
         throw new Error(responseData.message);
       }
       console.log(responseData);
-      auth.login();
-      history.push('/user/:userId');
+      auth.login(responseData.user.id, responseData.user.name, responseData.token);
+      history.push(`/user/${responseData.user.id}`);
 
     } catch (error) {
       console.log(error);
@@ -119,6 +131,8 @@ function Signup() {
           <label htmlFor='user-city'>City</label>
           <input type='text' id="user-city" value={city} onChange={cityOnChangeHandler} />
         </div>
+
+        <ImageUpload onInput={imageOnInputHandler} />
 
         <button >Register</button>
 

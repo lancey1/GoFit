@@ -11,22 +11,57 @@ import NewCollection from './collection/pages/NewCollection';
 import Home from './shared/pages/Home';
 import MainLayout from './shared/UI/MainLayout';
 import { AuthContext } from './context/AuthContext';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
+let logoutTimer;
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userId, setUserId] = useState(null);
+  const [token, setToken] = useState(null);
+  const [name, setName] = useState(null);
+  const [tokenExpirationDate, setTokenExpirationDate] = useState(null);
 
-  const login = useCallback(() => {
+  const login = useCallback((uid, name, token, expirationDate) => {
+    console.log(token);
+    setUserId(uid);
+    setToken(token);
+    setName(name);
     setIsLoggedIn(true);
+    //* Generate a new time ==> 1h start from now
+    //? 10 seconds for demo
+    const tokenExpirationDate = expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
+    setTokenExpirationDate(tokenExpirationDate);
+    localStorage.setItem('userData', JSON.stringify({ userId: uid, token: token, expiration: tokenExpirationDate.toISOString() }));
   }, []);
 
   const logout = useCallback(() => {
     setIsLoggedIn(false);
+    setUserId(null);
+    setToken(null);
+    setName(null);
+    localStorage.removeItem('userData')
   }, []);
 
+  useEffect(() => {
+    if (token && tokenExpirationDate) {
+      const remainingTime = tokenExpirationDate.getTime() - new Date().getTime();
+      console.log(remainingTime);
+      logoutTimer = setTimeout(logout, remainingTime);
+    } else {
+      clearTimeout(logoutTimer);
+    };
+  }, [token, logout, tokenExpirationDate]);
+
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem('userData'));
+    if (storedData && storedData['token'] && new Date(storedData['expiration']) > new Date()) {
+      login(storedData.userId, storedData.token, new Date(storedData['expiration']));
+    };
+  }, [login]);
+
   return (
-    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}>
+    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, userId: userId, token: token, name: name, login: login, logout: logout }}>
       <MainLayout>
         <Navbar />
         <section id='main-section'>
