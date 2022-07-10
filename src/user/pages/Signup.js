@@ -145,7 +145,7 @@ function Signup() {
               <input className={styles.signupText} type='text' id="user-city" value={city} onChange={cityOnChangeHandler} placeholder="City" />
             </div>
 
-            <ImageUpload onInput={imageOnInputHandler} />
+            <ImageUpload onInput={imageOnInputHandler} text={'Upload user image'} />
 
             <button className={styles.signupButton}>Register</button>
 

@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import styles from "./NewPost.module.css";
 import { AuthContext } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
+import ImageUpload from "../../shared/components/ImageUpload";
 
 function NewPost(props) {
   const auth = useContext(AuthContext);
@@ -10,6 +11,7 @@ function NewPost(props) {
   const [error, setError] = useState(false);
   const [selectedImage, setSelectedImage] = useState();
   const [file, setFile] = useState("");
+  const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState("");
@@ -34,6 +36,13 @@ function NewPost(props) {
     setLocation(event.target.value);
   };
 
+  const imageOnInputHandler = (event, pickedFile, isValid) => {
+    if (isValid) {
+      setImage(pickedFile);
+      console.log(pickedFile);
+    };
+  }
+
   const postSubmitHandler = async (event) => {
     event.preventDefault();
 
@@ -50,15 +59,20 @@ function NewPost(props) {
       formData.append('address', location);
       formData.append('image', file);
       // creator needs to be changed
-      formData.append('creator', 1);
+      formData.append('creator', auth.userId);
 
       setIsLoading(true);
       const response = await fetch('http://localhost:5000/api/posts/', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'Application/json',
+          Authorization: 'Bearer ' + auth.token
+        },
         body: formData
       });
       const responseData = await response.json();
       setIsLoading(false);
+
       if (!response.ok) {
         throw new Error(responseData.message);
       }
@@ -75,38 +89,26 @@ function NewPost(props) {
   }
 
   return (
-    <main>
-      <h1>Create a Post</h1>
-      <div className={`${styles.container}`}>
-        {!selectedImage &&(
-          <h2> Upload an Image</h2>
-        )}
-        {selectedImage && (
-          <div className={`${styles.preview}`}>
-            <img src={URL.createObjectURL(selectedImage)} className={`${styles.image}`} alt="preview"/>
-            <button onClick={() => setSelectedImage()}>Remove image</button>
-          </div>
-        )}
-        <form className={`${styles.form}`} onSubmit={postSubmitHandler}>
-          <div>
-            <input accept="image/*" type="file" onChange={imageOnChange} />
-          </div>
-          <div>
-            <input type="text" placeholder="Title" onChange={titleOnChangeHandler} value={title}/>
-          </div>
-          <div>
-            <input type="text" placeholder="Add a Description" onChange={descriptionOnChangeHandler} value={description} />
-          </div>
-          <div>
-            <input type="text" placeholder="Add some tags" onChange={tagsOnChangeHandler} value={tags}/>
-          </div>
-          <div>
-            <input type="text" placeholder="Add an Address" onChange={locationOnChangeHandler} value={location}/>
-          </div>
-          <button>Submit</button>
-        </form>
-      </div>
-    </main>
+    <section className={`${styles.section}`}>
+      <form className={`${styles.form}`} onSubmit={postSubmitHandler}>
+
+        <ImageUpload onInput={imageOnInputHandler} text={'Select an image'} imageFor={'post'} />
+
+        <div>
+          <input type="text" className={`${styles.text_input}`} placeholder="Add a title" onChange={titleOnChangeHandler} value={title} />
+        </div>
+        <div>
+          <textarea type="text" className={`${styles.text_input}`} placeholder="Add text" onChange={descriptionOnChangeHandler} value={description} rows={4} />
+        </div>
+        <div>
+          <input type="text" className={`${styles.text_input}`} placeholder="Tags (separate by coma)" onChange={tagsOnChangeHandler} value={tags} />
+        </div>
+        <div>
+          <input type="text" className={`${styles.text_input}`} placeholder="Location" onChange={locationOnChangeHandler} value={location} />
+        </div>
+        <button className={`${styles.button}`}>Post</button>
+      </form>
+    </section>
   );
 }
 export default NewPost;

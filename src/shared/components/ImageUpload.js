@@ -31,6 +31,14 @@ function ImageUpload(props) {
         props.onInput(event, pickedFile, isValid, 'pick image on change');
     };
 
+    let buttonText;
+    if (file) {
+        buttonText = 'Change image'
+    } else {
+        buttonText = props.text;
+    }
+
+
     return (
         <div className={`${styles.picker}`}>
 
@@ -40,9 +48,9 @@ function ImageUpload(props) {
 
             <div className={`${styles.image_upload}`}>
                 <div className={`${styles.image_preview}`}>
-                    {previewUrl && <img src={previewUrl} alt='Preview' />}
+                    {previewUrl && <img src={previewUrl} className={`${styles.image}`} alt='Preview' />}
                 </div>
-                <button type='button' onClick={pickImageHandler}>Upload user image</button>
+                <button className={`${styles.button}`} type='button' onClick={pickImageHandler}>{buttonText}</button>
             </div>
 
         </div>
