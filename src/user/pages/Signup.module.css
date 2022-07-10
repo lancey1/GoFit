@@ -8,12 +8,12 @@
   width: 80%;
   margin: auto;
   display: flex;
-  border: 2.5px solid lightgrey;
+  border: 2.5px solid #dee2e6;
 }
 
 .leftSection {
   width: 50%;
-  border-right: 2px solid lightgrey;
+  border-right: 2px solid #dee2e6;
 }
 
 .leftContainer {
@@ -33,6 +33,7 @@
 .form {
   margin: 20px 0;
   border-radius: 8px;
+  padding: 30px 10px;
 } 
 
 .signupText {
@@ -58,6 +59,8 @@
 
 .teamfitLogo{
   width: 100%;
+  margin-top: 20px;
+  padding: 10px 10px;
 }
 
 .fitnessLogo {

@@ -5,7 +5,7 @@ import ErrorModal from "../../shared/components/ErrorModal";
 import styles from './Signup.module.css';
 
 import teamfitLogo from '../../images/teamfit_logo.png';
-import fitnessLogo from '../../images/fitness.png';
+import fitnessLogo from '../../images/19980.png';
 
 function Signup() {
 
