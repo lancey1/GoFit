@@ -4,6 +4,9 @@ import { AuthContext } from "../../context/AuthContext";
 import ErrorModal from "../../shared/components/ErrorModal";
 import styles from './Signup.module.css';
 
+import teamfitLogo from '../../images/teamfit_logo.png';
+import fitnessLogo from '../../images/fitness.png';
+
 function Signup() {
 
   const auth = useContext(AuthContext);
@@ -85,45 +88,56 @@ function Signup() {
 
 
   return (
-    <div>
-
+    <div className={styles.mainContainer}>
       {error && <ErrorModal error={error} onClear={() => { setError(false) }} />}
-
-      <form className={`${styles.form}`} onSubmit={formSubmotHandler}>
-        <div>
-          <label htmlFor="user-email">Email</label>
-          <input type='email' id="user-email" onChange={emailOnChangeHandler} value={email} />
+      <div className={styles.subContainer}>
+        <div className={styles.leftSection}>
+          <div className={styles.leftContainer}>
+            
+              <img className={styles.fitnessLogo} src={fitnessLogo} alt="" />
+            
+          </div>
         </div>
+        <div className={styles.rightSection}>
+          <div className={styles.imageContainer}>
+            <img className={styles.teamfitLogo} src={teamfitLogo} alt=""/>
+          </div>
+          <form className={styles.form} onSubmit={formSubmotHandler}>
+            <div>
+              {/* <label htmlFor="user-email">Email</label> */}
+              <input className={styles.signupText} type='email' id="user-email" onChange={emailOnChangeHandler} value={email} placeholder="Email" />
+            </div>
 
-        <div>
-          <label htmlFor='user-name'>Name</label>
-          <input type='text' id="user-name" value={name} onChange={nameOnChangeHandler} />
+            <div>
+              {/* <label htmlFor='user-name'>Name</label> */}
+              <input className={styles.signupText} type='text' id="user-name" value={name} onChange={nameOnChangeHandler} placeholder="Username" />
+            </div>
+
+            <div>
+              {/* <label htmlFor='user-password'>Password</label> */}
+              <input className={styles.signupText} type='password' id="user-password" value={password} onChange={passwordOnChangeHandler} placeholder="Password"/>
+            </div>
+
+            <div>
+              {/* <label htmlFor='user-confirm'>Confirm Password</label> */}
+              <input className={styles.signupText} type='password' id="user-confirm" value={confirmPassword} onChange={confirmPasswordOnChangeHandler} placeholder="Confirm Password"/>
+            </div>
+
+            <div>
+              {/* <label htmlFor='user-age'>Age</label> */}
+              <input className={styles.signupText} type='number' id="user-age" value={age} onChange={ageOnChangeHandler} placeholder="Age"/>
+            </div>
+
+            <div>
+              {/* <label htmlFor='user-city'>City</label> */}
+              <input className={styles.signupText} type='text' id="user-city" value={city} onChange={cityOnChangeHandler} placeholder="City"/>
+            </div>
+
+            <button className={styles.signupButton}>Register</button>
+
+          </form>
         </div>
-
-        <div>
-          <label htmlFor='user-password'>Password</label>
-          <input type='password' id="user-password" value={password} onChange={passwordOnChangeHandler} />
-        </div>
-
-        <div>
-          <label htmlFor='user-confirm'>Confirm Password</label>
-          <input type='password' id="user-confirm" value={confirmPassword} onChange={confirmPasswordOnChangeHandler} />
-        </div>
-
-        <div>
-          <label htmlFor='user-age'>Age</label>
-          <input type='number' id="user-age" value={age} onChange={ageOnChangeHandler} />
-        </div>
-
-        <div>
-          <label htmlFor='user-city'>City</label>
-          <input type='text' id="user-city" value={city} onChange={cityOnChangeHandler} />
-        </div>
-
-        <button >Register</button>
-
-      </form>
-
+      </div>
     </div>
   );
 }
