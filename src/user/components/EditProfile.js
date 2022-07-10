@@ -144,7 +144,7 @@ function EditProfile(props) {
 
             {error && <ErrorModal error={error} onClear={() => { setError(null) }} />}
 
-            <form onSubmit={formSubmitHandler}>
+            <form onSubmit={formSubmitHandler} className={`${styles.form}`}>
 
                 <img className={`${styles.image}`} src={props.user.image} />
 

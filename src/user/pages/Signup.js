@@ -76,6 +76,7 @@ function Signup() {
       formData.append('image', image);
       formData.append('age', age);
       formData.append('address', city);
+      console.log(formData);
       setIsLoading(true);
       const response = await fetch('http://localhost:5000/api/user/signup', {
         method: 'POST',

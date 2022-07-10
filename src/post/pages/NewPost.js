@@ -1,37 +1,41 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import styles from "./NewPost.module.css";
 import { AuthContext } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import ImageUpload from "../../shared/components/ImageUpload";
+import ErrorModal from "../../shared/components/ErrorModal";
 
 function NewPost(props) {
   const auth = useContext(AuthContext);
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [selectedImage, setSelectedImage] = useState();
-  const [file, setFile] = useState("");
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [tags, setTags] = useState("");
+  const [tags, setTags] = useState([]);
   const [location, setLocation] = useState("");
 
-  const imageOnChange = (e) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setSelectedImage(e.target.files[0]);
-      setFile(e.target.files[0]);
-    }
-  };
+  const tagsInputRef = useRef();
+
   const titleOnChangeHandler = (event) => {
     setTitle(event.target.value);
   };
   const descriptionOnChangeHandler = (event) => {
     setDescription(event.target.value);
   };
+
   const tagsOnChangeHandler = (event) => {
-    setTags(event.target.value);
+    let tagsArr;
+    if (tagsInputRef.current.value) {
+      tagsArr = tagsInputRef.current.value.split(',').map(item => item.trim().toUpperCase());
+    } else {
+      tagsArr = [];
+    };
+    setTags(tagsArr);
+    console.log(tags)
   };
+
   const locationOnChangeHandler = (event) => {
     setLocation(event.target.value);
   };
@@ -57,18 +61,18 @@ function NewPost(props) {
       formData.append('description', description);
       formData.append('tags', tags);
       formData.append('address', location);
-      formData.append('image', file);
-      // creator needs to be changed
+      formData.append('image', image);
       formData.append('creator', auth.userId);
+
+      console.log(formData)
 
       setIsLoading(true);
       const response = await fetch('http://localhost:5000/api/posts/', {
         method: 'POST',
+        body: formData,
         headers: {
-          'Content-Type': 'Application/json',
           Authorization: 'Bearer ' + auth.token
-        },
-        body: formData
+        }
       });
       const responseData = await response.json();
       setIsLoading(false);
@@ -78,8 +82,7 @@ function NewPost(props) {
       }
 
       console.log(responseData);
-      auth.login(responseData.user.id, responseData.user.name, responseData.token);
-      history.push(`/user/${responseData.user.id}`);
+      history.push(`/user/${auth.userId}`);
 
     } catch (error) {
       console.log(error);
@@ -90,6 +93,9 @@ function NewPost(props) {
 
   return (
     <section className={`${styles.section}`}>
+
+      {error && <ErrorModal error={error} onClear={() => { setError(null) }} />}
+
       <form className={`${styles.form}`} onSubmit={postSubmitHandler}>
 
         <ImageUpload onInput={imageOnInputHandler} text={'Select an image'} imageFor={'post'} />
@@ -101,7 +107,7 @@ function NewPost(props) {
           <textarea type="text" className={`${styles.text_input}`} placeholder="Add text" onChange={descriptionOnChangeHandler} value={description} rows={4} />
         </div>
         <div>
-          <input type="text" className={`${styles.text_input}`} placeholder="Tags (separate by coma)" onChange={tagsOnChangeHandler} value={tags} />
+          <input type="text" className={`${styles.text_input}`} ref={tagsInputRef} placeholder="Tags (separate by coma)" onChange={tagsOnChangeHandler} value={tags.join(',')} />
         </div>
         <div>
           <input type="text" className={`${styles.text_input}`} placeholder="Location" onChange={locationOnChangeHandler} value={location} />
