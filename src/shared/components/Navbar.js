@@ -55,9 +55,6 @@ function Navbar() {
                 </li>
             </div>
 
-
-
-
         </header>
     )
 }

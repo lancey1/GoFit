@@ -38,17 +38,10 @@ const Profile = props => {
     return (
         <div>
 
-            <div className={`${styles.avatar_name}`}>
-                <img className={`${styles.avatar}`} src={user.image} alt="" />
-                <p>{user.name}</p>
-            </div>
-
-            <p>{posts.length}</p>
-
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
 
-            <UserInfo userId={userId} />
-            <hr></hr>
+            <UserInfo user={user} />
+            
 
             <Content />
 
