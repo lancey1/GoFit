@@ -4,6 +4,7 @@ import UserInfo from "../components/UserInfo";
 import Content from "../components/Content";
 import ErrorModal from "../../shared/components/ErrorModal";
 import { AuthContext } from "../../context/AuthContext";
+import styles from './Profile.module.css';
 
 const Profile = props => {
 
@@ -36,9 +37,13 @@ const Profile = props => {
 
     return (
         <div>
-            
-            {user && <p>{user.name}</p>}
-            {user && <p>{posts.length}</p>}
+
+            <div className={`${styles.avatar_name}`}>
+                <img className={`${styles.avatar}`} src={user.image} alt="" />
+                <p>{user.name}</p>
+            </div>
+
+            <p>{posts.length}</p>
 
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
 

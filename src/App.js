@@ -9,7 +9,6 @@ import NewPost from './post/pages/NewPost';
 import CollectionPosts from './collection/pages/CollectionPosts';
 import NewCollection from './collection/pages/NewCollection';
 import Home from './shared/pages/Home';
-import MainLayout from './shared/UI/MainLayout';
 import { AuthContext } from './context/AuthContext';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -30,7 +29,7 @@ function App() {
     setIsLoggedIn(true);
     //* Generate a new time ==> 1h start from now
     //? 10 seconds for demo
-    const tokenExpirationDate = expirationDate || new Date(new Date().getTime() + 1000 * 60*60);
+    const tokenExpirationDate = expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
     setTokenExpirationDate(tokenExpirationDate);
     localStorage.setItem('userData', JSON.stringify({ userId: uid, token: token, expiration: tokenExpirationDate.toISOString() }));
   }, []);
@@ -62,46 +61,46 @@ function App() {
 
   return (
     <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, userId: userId, token: token, name: name, login: login, logout: logout }}>
-      <MainLayout>
-        <Navbar />
-        <section id='main-section'>
-          <Switch>
-            <Route path="/" exact>
-              <Home />
-            </Route>
 
-            <Route path="/login" exact>
-              <Login />
-            </Route>
+      <Navbar />
+      <section id='main-section'>
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
 
-            <Route path="/signup" exact>
-              <Signup />
-            </Route>
+          <Route path="/login" exact>
+            <Login />
+          </Route>
 
-            <Route path="/create" exact>
-              <NewPost />
-            </Route>
+          <Route path="/signup" exact>
+            <Signup />
+          </Route>
 
-            <Route path="/user/:userId" exact>
-              <Profile />
-            </Route>
+          <Route path="/create" exact>
+            <NewPost />
+          </Route>
 
-            <Route path="/posts/:postId" exact>
-              <Post />
-            </Route>
+          <Route path="/user/:userId" exact>
+            <Profile />
+          </Route>
 
-            <Route path="/:userId/create_collection" exact>
-              <NewCollection />
-            </Route>
+          <Route path="/posts/:postId" exact>
+            <Post />
+          </Route>
 
-            <Route path="/:userId/collections/:collectionId" exact>
-              <CollectionPosts />
-            </Route>
+          <Route path="/:userId/create_collection" exact>
+            <NewCollection />
+          </Route>
 
-            <Redirect to="/" />
-          </Switch>
-        </section>
-      </MainLayout>
+          <Route path="/:userId/collections/:collectionId" exact>
+            <CollectionPosts />
+          </Route>
+
+          <Redirect to="/" />
+        </Switch>
+      </section>
+
     </AuthContext.Provider >
 
   );

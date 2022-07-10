@@ -1,0 +1,10 @@
+.avatar{
+    height: 5rem;
+    width: 5rem;
+}
+
+.avatar_name{
+    display: flex;
+    align-items: center;
+    
+}

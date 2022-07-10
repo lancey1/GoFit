@@ -30,7 +30,7 @@ p {
 #main-section {
   width: 80%;
   margin: 0 auto;
-  padding-block-start: 6rem;
+  margin-block-start: 6rem;
 }
 
 input{
