@@ -29,7 +29,8 @@ p {
 
 #main-section {
   width: 80%;
-  margin-inline-start: 19%;
+  margin: 0 auto;
+  padding-block-start: 6rem;
 }
 
 input{

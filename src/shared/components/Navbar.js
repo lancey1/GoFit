@@ -11,20 +11,17 @@ function Navbar() {
     return (
         <header className={styles.header}>
 
-
-
             <div className={`${styles.homediv}`}>
                 <li className={`${styles.li}`}>
                     <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/' exact>Home</NavLink>
                 </li>
-                {auth.isLoggedIn && <p>Logged in</p>}
-                {!auth.isLoggedIn && <p>Need login</p>}
+
             </div>
 
-            <div className={`${styles.navdiv}`}>
+            <div className={`${styles.navlinks}`}>
 
                 <li className={`${styles.li}`}>
-                    <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/user/:userId' exact>Profile</NavLink>
+                    <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to={`/user/${auth.userId}`} exact>Profile</NavLink>
                 </li>
 
                 <li className={`${styles.li}`}>
@@ -46,6 +43,9 @@ function Navbar() {
                 <li className={`${styles.li}`}>
                     <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/messenger' exact>Messenger</NavLink>
                 </li>
+
+                {auth.isLoggedIn && <p>Logged in</p>}
+                {!auth.isLoggedIn && <p>Need login</p>}
 
             </div>
 
