@@ -1,0 +1,48 @@
+.post_image {
+  margin-block-start: 9rem;
+  object-fit: contain;
+  min-width: 500;
+  width: 100%;
+  margin-right: 2rem;
+  border-radius: 10px;
+}
+.post_details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.icons_div {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon_with_p {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-inline-end: 1rem;
+}
+
+.icon_with_p svg {
+  margin-inline-end: 0.2rem;
+}
+
+.clickable_likes:hover {
+  cursor: pointer;
+  color: rgb(255, 94, 94);
+  fill: rgb(255, 94, 94);
+}
+
+.clickable_cols:hover {
+  cursor: pointer;
+  color: rgb(255, 203, 70);
+  fill: rgb(255, 203, 70);
+}
+
+.clickable_comments:hover {
+  cursor: pointer;
+  color: rgb(70, 70, 70);
+  fill: rgb(70, 70, 70);
+}

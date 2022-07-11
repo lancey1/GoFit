@@ -35,7 +35,7 @@ function CommentItem(props) {
 
             {/* Check is replies is empty */}
             <button>Load replies</button>
-            <p>{<TimeAgo date={date} />} <i> @{creator.address.split(',').slice(-2).join(', ')}</i></p>
+            <p>{date && <TimeAgo date={new Date(date)} />} <i> @{creator.address.split(',').slice(-2).join(', ')}</i></p>
             <hr />
         </Fragment>
 
