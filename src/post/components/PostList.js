@@ -21,6 +21,7 @@ function PostList(props) {
       <PostItem
         key={elm.id}
         id={elm.id}
+        title={elm.title}
         avatar={elm.creator.image}
         username={elm.creator.name}
         postImage={elm.image}

@@ -1,9 +1,10 @@
 //* Display All posts
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import PostList from '../../post/components/PostList';
 import styles from './Home.module.css';
 import MainPageContainer from "../UI/MainPageContainer";
+import ErrorModal from "../components/ErrorModal";
 
 const postData = [
     {
@@ -38,9 +39,12 @@ const postData = [
 
 function Home() {
 
-    const [followingSelected, setFollowingSelected] = useState(true);
+    const [followingSelected, setFollowingSelected] = useState(false);
     const [exploreSelected, setExploreSelected] = useState(true);
-    const [nearbySelected, setNearbySelected] = useState(true);
+    const [nearbySelected, setNearbySelected] = useState(false);
+    const [error, setError] = useState(null);
+    const [isLoading, setIsloading] = useState(false);
+    const [posts, setPosts] = useState([]);
 
     const clickFollowingHandler = () => {
         setFollowingSelected(true);
@@ -63,6 +67,26 @@ function Home() {
         console.log('Nearby');
     };
 
+    useEffect(() => {
+        (async () => {
+            try {
+                setIsloading(true);
+                let response = await fetch('http://localhost:5000/api/posts');
+                let responseData = await response.json();
+                setIsloading(false);
+                if (!response.ok) {
+                    throw new Error(responseData.message);
+                };
+                console.log(responseData)
+                setPosts(responseData.posts);
+            } catch (error) {
+                console.log(error)
+                setError(error.message);
+            }
+            setIsloading(false);
+        })();
+    }, [])
+
     return (
 
         <MainPageContainer>
@@ -73,7 +97,9 @@ function Home() {
                 <li className={`${styles.li}`} onClick={clickNearbyHandler}>NearBy</li>
             </ul>
 
-            <PostList posts={postData} />
+            {error && <ErrorModal error={error} onClear={() => setError(null)} />}
+
+            <PostList posts={posts} />
 
         </MainPageContainer>
 

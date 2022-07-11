@@ -28,7 +28,7 @@ function PostItem(props) {
   return (
     <PostCard >
       <img className={`${styles.image}`} onClick={postClickHandler} src={props.postImage} alt="" />
-      <p className={`${styles.h4}`}>THIS IS POST TITLETHIS IS POST TITLETHIS IS POST TITLE</p>
+      <p className={`${styles.h4}`}>{props.title}</p>
       <div className={`${styles.creatorinfo}`}>
         <div className={`${styles.imageandname} ${styles.clickable}`} onClick={clickUserDetailHandler}>
           <img className={`${styles.avatar}`} src={props.avatar} alt="" />
