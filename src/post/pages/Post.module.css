@@ -1,0 +1,58 @@
+.container {
+  height: 90vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.avatar {
+  max-height: 80px;
+  max-width: 80px;
+  border-radius: 2px;
+}
+
+.div {
+  width: 69%;
+}
+
+.post_image {
+  margin-block-start: 9rem;
+  object-fit: contain;
+  min-width: 500;
+  width: 100%;
+  margin-right: 2rem;
+  border-radius: 10px;
+}
+
+.post_info {
+  width: 28%;
+  padding-block-start: 3rem;
+  height: 85vh;
+  overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.post_info::-webkit-scrollbar {
+  display: none;
+}
+
+.thumbsUp {
+  color: blue;
+  border: none;
+  background: none;
+  border: 40px;
+}
+
+.thumbsDown {
+  color: red;
+  border: none;
+  background: none;
+  border: 40px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: horizontal;
+  align-items: center;
+}

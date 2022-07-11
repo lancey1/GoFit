@@ -5,6 +5,7 @@ html {
   color: rgb(60, 60, 60);
 }
 
+
 a {
   color: gray;
   text-decoration: none;
@@ -33,7 +34,6 @@ p {
   margin-block-start: 4rem;
 }
 
-input{
+input {
   color: rgb(50, 50, 50);
 }
-

@@ -22,7 +22,7 @@ function App() {
   const [name, setName] = useState(null);
   const [tokenExpirationDate, setTokenExpirationDate] = useState(null);
 
-  const login = useCallback((uid, name, token, expirationDate) => {
+  const login = useCallback((uid, token, expirationDate) => {
     console.log(token);
     setUserId(uid);
     setToken(token);

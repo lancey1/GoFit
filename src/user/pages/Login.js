@@ -50,7 +50,6 @@ function Login() {
       }
       auth.login(
         responseData.user.id,
-        responseData.user.name,
         responseData.token
       );
       history.push(`/user/${responseData.user.id}`);

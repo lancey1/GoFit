@@ -5,7 +5,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ErrorModal from "../../shared/components/ErrorModal";
 
-import "./post.css";
+import styles from './Post.module.css';
 
 const post = {
   avatar:
@@ -52,33 +52,45 @@ function Post(props) {
 
       {error && <ErrorModal error={error} onClear={() => setError(null)} />}
       {post &&
-        <div>
-          <h1>Post {postId}</h1>
-          <img className="avatar" src={post.creator.image} alt="" />
-          <p className="username">{post.name} </p>
-          <img className="postImage" src={post.image} alt="" />
-          <div className="buttons">
-            <button
-              className="thumbsUp"
-              onClick={() => setLikesCount((prev) => prev + 1)}
-            >
-              <i className="fa-solid fa-thumbs-up"></i>
-            </button>
-            <p> {post.likes}</p>
-            <button
-              className="thumbsDown"
-              onClick={() => setDislikesCount((prev) => prev + 1)}
-            >
-              <i className="fa-solid fa-thumbs-down"></i>
-            </button>
-            <p>{post.dislikes}</p>
+        <div className={`${styles.container}`}>
+
+          <div className={styles.div}>
+            <img className={`${styles.post_image}`} src={post.image} alt="" />
           </div>
-          <h2>{post.description}</h2>
-          <input type="text" placeholder="comments" />
-          <h2>Comments with replies if any</h2>
+
+          <section className={`${styles.post_info}`} >
+            <div>
+              <img className={`${styles.avatar}`} src={post.creator.image} alt="" />
+              <p>{post.creator.name}</p>
+            </div>
+
+            <h2 >{post.title} </h2>
+            <h1>Post {postId}</h1>
+
+            <div >
+              <button onClick={() => setLikesCount((prev) => prev + 1)}>
+                <i className="fa-solid fa-thumbs-up"></i>
+              </button>
+              <p> {post.likes}</p>
+              <button onClick={() => setDislikesCount((prev) => prev + 1)}>
+                <i className="fa-solid fa-thumbs-down"></i>
+              </button>
+              <p>{post.dislikes}</p>
+            </div>
+
+            <h2>{post.description}</h2>
+
+            <input type="text" placeholder="comments" />
+
+            <h2>Comments with replies if anyComments with replies if anyComments with replies if anyComments with replies if anyComments with replies if anyComments with replies if any
+              Comments with replies if anyComments with replies if anyComments with replies if anyComments with replies if anyComments with replies if anyComments with replies if any
+              Comments with replies if anyComments with replies if anyComments with replies if anyComments with replies if anyComments with replies if anyComments with replies if any
+              Comments with replies if anyComments with replies if anyComments with replies if anyComments with replies if anyComments with replies if anyComments with replies if any
+            </h2>
+          </section>
+
         </div>
       }
-
 
     </Fragment>
   );
