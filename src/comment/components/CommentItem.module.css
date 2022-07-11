@@ -1,0 +1,55 @@
+.avatar {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+}
+
+.text {
+  text-align: justify;
+  font-size: 1.3rem;
+  color: rgb(60, 60, 60);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0;
+}
+
+.name_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  margin: 0 0.3rem;
+}
+
+.name_text p {
+  margin: 0.15rem;
+}
+
+.icons_div {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon_with_p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline-end: 1rem;
+}
+
+.icon_with_p svg {
+  margin-block-end: 0.1rem;
+}
+
+.icon_with_p p {
+  margin: 0;
+}
+
+.clickable_likes:hover {
+  cursor: pointer;
+  color: rgb(255, 94, 94);
+  fill: rgb(255, 94, 94);
+}

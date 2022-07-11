@@ -32,7 +32,6 @@ function App() {
     console.log(token);
     setUserId(uid);
     setToken(token);
-    setName(name);
     setIsLoggedIn(true);
     //* Generate a new time ==> 1h start from now
     //? 10 seconds for demo
@@ -45,7 +44,6 @@ function App() {
     setIsLoggedIn(false);
     setUserId(null);
     setToken(null);
-    setName(null);
     localStorage.removeItem('userData')
   }, []);
 
@@ -87,7 +85,7 @@ function App() {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, userId: userId, token: token, name: name, login: login, logout: logout }}>
+    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, userId: userId, token: token, login: login, logout: logout }}>
 
       {error && <ErrorModal error={error} onClear={() => setError(null)} />}
 

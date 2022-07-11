@@ -1,8 +1,10 @@
 //* Display a single post
 //* Creater, Post image, likes, dislikes, collections, description, comment input bar, comments(replies)
 
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import CommentsList from "../../comment/components/CommentsList";
+import { AuthContext } from "../../context/AuthContext";
 import ErrorModal from "../../shared/components/ErrorModal";
 
 import styles from './Post.module.css';
@@ -18,11 +20,14 @@ const post = {
 function Post(props) {
   //* http://localhost:3002/posts/3 ===> postId = 3
 
+  const auth = useContext(AuthContext);
+
   const params = useParams();
   const { postId } = params;
   const [setLikes, setLikesCount] = useState(10);
   const [setDislikes, setDislikesCount] = useState(1);
   const [post, setPost] = useState(null);
+  const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsloading] = useState(false);
   //* Receive post and user info from props
@@ -39,6 +44,7 @@ function Post(props) {
         };
         console.log(responseData)
         setPost(responseData.post);
+        setComments(responseData.post.comments);
       } catch (error) {
         console.log(error)
         setError(error.message);
@@ -56,8 +62,8 @@ function Post(props) {
 
           <div className={styles.div}>
 
-            <img className={`${styles.post_image}`} src={post.image} alt="post-image" />
-            
+            <img className={`${styles.post_image}`} src={post.image} alt="Post" />
+
             <div className={`${styles.post_details}`}>
               <p>{new Date(post.date).toLocaleString('en-US', { year: "numeric", month: "long", day: "numeric" })}<br /> @ {post.address.split(',').slice(-3).join(', ')}</p>
 
@@ -97,39 +103,29 @@ function Post(props) {
           </div>
 
           <section className={`${styles.post_info}`} >
-            <div>
+            <div className={`${styles.user_img_name_follow}`}>
               <img className={`${styles.avatar}`} src={post.creator.image} alt="" />
-              <p>{post.creator.name}</p>
+              <div className={`${styles.name_follow}`}>
+                <h3>{post.creator.name}</h3>
+                <button className={`${styles.follow_btn}`}>Follow</button>
+              </div>
             </div>
 
-            <article className={`${styles.article}`}>
+            <article className={`${styles.article}`} >
               <h2 >{post.title}</h2>
               <p>{post.description}</p>
+              <div className={`${styles.btn_div}`} >
+                <button className={`${styles.dislike_btn}`}>Dislike</button>
+              </div>
+              <hr />
             </article>
 
+            <section>
+              <i>{comments.length} comments</i>
+              <input className={`${styles.comment_input}`} type="text" placeholder="Leave a comment?" />
+              <CommentsList comments={comments} />
+            </section>
 
-
-
-            <div >
-              <button onClick={() => setLikesCount((prev) => prev + 1)}>
-                <i className="fa-solid fa-thumbs-up"></i>
-              </button>
-              <p> {post.likes}</p>
-              <button onClick={() => setDislikesCount((prev) => prev + 1)}>
-                <i className="fa-solid fa-thumbs-down"></i>
-              </button>
-              <p>{post.dislikes}</p>
-            </div>
-
-            <h2>{post.description}</h2>
-
-            <input type="text" placeholder="comments" />
-
-            <h2>Comments with replies if anyComments with replies if anyComments with replies if anyComments with replies if anyComments with replies if anyComments with replies if any
-              Comments with replies if anyComments with replies if anyComments with replies if anyComments with replies if anyComments with replies if anyComments with replies if any
-              Comments with replies if anyComments with replies if anyComments with replies if anyComments with replies if anyComments with replies if anyComments with replies if any
-              Comments with replies if anyComments with replies if anyComments with replies if anyComments with replies if anyComments with replies if anyComments with replies if any
-            </h2>
           </section>
 
         </div>
@@ -139,4 +135,4 @@ function Post(props) {
   );
 }
 
-export default Post;
+export default React.memo(Post);
