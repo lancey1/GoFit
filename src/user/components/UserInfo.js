@@ -5,11 +5,22 @@ import styles from './UserInfo.module.css';
 const UserInfo = props => {
     const { user } = props;
 
+
+    let gymMembership = [];
+    if (user && user.gymMembership.length !== 0) {
+        gymMembership = user.gymMembership.join(', ');
+    }
+
+    let athleteTypes = [];
+    if (user && user.athleteTypes.length !== 0) {
+        athleteTypes = user.athleteTypes.join(', ');
+    }
+
     let userAddress;
     if (user) {
         var sectionStyle = {
             width: "100%",
-            height: "400px",
+            height: "410px",
             backgroundImage: `url(${user.backgroundImage})`,
             backgroundSize: `cover`
         };
@@ -34,6 +45,10 @@ const UserInfo = props => {
 
                         <p>Age {user.age}</p>
                         <p>{userAddress}</p>
+
+                        {gymMembership && <p>Gym Membership: {gymMembership}</p>}
+                        {athleteTypes && <p>Athlete Types: {athleteTypes}</p>}
+
 
                         <div className={`${styles.follow_edit}`} >
                             <div className={`${styles.follow}`}>

@@ -59,7 +59,7 @@ function EditProfile(props) {
     const gymChangeHandler = event => {
         let gymMembershipArr;
         if (gymMembershipRef.current.value) {
-            gymMembershipArr = gymMembershipRef.current.value.split(',').map(item => item.trim().toUpperCase());
+            gymMembershipArr = gymMembershipRef.current.value.split(',').map(item => item.trim());
         } else {
             gymMembershipArr = [];
         };
@@ -69,7 +69,7 @@ function EditProfile(props) {
     const athleteTypesChangeHandler = event => {
         let athleteTypesArr;
         if (athleteTypesRef.current.value) {
-            athleteTypesArr = athleteTypesRef.current.value.split(',').map(item => item.trim().toUpperCase());
+            athleteTypesArr = athleteTypesRef.current.value.split(',').map(item => item.trim());
         } else {
             athleteTypesArr = [];
         };
@@ -86,14 +86,14 @@ function EditProfile(props) {
 
         let gymMembershipArr;
         if (gymMembershipRef.current.value) {
-            gymMembershipArr = gymMembershipRef.current.value.split(',').map(item => item.trim().toUpperCase());
+            gymMembershipArr = gymMembershipRef.current.value.split(',').map(item => item.trim());
         } else {
             gymMembershipArr = [];
         };
 
         let athleteTypesArr;
         if (athleteTypesRef.current.value) {
-            athleteTypesArr = athleteTypesRef.current.value.split(',').map(item => item.trim().toUpperCase());
+            athleteTypesArr = athleteTypesRef.current.value.split(',').map(item => item.trim());
         } else {
             athleteTypesArr = [];
         };
@@ -170,12 +170,12 @@ function EditProfile(props) {
 
                 <div className={`${styles.input_label}`}>
                     <input className={`${styles.text_input}`} type='text' value={gymMembership.join(',')} onChange={gymChangeHandler} ref={gymMembershipRef} />
-                    <label>Gym Membership (separate by coma)</label>
+                    <label>Gym Membership (separate by comma)</label>
                 </div>
 
                 <div className={`${styles.input_label}`}>
                     <input className={`${styles.text_input}`} type='text' value={athleteTypes.join(',')} onChange={athleteTypesChangeHandler} ref={athleteTypesRef} />
-                    <label>AthleteTypes (separate by coma)</label>
+                    <label>AthleteTypes (separate by comma)</label>
                 </div>
 
                 <div className={`${styles.input_label}`}>
