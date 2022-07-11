@@ -37,3 +37,24 @@ p {
 input {
   color: rgb(50, 50, 50);
 }
+
+.rec-arrow.rec-arrow-left {
+  
+}
+
+.rec.rec-arrow {
+  background-color: white;
+  font-size: 0.6em;
+}
+
+.rec.rec-arrow:enabled:hover{
+  background-color: black;
+}
+
+.rec-arrow.rec-arrow-right {
+
+}
+
+.rec.rec-dot {
+  background-color: white;
+}
