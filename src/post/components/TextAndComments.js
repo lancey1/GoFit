@@ -26,8 +26,7 @@ function TextAndComments(props) {
         };
         try {
             setIsloading(true);
-
-            let response = await fetch(`http://localhost:5000/api/comments/post/62cb9aab12da473405d987b8`, {
+            let response = await fetch(`http://localhost:5000/api/comments/post/${post.id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'Application/json',

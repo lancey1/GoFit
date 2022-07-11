@@ -53,3 +53,61 @@
   color: rgb(255, 94, 94);
   fill: rgb(255, 94, 94);
 }
+
+.liked {
+  cursor: pointer;
+  color: rgb(255, 94, 94);
+  fill: rgb(255, 94, 94);
+}
+
+.reply_p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.reply_p input {
+  flex-grow: 1;
+  font-size: 1.2rem;
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: rgb(180, 180, 180);
+  padding-bottom: 0.2rem;
+  padding-inline-start: 1rem;
+  font-style: italic;
+}
+
+.reply_p button {
+  flex-grow: 0.5;
+  font-size: 1rem;
+  background-color: white;
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: rgb(180, 180, 180);
+}
+
+.reply_p button:hover {
+  background-color: green;
+  color: white;
+}
+
+.time_location_svg {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.time_location_svg svg {
+  padding-inline-end: 1rem;
+  cursor: pointer;
+}
+
+.view_replies {
+  color: rgb(100, 130, 126);
+  font-size: 1rem;
+  background-color: white;
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  margin-block-end: 0.6rem;
+}

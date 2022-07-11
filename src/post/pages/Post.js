@@ -29,48 +29,8 @@ function Post(props) {
   const params = useParams();
   const { postId } = params;
   const [post, setPost] = useState(null);
-  const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsloading] = useState(false);
-
-  const [comment, setComment] = useState('');
-  //* Receive post and user info from props
-
-  const commentInputHandler = event => {
-    setComment(event.target.value);
-  }
-
-  const commentSubmitHandler = async (event) => {
-    event.preventDefault();
-    if (comment.trim().length === 0) {
-      setError('Comment can not be null.');
-    };
-    try {
-      setIsloading(true);
-      let response = await fetch(`http://localhost:5000/api/comments/post/62cb9aab12da473405d987b8`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'Application/json',
-          Authorization: 'Bearer ' + auth.token
-        },
-        body: JSON.stringify({
-          text: comment.trim(),
-          creator: auth.userId
-        })
-      });
-      let responseData = await response.json();
-      setIsloading(false);
-      if (!response.ok) {
-        throw new Error(responseData.message);
-      };
-      console.log(responseData)
-      history.replace(`/posts/${postId}`);
-    } catch (error) {
-      console.log(error)
-      setError(error.message);
-    }
-    setIsloading(false);
-  }
 
   useEffect(() => {
     (async () => {
@@ -84,7 +44,6 @@ function Post(props) {
         };
         console.log(responseData)
         setPost(responseData.post);
-        setComments(responseData.post.comments);
       } catch (error) {
         console.log(error)
         setError(error.message);
