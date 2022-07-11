@@ -34,13 +34,12 @@ function CommentRepliesList(props) {
 
     return (
         <div className={`${styles.replies_list}`}>
-            {!isLoading &&
+            {replies && !isLoading &&
                 <div div >
                     {error && <ErrorModal error={error} onClear={() => setError(null)} />}
                     <CommentsList comments={replies} />
                 </div>
             }
-            {isLoading && <h1>Loading</h1>}
         </div >
     )
 }

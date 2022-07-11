@@ -164,11 +164,11 @@ function CommentItem(props) {
                 </div>
             }
 
-            {replies.length >= 0 && <button onClick={onSetShowCommentReplies} className={`${styles.view_replies}`} type='button'>{`View ${replies.length} replies`}</button>}
+            {replies.length > 0 && <button onClick={onSetShowCommentReplies} className={`${styles.view_replies}`} type='button'>{`${showCommentReplies ? 'Hide' : 'View'} ${replies.length} ${replies.length === 1 ? 'reply' : 'replies'}`}</button>}
 
             {showCommentReplies && <CommentRepliesList commentId={props.id} />}
 
-            
+
         </Fragment >
 
     )
