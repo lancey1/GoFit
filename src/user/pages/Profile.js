@@ -11,8 +11,11 @@ const Profile = props => {
 
     const [error, setError] = useState(null);
     const [user, setUser] = useState(null);
-    const [posts, setPosts] = useState(null);
     const [showEditPage, setShowEditPage] = useState(false);
+
+    const [posts, setPosts] = useState([]);
+    const [likedPosts, setLikedPosts] = useState([]);
+    const [collections, setCollections] = useState([]);
 
     const params = useParams();
     const { userId } = params;
@@ -34,13 +37,15 @@ const Profile = props => {
                     throw new Error(responseData.message);
                 };
                 setUser(responseData.user);
-                setPosts(responseData.posts);
+                setPosts(responseData.user.posts);
+                setLikedPosts(responseData.user.likedPosts);
+                setCollections(responseData.user.collections);
             } catch (error) {
                 console.log(error)
                 setError(error.message);
             }
         })();
-    },[userId, showEditPage]);
+    }, [userId, showEditPage]);
 
     return (
         <div>
@@ -50,7 +55,7 @@ const Profile = props => {
             {!showEditPage &&
                 <div>
                     <UserInfo user={user} onShowEditPage={showEditPageHandler} />
-                    <Content />
+                    <Content posts={posts} likedPosts={likedPosts} collections={collections} />
                 </div>
             }
 
