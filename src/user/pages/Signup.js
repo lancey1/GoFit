@@ -88,7 +88,7 @@ function Signup() {
         throw new Error(responseData.message);
       }
       console.log(responseData);
-      auth.login(responseData.user.id, responseData.user.name, responseData.token);
+      auth.login(responseData.user.id, responseData.token);
       history.push(`/user/${responseData.user.id}`);
 
     } catch (error) {

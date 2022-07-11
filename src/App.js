@@ -12,6 +12,8 @@ import Home from './shared/pages/Home';
 import { AuthContext } from './context/AuthContext';
 import { useCallback, useEffect, useState } from 'react';
 import EditProfile from './user/components/EditProfile';
+import Main from './shared/pages/Main';
+import ErrorModal from './shared/components/ErrorModal';
 
 let logoutTimer;
 
@@ -21,6 +23,10 @@ function App() {
   const [token, setToken] = useState(null);
   const [name, setName] = useState(null);
   const [tokenExpirationDate, setTokenExpirationDate] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const [posts, setPosts] = useState([]);
 
   const login = useCallback((uid, token, expirationDate) => {
     console.log(token);
@@ -60,14 +66,36 @@ function App() {
     };
   }, [login]);
 
+  useEffect(() => {
+    (async () => {
+      try {
+        setIsLoading(true);
+        let response = await fetch('http://localhost:5000/api/posts');
+        let responseData = await response.json();
+        setIsLoading(false);
+        if (!response.ok) {
+          throw new Error(responseData.message);
+        };
+        console.log(responseData)
+        setPosts(responseData.posts);
+      } catch (error) {
+        console.log(error)
+        setError(error.message);
+      }
+      setIsLoading(false);
+    })();
+  }, [])
+
   return (
     <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, userId: userId, token: token, name: name, login: login, logout: logout }}>
+
+      {error && <ErrorModal error={error} onClear={() => setError(null)} />}
 
       <Navbar />
       <section id='main-section'>
         <Switch>
-          <Route path="/" exact>
-            <Home />
+          <Route path="/home" exact>
+            <Home posts={posts} />
           </Route>
 
           <Route path="/login" exact>

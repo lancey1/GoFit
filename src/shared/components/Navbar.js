@@ -13,7 +13,7 @@ function Navbar() {
 
             <div className={`${styles.homediv}`}>
                 <li className={`${styles.li}`}>
-                    <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/' exact>Home</NavLink>
+                    <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/home' exact>Home</NavLink>
                 </li>
 
             </div>
