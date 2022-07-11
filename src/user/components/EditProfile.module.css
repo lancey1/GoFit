@@ -41,3 +41,37 @@
 .text_input:focus {
   border-color: green;
 }
+
+.container_btn {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+
+}
+
+.editsubmit_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 36px;
+  margin-right:10px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 1px solid #f9627d;
+  background-color: #f9627d;
+  color:white;
+}
+
+.backtoprofile_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 111px;
+  height: 36px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 1px solid #f9627d;
+  background-color: #f9627d;
+  color:white;
+}

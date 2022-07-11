@@ -182,12 +182,14 @@ function EditProfile(props) {
                     <input className={`${styles.text_input}`} type='text' value={address} onChange={addressChangeHandler} />
                     <label>Address</label>
                 </div>
+                <div className={`${styles.container_btn}`}>
+                <button className={`${styles.editsubmit_btn}`}>Submit</button>
 
-                <button>Submit</button>
-
+                <button className={`${styles.backtoprofile_btn}`} onClick={props.onBackToProfile}>Back to Profile</button>
+                </div>
             </form>
 
-            <button onClick={props.onBackToProfile}>Back to profile</button>
+
 
         </div>
     )
