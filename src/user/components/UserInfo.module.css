@@ -65,3 +65,13 @@
 .hr{
     width: 100%;
 }
+
+.userinfo_btn{
+  width: 90px;
+  height: 36px;
+  margin-top: 5px;
+  font-weight: bold;
+  border: 1px solid #f9627d;
+  background-color: #f9627d;
+  color:white;
+}

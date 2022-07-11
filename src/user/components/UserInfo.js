@@ -57,7 +57,7 @@ const UserInfo = props => {
                                 <p><em>Likes</em> <b>{user.likes} </b> </p>
                             </div>
 
-                            <button onClick={props.onShowEditPage}>Edit Profile</button>
+                            <button className={`${styles.userinfo_btn}`} onClick={props.onShowEditPage}>Edit Profile</button>
 
                         </div>
 
