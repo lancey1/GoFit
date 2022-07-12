@@ -52,3 +52,9 @@
   color: rgb(70, 70, 70);
   fill: rgb(70, 70, 70);
 }
+
+.post_collected {
+  cursor: pointer;
+  color: rgb(255, 203, 70);
+  fill: rgb(255, 203, 70);
+}

@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext';
 import ErrorModal from '../../shared/components/ErrorModal';
+import CollectionSelection from './CollectionSelection';
 import styles from './PostDetails.module.css';
 
 function PostDetails(props) {
@@ -16,21 +17,46 @@ function PostDetails(props) {
         likedAlready = false
     }
 
-    let colletedAlready;
-
     const [likes, setLikes] = useState(post.likes);
     const [liked, setLiked] = useState(likedAlready);
     const [collections, setCollections] = useState(post.collections);
     const [commentsCount, setCommentsCount] = useState(post.comments.length);
     const [error, setError] = useState(null);
 
+    const [collectionId, setCollectionId] = useState(null);
+
     const [userCollections, setUserCollections] = useState([]);
-    const [collected, setCollected] = useState(userCollections.includes(post.id));
+    const [collected, setCollected] = useState();
 
-    console.log(collected);
-    console.log(userCollections);
+    const [openSelection, setOpenSelection] = useState(false);
 
-    console.log(liked);
+    const clickStarHandler = async (event) => {
+
+        if (!collected) {
+            setOpenSelection(prev => !prev);
+        }
+
+        if (collected) {
+            try {
+                let response = await fetch(`http://localhost:5000/api/collections/remove/${collectionId}/${post.id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'Application/json',
+                        Authorization: 'Bearer ' + auth.token
+                    }
+                });
+                let responseData = await response.json();
+                console.log(responseData)
+                if (!response.ok) {
+                    throw new Error(responseData.message);
+                };
+                setCollected(false);
+                setCollections(prev => prev - 1);
+            } catch (error) {
+                console.log(error)
+            };
+        }
+    }
 
     const likePostHandler = async (event) => {
         event.preventDefault();
@@ -77,26 +103,56 @@ function PostDetails(props) {
         }
     }
 
-    const addToCollectionHandler = async (event) => {
+    const addToCollectionHandler = async (cId, event) => {
+        event.preventDefault();
+        if (!collected) {
+            try {
+                let response = await fetch(`http://localhost:5000/api/collections/add/${cId}/${post.id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'Application/json',
+                        Authorization: 'Bearer ' + auth.token
+                    }
+                });
+                let responseData = await response.json();
+                console.log(responseData)
+                if (!response.ok) {
+                    throw new Error(responseData.message);
+                };
+                setCollected(true);
+                setCollections(prev => prev + 1);
+                setOpenSelection(false);
+            } catch (error) {
+                console.log(error)
+            };
+        };
 
     }
 
     useEffect(() => {
-        (async () => {
-            try {
-                let response = await fetch(`http://localhost:5000/api/collections/${auth.userId}`);
-                let responseData = await response.json();
-                console.log(responseData)
-                if (!response.ok) {
-                    console.log(response);
-                    throw new Error(responseData.message);
-                };
-                setUserCollections(responseData.collections)
-            } catch (error) {
-                console.log(error)
-                setError(error.message);
-            }
-        })();
+        if (auth && auth.userId) {
+            (async () => {
+                try {
+                    let response = await fetch(`http://localhost:5000/api/collections/postids/${auth.userId}`);
+                    let responseData = await response.json();
+                    console.log(responseData)
+                    if (!response.ok) {
+                        console.log(response);
+                        throw new Error(responseData.message);
+                    };
+                    setUserCollections(responseData.collections);
+                    for (const item of responseData.collections) {
+                        if (item.posts.includes(post.id)) {
+                            setCollected(true);
+                            setCollectionId(item.id);
+                        }
+                    }
+                } catch (error) {
+                    console.log(error)
+                    setError(error.message);
+                }
+            })();
+        }
     }, [])
 
     return (
@@ -117,7 +173,7 @@ function PostDetails(props) {
                         </div>
 
                         <div className={`${styles.icon_with_p}`}>
-                            <svg xmlns="http://www.w3.org/2000/svg" className={`${styles.clickable_cols} h-6 w-6`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" onClick={addToCollectionHandler}>
+                            <svg xmlns="http://www.w3.org/2000/svg" className={`${styles.clickable_cols} ${collected && styles.post_collected} h-6 w-6`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" onClick={clickStarHandler}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                             </svg>
                             <div>
@@ -134,6 +190,8 @@ function PostDetails(props) {
                             </div>
                         </div>
                     </div>
+                    {openSelection && <CollectionSelection collections={userCollections} onFormSubmit={addToCollectionHandler} />}
+
                 </div>
             </div>
         </div>

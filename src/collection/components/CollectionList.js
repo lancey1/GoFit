@@ -57,7 +57,7 @@ const CollectionList = (props) => {
       setError(error.message);
     }
   }
-
+//! onClick={props.onDelete.bind(this, props.id)}
   const deleteColHandler = async (cId,event) => {
     event.stopPropagation();
     console.log(cId);
