@@ -10,7 +10,6 @@ function CommentRepliesList(props) {
     const [replies, setReplies] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsloading] = useState(false);
-    const [fetchComments, setFetchComments] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -30,12 +29,12 @@ function CommentRepliesList(props) {
             }
             setIsloading(false);
         })();
-    }, [fetchComments])
+    }, [])
 
     return (
         <div className={`${styles.replies_list}`}>
-            {replies && !isLoading &&
-                <div div >
+            {(replies && !isLoading) &&
+                <div >
                     {error && <ErrorModal error={error} onClear={() => setError(null)} />}
                     <CommentsList comments={replies} />
                 </div>

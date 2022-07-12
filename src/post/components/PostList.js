@@ -25,6 +25,8 @@ function PostList(props) {
         avatar={elm.creator.image}
         username={elm.creator.name}
         postImage={elm.image}
+        likes={elm.likes}
+        likedBy={elm.likedBy}
       />
     );
   });

@@ -19,25 +19,27 @@ let logoutTimer;
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
   const [userId, setUserId] = useState(null);
   const [token, setToken] = useState(null);
   const [name, setName] = useState(null);
   const [tokenExpirationDate, setTokenExpirationDate] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  console.log(user);
   const [posts, setPosts] = useState([]);
 
-  const login = useCallback((uid, token, expirationDate) => {
+  const login = useCallback((uid, token, user, expirationDate) => {
     console.log(token);
     setUserId(uid);
     setToken(token);
+    setUser(user);
     setIsLoggedIn(true);
     //* Generate a new time ==> 1h start from now
     //? 10 seconds for demo
     const tokenExpirationDate = expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
     setTokenExpirationDate(tokenExpirationDate);
-    localStorage.setItem('userData', JSON.stringify({ userId: uid, token: token, expiration: tokenExpirationDate.toISOString() }));
+    localStorage.setItem('userData', JSON.stringify({ userId: uid, token: token, user: user, expiration: tokenExpirationDate.toISOString() }));
   }, []);
 
   const logout = useCallback(() => {
@@ -60,7 +62,7 @@ function App() {
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem('userData'));
     if (storedData && storedData['token'] && new Date(storedData['expiration']) > new Date()) {
-      login(storedData.userId, storedData.token, new Date(storedData['expiration']));
+      login(storedData.userId, storedData.token, storedData.user, new Date(storedData['expiration']));
     };
   }, [login]);
 
@@ -85,7 +87,7 @@ function App() {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, userId: userId, token: token, login: login, logout: logout }}>
+    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, userId: userId, token: token, user: user, login: login, logout: logout }}>
 
       {error && <ErrorModal error={error} onClear={() => setError(null)} />}
 

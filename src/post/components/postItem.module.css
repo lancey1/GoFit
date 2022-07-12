@@ -18,7 +18,7 @@
 .image {
   width: 100%;
   object-fit: cover;
-  height:400px;
+  height: 400px;
 }
 
 .creatorinfo {
@@ -46,5 +46,12 @@
 
 .clickable:hover {
   cursor: pointer;
-  color: rgb(70, 70, 70);
+  color: rgb(255, 94, 94);
+  fill: rgb(255, 94, 94);
+}
+
+.liked {
+  cursor: pointer;
+  color: rgb(255, 94, 94);
+  fill: rgb(255, 94, 94);
 }

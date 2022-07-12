@@ -9,7 +9,7 @@ import CommentRepliesList from './CommentRepliesList';
 function CommentItem(props) {
 
     const auth = useContext(AuthContext);
-
+    
     const { id, creator, text, date, replies, likes, likedBy } = props;
 
     const [liked, setLiked] = useState(likedBy.includes(auth.userId));
@@ -36,6 +36,11 @@ function CommentItem(props) {
     const svgClickHandler = async (event) => {
         console.log('svg clicked')
         event.preventDefault();
+        
+        if (!auth || !auth.user) {
+            return setError('Login first');
+        };
+
         if (!liked) {
             try {
                 let response = await fetch(`http://localhost:5000/api/comments/like/${id}`, {
@@ -89,9 +94,15 @@ function CommentItem(props) {
     const replyButtonHandler = async (event) => {
         console.log(reply);
         event.preventDefault();
+
         if (reply.trim().length === 0) {
             setError('Comment can not be null.');
         };
+
+        if (!auth || !auth.user) {
+            return setError('Login first');
+        }
+
         try {
             setIsloading(true);
             let response = await fetch(`http://localhost:5000/api/comments/reply/${id}`, {
@@ -110,12 +121,16 @@ function CommentItem(props) {
             if (!response.ok) {
                 throw new Error(responseData.message);
             };
+            // onRefresh();
+            onSetShowCommentReplies(true);
             console.log(responseData)
         } catch (error) {
             console.log(error)
             setError(error.message);
         }
         setIsloading(false);
+        setReply('');
+        setShowReplyForm(false);
     }
 
     return (
@@ -147,7 +162,7 @@ function CommentItem(props) {
             <div className={`${styles.time_location_svg}`}>
                 <p>{date && <TimeAgo date={new Date(date)} />} <i> @{creator.address.split(',').slice(-2).join(', ')}</i></p>
                 <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" onClick={onShowReplyFrom} >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" onClick={onShowReplyFrom} >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
                     </svg>
                 </div>

@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import CommentsList from '../../comment/components/CommentsList';
 import { AuthContext } from '../../context/AuthContext';
 import ErrorModal from '../../shared/components/ErrorModal';
+import DislikeButton from './DislikeButton';
+import FollowUserButton from './FollowUserButton';
 import styles from './TextAndComments.module.css';
 
 function TextAndComments(props) {
@@ -24,6 +26,11 @@ function TextAndComments(props) {
         if (comment.trim().length === 0) {
             setError('Comment can not be null.');
         };
+        
+        if (!auth || !auth.user) {
+            return setError('Login first');
+        };
+
         try {
             setIsloading(true);
             let response = await fetch(`http://localhost:5000/api/comments/post/${post.id}`, {
@@ -64,6 +71,7 @@ function TextAndComments(props) {
                 };
                 console.log(responseData)
                 setComments(responseData.comments);
+                setComment('');
             } catch (error) {
                 console.log(error)
                 setError(error.message);
@@ -79,7 +87,7 @@ function TextAndComments(props) {
                 <img className={`${styles.avatar}`} src={post.creator.image} alt="" />
                 <div className={`${styles.name_follow}`}>
                     <h3>{post.creator.name}</h3>
-                    <button className={`${styles.follow_btn}`}>Follow</button>
+                    <FollowUserButton post={post}/>
                 </div>
             </div>
 
@@ -87,7 +95,7 @@ function TextAndComments(props) {
                 <h2 >{post.title}</h2>
                 <p>{post.description}</p>
                 <div className={`${styles.btn_div}`} >
-                    <button className={`${styles.dislike_btn}`}>Dislike</button>
+                    <DislikeButton post={post} />
                 </div>
                 <hr />
             </article>

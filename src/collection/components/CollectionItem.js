@@ -1,14 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Carousel from "react-elastic-carousel";
 import { useHistory } from "react-router-dom";
 import styles from "./CollectionItem.module.css";
 
-const breakPoints = [
-  { width: 1, itemsToShow: 1 },
-  { width: 550, itemsToShow: 2 },
-  { width: 768, itemsToShow: 3 },
-  { width: 1200, itemsToShow: 3 },
-];
 
 const CollectionItem = (props) => {
 
@@ -18,34 +12,15 @@ const CollectionItem = (props) => {
     history.push(`/:userId/collections/${props.id}`);
   };
 
-  // const list = collectionData.map((elm) => {
-  //   return (
-  //     <div className={styles.col_item} onClick={clickHandler}>
-  //       <h1>{elm.title}</h1>
-  //       <img className={styles.col_img} src={elm.postImage} alt="" />
-  //     </div>
-  //   );
-  // });
-
-  const testList = props.data.map((elm) => {
-    return (
-      <div className={styles.col_item} onClick={clickHandler}>
-        <h1>{elm.title}</h1>
-        <img className={styles.col_img} src={elm.postImage} alt="" />
-      </div>
-    );
-  });
-
   return (
-    <>
-      <h1 style={{ textAlign: "center" }}>{props.title}</h1>
-      <div className={styles.col_container}>
-        <Carousel
-          breakPoints={breakPoints}>
-          {testList}
-        </Carousel>
-      </div>
-    </>
+    <div className={`${styles.col_container}`} onClick={clickHandler}>
+
+      <h3>{props.title}</h3>
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" onClick={props.onDelete.bind(this, props.id)}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+
+    </div>
   );
 };
 
