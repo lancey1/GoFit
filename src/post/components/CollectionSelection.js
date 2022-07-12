@@ -17,10 +17,14 @@ function CollectionSelection(props) {
 
     return (
         <div>
-            <form onSubmit={props.onFormSubmit.bind(this, seletedCol)} >
-                {formInputs}
-                <input type="submit" value="Submit" />
-            </form>
+            {collections.length === 0 && <p>Please add a collection first</p>}
+
+            {(collections && collections.length > 0) &&
+                <form onSubmit={props.onFormSubmit.bind(this, seletedCol)} >
+                    {formInputs}
+                    <input type="submit" value="Submit" />
+                </form>
+            }
         </div>
     )
 }
