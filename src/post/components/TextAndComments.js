@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import CommentsList from '../../comment/components/CommentsList';
 import { AuthContext } from '../../context/AuthContext';
 import ErrorModal from '../../shared/components/ErrorModal';
+import DislikeButton from './DislikeButton';
 import styles from './TextAndComments.module.css';
 
 function TextAndComments(props) {
@@ -14,6 +15,7 @@ function TextAndComments(props) {
     const [error, setError] = useState(null);
     const [isLoading, setIsloading] = useState(false);
     const [fetchComments, setFetchComments] = useState(false);
+
 
     const commentInputHandler = event => {
         setComment(event.target.value);
@@ -52,7 +54,6 @@ function TextAndComments(props) {
 
     };
 
-    const dislikePostHandler = async()=>{}
 
     useEffect(() => {
         (async () => {
@@ -90,7 +91,7 @@ function TextAndComments(props) {
                 <h2 >{post.title}</h2>
                 <p>{post.description}</p>
                 <div className={`${styles.btn_div}`} >
-                    <button className={`${styles.dislike_btn}`}>Dislike</button>
+                    <DislikeButton post={post} />
                 </div>
                 <hr />
             </article>
