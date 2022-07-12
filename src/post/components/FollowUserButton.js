@@ -14,12 +14,20 @@ function FollowUserButton(props) {
 
     const [isFollowing, setIsFollowing] = useState(creator.followers.includes(auth.userId));
     console.log(isFollowing);
+    const [isSelf, setIsSelf] = useState(auth.userId == creator.id);
+
+
 
     const changeFollowStatus = async (event) => {
         event.preventDefault();
         if (!auth || !auth.user) {
             return setError('Login first');
         }
+
+        if (isSelf) {
+            return;
+        }
+
         if (!isFollowing) {
             try {
                 let response = await fetch(`http://localhost:5000/api/user/follow/${creator.id}`, {
@@ -75,7 +83,8 @@ function FollowUserButton(props) {
     return (
         <>
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
-            <button className={`${styles.follow_btn} ${isFollowing && styles.following}`} onClick={changeFollowStatus}>{isFollowing ? 'Unfollow' : 'Follow'}</button>
+            {!isSelf && <button className={`${styles.follow_btn} ${isFollowing && styles.following}`} onClick={changeFollowStatus}>{isFollowing ? 'Unfollow' : 'Follow'}</button>}
+
         </>
 
     )
