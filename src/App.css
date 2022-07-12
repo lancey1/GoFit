@@ -15,7 +15,8 @@ svg {
   width: 1.6rem;
   height: 1.6rem;
   align-self: center;
-  color: gray;
+  color: #6c757d;
+  margin-bottom: -6px;
 }
 
 h4 {
