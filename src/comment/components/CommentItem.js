@@ -9,6 +9,8 @@ import CommentRepliesList from './CommentRepliesList';
 function CommentItem(props) {
 
     const auth = useContext(AuthContext);
+    const onRefresh = props.onRefresh;
+    console.log(onRefresh);
 
     const { id, creator, text, date, replies, likes, likedBy } = props;
 
@@ -110,12 +112,16 @@ function CommentItem(props) {
             if (!response.ok) {
                 throw new Error(responseData.message);
             };
+            // onRefresh();
+            onSetShowCommentReplies(true);
             console.log(responseData)
         } catch (error) {
             console.log(error)
             setError(error.message);
         }
         setIsloading(false);
+        setReply('');
+        setShowReplyForm(false);
     }
 
     return (

@@ -52,6 +52,8 @@ function TextAndComments(props) {
 
     };
 
+    const dislikePostHandler = async()=>{}
+
     useEffect(() => {
         (async () => {
             try {
@@ -64,6 +66,7 @@ function TextAndComments(props) {
                 };
                 console.log(responseData)
                 setComments(responseData.comments);
+                setComment('');
             } catch (error) {
                 console.log(error)
                 setError(error.message);

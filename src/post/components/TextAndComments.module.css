@@ -5,6 +5,15 @@
   margin-inline-end: 1rem;
 }
 
+.article {
+  text-align: justify;
+}
+
+.article p {
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+
 .user_img_name_follow {
   display: flex;
   flex-direction: row;
