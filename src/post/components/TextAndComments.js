@@ -26,6 +26,11 @@ function TextAndComments(props) {
         if (comment.trim().length === 0) {
             setError('Comment can not be null.');
         };
+        
+        if (!auth || !auth.user) {
+            return setError('Login first');
+        };
+
         try {
             setIsloading(true);
             let response = await fetch(`http://localhost:5000/api/comments/post/${post.id}`, {

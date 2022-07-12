@@ -36,6 +36,11 @@ function CommentItem(props) {
     const svgClickHandler = async (event) => {
         console.log('svg clicked')
         event.preventDefault();
+        
+        if (!auth || !auth.user) {
+            return setError('Login first');
+        };
+
         if (!liked) {
             try {
                 let response = await fetch(`http://localhost:5000/api/comments/like/${id}`, {
@@ -89,9 +94,15 @@ function CommentItem(props) {
     const replyButtonHandler = async (event) => {
         console.log(reply);
         event.preventDefault();
+
         if (reply.trim().length === 0) {
             setError('Comment can not be null.');
         };
+
+        if (!auth || !auth.user) {
+            return setError('Login first');
+        }
+
         try {
             setIsloading(true);
             let response = await fetch(`http://localhost:5000/api/comments/reply/${id}`, {

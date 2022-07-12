@@ -35,6 +35,12 @@
   fill: rgb(255, 94, 94);
 }
 
+.post_liked {
+  cursor: pointer;
+  color: rgb(255, 94, 94);
+  fill: rgb(255, 94, 94);
+}
+
 .clickable_cols:hover {
   cursor: pointer;
   color: rgb(255, 203, 70);

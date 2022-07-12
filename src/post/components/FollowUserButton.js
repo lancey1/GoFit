@@ -1,10 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import ErrorModal from '../../shared/components/ErrorModal';
 import styles from './FollowUserButton.module.css';
 
 function FollowUserButton(props) {
 
     const auth = useContext(AuthContext);
+
+    const [error, setError] = useState(null);
 
     const creator = props.post.creator;
     console.log(creator);
@@ -14,6 +17,9 @@ function FollowUserButton(props) {
 
     const changeFollowStatus = async (event) => {
         event.preventDefault();
+        if (!auth || !auth.user) {
+            return setError('Login first');
+        }
         if (!isFollowing) {
             try {
                 let response = await fetch(`http://localhost:5000/api/user/follow/${creator.id}`, {
@@ -67,7 +73,11 @@ function FollowUserButton(props) {
 
 
     return (
-        <button className={`${styles.follow_btn} ${isFollowing && styles.following}`} onClick={changeFollowStatus}>{isFollowing ? 'Unfollow' : 'Follow'}</button>
+        <>
+            {error && <ErrorModal error={error} onClear={() => setError(null)} />}
+            <button className={`${styles.follow_btn} ${isFollowing && styles.following}`} onClick={changeFollowStatus}>{isFollowing ? 'Unfollow' : 'Follow'}</button>
+        </>
+
     )
 }
 
