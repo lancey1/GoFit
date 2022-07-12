@@ -31,7 +31,7 @@ const CollectionItem = (props) => {
     return (
       <div className={styles.col_item} onClick={clickHandler}>
         <h1>{elm.title}</h1>
-        <img className={styles.col_img} src={elm.postImage} alt="" />
+        {/* <img className={styles.col_img} src={elm.postImage} alt="" /> */}
       </div>
     );
   });
