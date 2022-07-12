@@ -20,6 +20,8 @@ const Profile = props => {
     const params = useParams();
     const { userId } = params;
 
+    console.log('===============',userId)
+
     const showEditPageHandler = () => {
         setShowEditPage(true);
         console.log('set')
@@ -55,7 +57,7 @@ const Profile = props => {
             {!showEditPage &&
                 <div>
                     <UserInfo user={user} onShowEditPage={showEditPageHandler} />
-                    <Content posts={posts} likedPosts={likedPosts} collections={collections} />
+                    <Content posts={posts} likedPosts={likedPosts} collections={collections} userId={userId}/>
                 </div>
             }
 

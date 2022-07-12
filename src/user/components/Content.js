@@ -8,6 +8,7 @@ const Content = (props) => {
     const posts = props.posts;
     const collections = props.collections;
     const likedPosts = props.likedPosts;
+    const userId = props.userId;
 
     const [myPostsSelected, setMypostsSelected] = useState(true);
     const [myCollectionsSelected, setMyCollectionsSelected] = useState(false);
@@ -42,7 +43,7 @@ const Content = (props) => {
 
             {myPostsSelected && <PostList posts={posts} />}
 
-            {myCollectionsSelected && <CollectionList collections={collections} onSelectCollection = {myColsClickHandler}/>}
+            {myCollectionsSelected && <CollectionList collections={collections} onSelectCollection = {myColsClickHandler} userId={userId}/>}
 
             {myLikesSelected && <PostList posts={likedPosts} />}
 

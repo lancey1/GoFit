@@ -10,7 +10,7 @@ const CollectionList = (props) => {
 
   const auth = useContext(AuthContext);
 
-  const onSelectCollection = props.onSelectCollection;
+  const { userId, onSelectCollection } = props.onSelectCollection;
 
   const [title, setTitle] = useState('');
   const [error, setError] = useState(null);
@@ -59,8 +59,8 @@ const CollectionList = (props) => {
       setError(error.message);
     }
   }
-//! onClick={props.onDelete.bind(this, props.id)}
-  const deleteColHandler = async (cId,event) => {
+  //! onClick={props.onDelete.bind(this, props.id)}
+  const deleteColHandler = async (cId, event) => {
     event.stopPropagation();
     console.log(cId);
     try {
@@ -84,24 +84,26 @@ const CollectionList = (props) => {
   }
 
   useEffect(() => {
-    (async () => {
-      try {
-        setIsLoading(true);
-        let response = await fetch(`http://localhost:5000/api/collections/${auth.userId}`);
-        let responseData = await response.json();
+    if (userId) {
+      (async () => {
+        try {
+          setIsLoading(true);
+          let response = await fetch(`http://localhost:5000/api/collections/${userId}`);
+          let responseData = await response.json();
+          setIsLoading(false);
+          console.log(responseData)
+          if (!response.ok) {
+            console.log(response);
+            throw new Error(responseData.message);
+          };
+          setCollections(responseData.collections)
+        } catch (error) {
+          console.log(error)
+          setError(error.message);
+        }
         setIsLoading(false);
-        console.log(responseData)
-        if (!response.ok) {
-          console.log(response);
-          throw new Error(responseData.message);
-        };
-        setCollections(responseData.collections)
-      } catch (error) {
-        console.log(error)
-        setError(error.message);
-      }
-      setIsLoading(false);
-    })();
+      })();
+    }
   }, [refresh])
 
   const colsList = collections.map((ele) => {
@@ -120,7 +122,7 @@ const CollectionList = (props) => {
       {error && <ErrorModal error={error} onClear={() => setError(null)} />}
       <form onSubmit={addCollectionHandler} >
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
         <input className={styles.colinput} type='text' placeholder="Add a New Collection?" value={title} onChange={inputChangeHandler} />
         <button className={styles.colcreate_btn}>Create</button>
