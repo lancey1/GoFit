@@ -20,12 +20,16 @@ function CollectionSelection(props) {
         <div className={styles.col_select}>
             {collections.length === 0 && <p>Please add a collection first</p>}
 
+            <div className={styles.col_select_container}>
+
             {(collections && collections.length > 0) &&
                 <form onSubmit={props.onFormSubmit.bind(this, seletedCol)} >
                     {formInputs}
                     <input className={styles.col_select_btn} type="submit" value="Add To Collection" />
                 </form>
-            }
+                }
+            </div>
+
         </div>
     )
 }
