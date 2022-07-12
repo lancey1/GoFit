@@ -1,105 +1,128 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import ErrorModal from "../../shared/components/ErrorModal";
 import CollectionItem from "./CollectionItem";
 
-const CollectionList = () => {
-  const collectionData = [
-    {
-      id: 0,
-      title: "My collection #1",
-      username: "Bob Pants",
-      postImage: "https://i.redd.it/t7s70gt3qkd41.jpg",
-    },
-    {
-      id: 1,
-      title: "My collection #2",
-      username: "Patrick Star",
-      postImage: "https://i.redd.it/t7s70gt3qkd41.jpg",
-    },
-    {
-      id: 2,
-      title: "My collection #3",
-      username: "Sandy Cheeks",
-      postImage: "https://i.redd.it/t7s70gt3qkd41.jpg",
-    }
-  ];
+const CollectionList = (props) => {
+
+  const auth = useContext(AuthContext);
+
+  const onSelectCollection = props.onSelectCollection;
+
+  const [title, setTitle] = useState('');
+  const [error, setError] = useState(null);
+  const [collections, setCollections] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [refresh, setRefresh] = useState(true);
 
   const testData = [
     {
-      title: 'My Collection One',
-      data: [
-        {
-          id: 0,
-          title: "My collection #1",
-          username: "Bob Pants",
-          postImage: "https://i.redd.it/t7s70gt3qkd41.jpg",
-        },
-        {
-          id: 1,
-          title: "My collection #2",
-          username: "Patrick Star",
-          postImage: "https://i.redd.it/t7s70gt3qkd41.jpg",
-        },
-        {
-          id: 2,
-          title: "My collection #3",
-          username: "Sandy Cheeks",
-          postImage: "https://i.redd.it/t7s70gt3qkd41.jpg",
-        }
-      ]
+      title: 'Cats',
+      id: 1
     },
     {
-      title: 'My Collection Two',
-      data: [
-        {
-          id: 0,
-          title: "My collection #4",
-          username: "Bob Pants",
-          postImage: "https://i.redd.it/t7s70gt3qkd41.jpg",
-        },
-        {
-          id: 1,
-          title: "My collection #5",
-          username: "Patrick Star",
-          postImage: "https://i.redd.it/t7s70gt3qkd41.jpg",
-        },
-        {
-          id: 2,
-          title: "My collection #6",
-          username: "Sandy Cheeks",
-          postImage: "https://i.redd.it/t7s70gt3qkd41.jpg",
-        }
-      ]
+      title: 'Games',
+      id: 2
     }
   ]
-  const collectionList = collectionData.map((elm) => {
+
+  const inputChangeHandler = event => {
+    setTitle(event.target.value);
+  }
+
+  const addCollectionHandler = async (event) => {
+    event.preventDefault();
+    try {
+      let response = await fetch(`http://localhost:5000/api/collections/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'Application/json',
+          Authorization: 'Bearer ' + auth.token
+        },
+        body: JSON.stringify({
+          creator: auth.userId,
+          title: title
+        })
+      });
+      let responseData = await response.json();
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      };
+      setRefresh(prev => !prev);
+      setTitle('');
+      onSelectCollection();
+    } catch (error) {
+      console.log(error)
+      setError(error.message);
+    }
+  }
+
+  const deleteColHandler = async (cId,event) => {
+    event.stopPropagation();
+    console.log(cId);
+    try {
+      let response = await fetch(`http://localhost:5000/api/collections/${cId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'Application/json',
+          Authorization: 'Bearer ' + auth.token
+        },
+      });
+      let responseData = await response.json();
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      };
+      setRefresh(prev => !prev);
+      onSelectCollection();
+    } catch (error) {
+      console.log(error)
+      setError(error.message);
+    }
+  }
+
+  useEffect(() => {
+    (async () => {
+      try {
+        setIsLoading(true);
+        let response = await fetch(`http://localhost:5000/api/collections/${auth.userId}`);
+        let responseData = await response.json();
+        setIsLoading(false);
+        console.log(responseData)
+        if (!response.ok) {
+          console.log(response);
+          throw new Error(responseData.message);
+        };
+        setCollections(responseData.collections)
+      } catch (error) {
+        console.log(error)
+        setError(error.message);
+      }
+      setIsLoading(false);
+    })();
+  }, [refresh])
+
+  const colsList = collections.map((ele) => {
     return (
       <CollectionItem
-        key={elm.id}
-        id={elm.id}
-        title={elm.title}
-        username={elm.username}
-        postImage={elm.postImage}
-        // any other props
-      />
-    );
-  });
-
-  const testDataList = testData.map((elem) => {
-    return (
-      <CollectionItem 
-        title={elem.title}
-        data={elem.data}
+        key={ele.id}
+        id={ele.id}
+        title={ele.title}
+        onDelete={deleteColHandler}
       />
     )
   })
 
   return (
     <div>
-      <p>List</p>
-      <Link to="/:userId/create_collection">Create new collection</Link>
-      {/* <CollectionItem /> */}
-      {testDataList}
+      {error && <ErrorModal error={error} onClear={() => setError(null)} />}
+      <form onSubmit={addCollectionHandler}>
+        <input type='text' placeholder="Add a new collection?" value={title} onChange={inputChangeHandler} />
+        <button>Create</button>
+      </form>
+      {(collections && !isLoading) && colsList}
+      {(!collections && isLoading) && <h1>Loading</h1>}
+
     </div>
   );
 };
