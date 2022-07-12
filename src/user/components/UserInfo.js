@@ -76,7 +76,7 @@ const UserInfo = (props) => {
                   </DarkerBackDrop>
                 )}
                 <p onClick={showFollowerClick}>
-                  Followers<b>{user.followers.length}</b>
+                  Followers <b>{user.followers.length}</b>
                 </p>
                 {showFollower && (
                   <DarkerBackDrop>
