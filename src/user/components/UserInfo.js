@@ -3,10 +3,17 @@ import styles from "./UserInfo.module.css";
 import Fellows from "./FellowsList";
 import { useState } from "react";
 import DarkerBackDrop from "../../shared/components/DarkerBackDrop";
+import Notification from "./Notification";
 
 const UserInfo = (props) => {
   const [showFollower, setShowFollower] = useState(false);
   const [showFollowing, setShowFollowing] = useState(false);
+
+  const [showUnreadComments, setShowUnreadComments] = useState(false);
+
+  const onShowUnreadHandler = () => {
+    setShowUnreadComments(prev => !prev);
+  }
 
   const showFollowerClick = (event) => {
     setShowFollower((current) => !current);
@@ -46,6 +53,11 @@ const UserInfo = (props) => {
 
   return (
     <div onClick={removeList} className={`${styles.containerdiv}`}>
+
+      {showUnreadComments && <h1>Show</h1>}
+
+      
+
       {user && (
         <section style={sectionStyle}>
           <div className={`${styles.container}`}>
@@ -57,20 +69,20 @@ const UserInfo = (props) => {
                 <span>id: {user.id}</span>
               </div>
 
-              <div className={`${styles.notification}`} >
-                <p>Unread comments</p>
-                <div className={`${styles.pending_user_count}`} >
-                  <i >{user.unreadNotifications}</i>
+              {user.unreadNotifications > 0 &&
+                <div className={`${styles.notification}`} onClick={onShowUnreadHandler}>
+                  <Notification user={user} />
                 </div>
-              </div>
+              }
 
             </div>
 
-
             <p>{user.bio}</p>
+
             <hr className={`${styles.hr}`} />
 
             <p>Age {user.age}</p>
+
             <p>{userAddress}</p>
 
             {gymMembership.length > 0 && <p>Gym Membership: {gymMembership}</p>}
