@@ -20,7 +20,7 @@ const Profile = props => {
     const params = useParams();
     const { userId } = params;
 
-    console.log('===============',userId)
+    console.log('===============', userId)
 
     const showEditPageHandler = () => {
         setShowEditPage(true);
@@ -54,10 +54,10 @@ const Profile = props => {
 
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
 
-            {!showEditPage &&
+            {(!showEditPage && user) &&
                 <div>
                     <UserInfo user={user} onShowEditPage={showEditPageHandler} />
-                    <Content posts={posts} likedPosts={likedPosts} collections={collections} userId={userId}/>
+                    <Content posts={posts} likedPosts={likedPosts} collections={collections} userId={userId} />
                 </div>
             }
 
