@@ -49,21 +49,32 @@ const UserInfo = (props) => {
       {user && (
         <section style={sectionStyle}>
           <div className={`${styles.container}`}>
+
             <div className={`${styles.avatar_name}`}>
               <img className={`${styles.avatar}`} src={user.image} alt="" />
-              <div className={`${styles.name_id}`}>
+              <div className={`${styles.name_id}`} >
                 <p>{user.name}</p>
                 <span>id: {user.id}</span>
               </div>
+
+              <div className={`${styles.notification}`} >
+                <p>Unread comments</p>
+                <div className={`${styles.pending_user_count}`} >
+                  <i >{user.unreadNotifications}</i>
+                </div>
+              </div>
+
             </div>
+
+
             <p>{user.bio}</p>
             <hr className={`${styles.hr}`} />
 
             <p>Age {user.age}</p>
             <p>{userAddress}</p>
 
-            {gymMembership && <p>Gym Membership: {gymMembership}</p>}
-            {athleteTypes && <p>Athlete Types: {athleteTypes}</p>}
+            {gymMembership.length > 0 && <p>Gym Membership: {gymMembership}</p>}
+            {athleteTypes.length > 0 && <p>Athlete Types: {athleteTypes}</p>}
 
             <div className={`${styles.follow_edit}`}>
               <div className={`${styles.follow}`}>
