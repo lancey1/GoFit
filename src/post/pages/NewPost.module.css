@@ -36,3 +36,20 @@
   font-size: 1.2rem;
   margin: 3rem 0;
 }
+
+.newpost_top{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 26px;
+}
+
+.newpost_text{
+  margin-left: 8px;
+  font-size: 32px;
+}
+
+.newpost_icon{
+  height: 40px;
+  width: 40px;
+}
