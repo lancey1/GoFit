@@ -37,10 +37,10 @@ function CommentItem(props) {
         console.log('svg clicked')
         event.preventDefault();
         
-        if (!auth || !auth.user) {
+        if (!auth || !auth.isLoggedIn) {
             return setError('Login first');
-        };
-
+        }
+        
         if (!liked) {
             try {
                 let response = await fetch(`http://localhost:5000/api/comments/like/${id}`, {

@@ -31,7 +31,10 @@ function PostDetails(props) {
     const [openSelection, setOpenSelection] = useState(false);
 
     const clickStarHandler = async (event) => {
-
+        if (!auth || !auth.isLoggedIn) {
+            return setError('Login first');
+        }
+        
         if (!collected) {
             setOpenSelection(prev => !prev);
         }
@@ -60,7 +63,7 @@ function PostDetails(props) {
 
     const likePostHandler = async (event) => {
         event.preventDefault();
-        if (!auth || !auth.user) {
+        if (!auth || !auth.isLoggedIn) {
             return setError('Login first');
         }
         if (!liked) {

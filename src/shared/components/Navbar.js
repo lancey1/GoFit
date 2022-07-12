@@ -20,40 +20,51 @@ function Navbar() {
 
             <div className={`${styles.navlinks}`}>
 
-                <li className={`${styles.li}`}>
-                    <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to={`/user/${auth.userId}`} exact>Profile</NavLink>
-                </li>
+                {auth.isLoggedIn &&
+                    <li className={`${styles.li}`}>
+                        <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to={`/user/${auth.userId}`} exact>Profile</NavLink>
+                    </li>
+                }
 
-                <li className={`${styles.li}`}>
-                    <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/create' exact>Create Post</NavLink>
-                </li>
+                {auth.isLoggedIn &&
+                    <li className={`${styles.li}`}>
+                        <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/create' exact>Create Post</NavLink>
+                    </li>
+                }
 
-                <li className={`${styles.li}`}>
-                    <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/create' exact>Send Invitation</NavLink>
-                </li>
+                {auth.isLoggedIn &&
+                    <li className={`${styles.li}`}>
+                        <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/create' exact>Send Invitation</NavLink>
+                    </li>
+                }
 
-                <li className={`${styles.li}`}>
-                    <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/signup' exact>Signup</NavLink>
-                </li>
+                {!auth.isLoggedIn &&
+                    <li className={`${styles.li}`}>
+                        <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/signup' exact>Signup</NavLink>
+                    </li>
+                }
 
-                <li className={`${styles.li}`}>
-                    <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/login' exact>Login</NavLink>
-                </li>
+                {!auth.isLoggedIn &&
+                    <li className={`${styles.li}`}>
+                        <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/login' exact>Login</NavLink>
+                    </li>
+                }
 
-                <li className={`${styles.li}`}>
-                    <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/messenger' exact>Messenger</NavLink>
-                </li>
-
-                {auth.isLoggedIn && <p>Logged in</p>}
-                {!auth.isLoggedIn && <p>Need login</p>}
-
+                {auth.isLoggedIn &&
+                    <li className={`${styles.li}`}>
+                        <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/messenger' exact>Messages</NavLink>
+                    </li>
+                }
+                
             </div>
 
-            <div className={`${styles.logoutdiv}`}>
-                <li className={`${styles.li}`}>
-                    <button onClick={auth.logout}>Logout</button>
-                </li>
-            </div>
+            {auth.isLoggedIn &&
+                <div className={`${styles.logoutdiv}`}>
+                    <li className={`${styles.li}`}>
+                        <button onClick={auth.logout}>Logout</button>
+                    </li>
+                </div>
+            }
 
         </header>
     )
