@@ -11,7 +11,7 @@ function CommentsList(props) {
     console.log(comments)
 
     let commentList = sortedComments.map(ele => {
-        return <CommentItem key={ele.id} id={ele.id} creator={ele.creator} text={ele.text} date={ele.date} replies={ele.replies} likes={ele.likes} likedBy={ele.likedBy}  />
+        return <CommentItem key={ele.id} id={ele.id} creator={ele.creator} text={ele.text} date={ele.date} replies={ele.replies} likes={ele.likes} likedBy={ele.likedBy} />
     })
 
     return (

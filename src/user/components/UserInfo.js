@@ -4,12 +4,19 @@ import Fellows from "./FellowsList";
 import { useState } from "react";
 import DarkerBackDrop from "../../shared/components/DarkerBackDrop";
 import Notification from "./Notification";
+import UnreadComments from "../../comment/components/UnreadComments";
+import BackDrop from "../../shared/components/BackDrop";
 
 const UserInfo = (props) => {
   const [showFollower, setShowFollower] = useState(false);
   const [showFollowing, setShowFollowing] = useState(false);
+  const [showNotificationDiv, setShowNotificationDiv] = useState(true);
 
   const [showUnreadComments, setShowUnreadComments] = useState(false);
+
+  const onChangeNotificationHandler = () => {
+    setShowNotificationDiv(false);
+  }
 
   const onShowUnreadHandler = () => {
     setShowUnreadComments(prev => !prev);
@@ -54,9 +61,7 @@ const UserInfo = (props) => {
   return (
     <div onClick={removeList} className={`${styles.containerdiv}`}>
 
-      {showUnreadComments && <h1>Show</h1>}
-
-      
+      {showUnreadComments && <BackDrop> <UnreadComments userId={user.id} onChangeShowUnread={onShowUnreadHandler} onChange={onChangeNotificationHandler}/></BackDrop>}
 
       {user && (
         <section style={sectionStyle}>
@@ -69,7 +74,7 @@ const UserInfo = (props) => {
                 <span>id: {user.id}</span>
               </div>
 
-              {user.unreadNotifications > 0 &&
+              {(user.unreadNotifications > 0 && showNotificationDiv) &&
                 <div className={`${styles.notification}`} onClick={onShowUnreadHandler}>
                   <Notification user={user} />
                 </div>

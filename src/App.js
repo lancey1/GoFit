@@ -126,7 +126,7 @@ function App() {
             <CollectionPosts />
           </Route>
 
-          <Redirect to="/" />
+          <Redirect to="/home" />
         </Switch>
       </section>
 

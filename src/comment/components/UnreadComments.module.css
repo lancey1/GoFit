@@ -1,0 +1,42 @@
+.container {
+  background-color: rgb(224, 224, 224);
+  width: 50%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 3rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: scroll;
+}
+
+.title {
+  margin-block-start: 1rem;
+  font-size: 2.1rem;
+  text-align: center;
+}
+
+.svg_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.svg_div:hover {
+  cursor: pointer;
+}
+
+.svg {
+  width: 3.6rem;
+  height: 3.6rem;
+}
+
+.close {
+  text-align: center;
+  font-size: 2.1rem;
+  margin-bottom: 9rem;
+}
+
+.close:hover {
+  cursor: pointer;
+}
