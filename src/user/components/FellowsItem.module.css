@@ -1,0 +1,14 @@
+.fellow_container{
+  display: flex;
+  flex-direction: row;
+  border: .5em;
+  background-color: black;
+  border: 1px solid white
+}
+.image {
+border-radius: 100%;
+float: left;
+width:  100px;
+height: 100px;
+object-fit: cover;
+}
