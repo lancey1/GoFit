@@ -95,7 +95,10 @@ function NewPost(props) {
     <section className={`${styles.section}`}>
 
       {error && <ErrorModal error={error} onClear={() => { setError(null) }} />}
-
+      <div className={styles.newpost_top}>
+        <img className={styles.newpost_icon} src="https://www.iconpacks.net/icons/3/free-color-palette-icon-10828-thumb.png" />
+        <h1 className={styles.newpost_text}>Create New Post</h1>
+      </div>
       <form className={`${styles.form}`} onSubmit={postSubmitHandler}>
 
         <ImageUpload onInput={imageOnInputHandler} text={'Select an image'} imageFor={'post'} />
