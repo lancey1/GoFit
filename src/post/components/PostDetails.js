@@ -16,11 +16,19 @@ function PostDetails(props) {
         likedAlready = false
     }
 
+    let colletedAlready;
+
     const [likes, setLikes] = useState(post.likes);
     const [liked, setLiked] = useState(likedAlready);
     const [collections, setCollections] = useState(post.collections);
     const [commentsCount, setCommentsCount] = useState(post.comments.length);
     const [error, setError] = useState(null);
+
+    const [userCollections, setUserCollections] = useState([]);
+    const [collected, setCollected] = useState(userCollections.includes(post.id));
+
+    console.log(collected);
+    console.log(userCollections);
 
     console.log(liked);
 
@@ -72,6 +80,24 @@ function PostDetails(props) {
     const addToCollectionHandler = async (event) => {
 
     }
+
+    useEffect(() => {
+        (async () => {
+            try {
+                let response = await fetch(`http://localhost:5000/api/collections/${auth.userId}`);
+                let responseData = await response.json();
+                console.log(responseData)
+                if (!response.ok) {
+                    console.log(response);
+                    throw new Error(responseData.message);
+                };
+                setUserCollections(responseData.collections)
+            } catch (error) {
+                console.log(error)
+                setError(error.message);
+            }
+        })();
+    }, [])
 
     return (
         <div>
