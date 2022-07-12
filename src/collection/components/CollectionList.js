@@ -1,8 +1,10 @@
+import { StylesContext } from '@material-ui/styles';
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import ErrorModal from "../../shared/components/ErrorModal";
 import CollectionItem from "./CollectionItem";
+import styles from "./CollectionList.module.css";
 
 const CollectionList = (props) => {
 
@@ -117,8 +119,8 @@ const CollectionList = (props) => {
     <div>
       {error && <ErrorModal error={error} onClear={() => setError(null)} />}
       <form onSubmit={addCollectionHandler}>
-        <input type='text' placeholder="Add a new collection?" value={title} onChange={inputChangeHandler} />
-        <button>Create</button>
+        <input className={styles.colinput} type='text' placeholder="Add a New Collection?" value={title} onChange={inputChangeHandler} />
+        <button className={styles.colcreate_btn}>Create</button>
       </form>
       {(collections && !isLoading) && colsList}
       {(!collections && isLoading) && <h1>Loading</h1>}
