@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import Carousel from "react-elastic-carousel";
 import { useHistory } from "react-router-dom";
 import styles from "./CollectionItem.module.css";
 

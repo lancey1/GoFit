@@ -1,8 +1,10 @@
+import { StylesContext } from '@material-ui/styles';
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import ErrorModal from "../../shared/components/ErrorModal";
 import CollectionItem from "./CollectionItem";
+import styles from "./CollectionList.module.css";
 
 const CollectionList = (props) => {
 
@@ -116,9 +118,12 @@ const CollectionList = (props) => {
   return (
     <div>
       {error && <ErrorModal error={error} onClear={() => setError(null)} />}
-      <form onSubmit={addCollectionHandler}>
-        <input type='text' placeholder="Add a new collection?" value={title} onChange={inputChangeHandler} />
-        <button>Create</button>
+      <form onSubmit={addCollectionHandler} >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <input className={styles.colinput} type='text' placeholder="Add a New Collection?" value={title} onChange={inputChangeHandler} />
+        <button className={styles.colcreate_btn}>Create</button>
       </form>
       {(collections && !isLoading) && colsList}
       {(!collections && isLoading) && <h1>Loading</h1>}
@@ -128,3 +133,5 @@ const CollectionList = (props) => {
 };
 
 export default CollectionList;
+
+

@@ -1,0 +1,21 @@
+.colcreate_btn {
+  width: 80px;
+  height: 40px;
+  margin: 20px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  border: 1px solid #6c757d;
+  background-color: #6c757d;
+  color:white;
+}
+
+.colinput {
+  color: black;
+  margin-left: 8px;
+  height: 32px;
+  border-radius: 5px;
+  width: 136px;
+  border: 2.5px solid #DBDBDB;
+  background-color: #f5f3f4;
+  padding: 1.5px;
+}
