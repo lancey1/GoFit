@@ -1,0 +1,21 @@
+.col_select {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  color: rgb(70, 70, 70);
+} 
+
+.col_select_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 148px;
+  height: 36px;
+  margin-top: 15px;
+  margin-right:10px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 1px solid #f9627d;
+  background-color: #f9627d;
+  color:white;
+}

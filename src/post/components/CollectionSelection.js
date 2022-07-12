@@ -1,5 +1,6 @@
+import { StylesContext } from '@material-ui/styles';
 import React, { useState } from 'react'
-
+import styles from './CollectionSelection.module.css';
 
 
 function CollectionSelection(props) {
@@ -16,13 +17,13 @@ function CollectionSelection(props) {
     ))
 
     return (
-        <div className={props.className}>
+        <div className={styles.col_select}>
             {collections.length === 0 && <p>Please add a collection first</p>}
 
             {(collections && collections.length > 0) &&
                 <form onSubmit={props.onFormSubmit.bind(this, seletedCol)} >
                     {formInputs}
-                    <input type="submit" value="Submit" />
+                    <input className={styles.col_select_btn} type="submit" value="Add To Collection" />
                 </form>
             }
         </div>
