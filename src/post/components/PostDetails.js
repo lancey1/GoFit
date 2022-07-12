@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext';
 import ErrorModal from '../../shared/components/ErrorModal';
 import styles from './PostDetails.module.css';
@@ -8,15 +8,16 @@ function PostDetails(props) {
     const auth = useContext(AuthContext);
     const post = props.post;
 
-    let likedPostAlready = false;
-
-    if (auth && auth.user && auth.user.likedPosts.includes(post.id)) {
-        likedPostAlready = true;
+    console.log(post);
+    let likedAlready;
+    if (auth && auth.isLoggedIn) {
+        likedAlready = post.likedBy.includes(auth.userId);
+    } else {
+        likedAlready = false
     }
 
-    console.log(auth);
     const [likes, setLikes] = useState(post.likes);
-    const [liked, setLiked] = useState(likedPostAlready);
+    const [liked, setLiked] = useState(likedAlready);
     const [collections, setCollections] = useState(post.collections);
     const [commentsCount, setCommentsCount] = useState(post.comments.length);
     const [error, setError] = useState(null);
@@ -67,8 +68,6 @@ function PostDetails(props) {
             };
         }
     }
-
-
 
     const addToCollectionHandler = async (event) => {
 
