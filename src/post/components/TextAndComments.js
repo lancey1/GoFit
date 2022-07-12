@@ -3,6 +3,7 @@ import CommentsList from '../../comment/components/CommentsList';
 import { AuthContext } from '../../context/AuthContext';
 import ErrorModal from '../../shared/components/ErrorModal';
 import DislikeButton from './DislikeButton';
+import FollowUserButton from './FollowUserButton';
 import styles from './TextAndComments.module.css';
 
 function TextAndComments(props) {
@@ -15,7 +16,6 @@ function TextAndComments(props) {
     const [error, setError] = useState(null);
     const [isLoading, setIsloading] = useState(false);
     const [fetchComments, setFetchComments] = useState(false);
-
 
     const commentInputHandler = event => {
         setComment(event.target.value);
@@ -54,7 +54,6 @@ function TextAndComments(props) {
 
     };
 
-
     useEffect(() => {
         (async () => {
             try {
@@ -83,7 +82,7 @@ function TextAndComments(props) {
                 <img className={`${styles.avatar}`} src={post.creator.image} alt="" />
                 <div className={`${styles.name_follow}`}>
                     <h3>{post.creator.name}</h3>
-                    <button className={`${styles.follow_btn}`}>Follow</button>
+                    <FollowUserButton post={post}/>
                 </div>
             </div>
 
