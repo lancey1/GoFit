@@ -193,11 +193,9 @@ function PostDetails(props) {
                             </div>
                         </div>
                     </div>
-                    
-
                 </div>
 
-                {openSelection && <CollectionSelection collections={userCollections} onFormSubmit={addToCollectionHandler} />}
+                {openSelection && <CollectionSelection className={`${styles.col_select}`} collections={userCollections} onFormSubmit={addToCollectionHandler} />}
                 
             </div>
         </div>

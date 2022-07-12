@@ -16,7 +16,7 @@ function CollectionSelection(props) {
     ))
 
     return (
-        <div>
+        <div className={props.className}>
             {collections.length === 0 && <p>Please add a collection first</p>}
 
             {(collections && collections.length > 0) &&

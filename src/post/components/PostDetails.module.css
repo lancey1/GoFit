@@ -58,3 +58,10 @@
   color: rgb(255, 203, 70);
   fill: rgb(255, 203, 70);
 }
+
+.col_select {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  color: rgb(70, 70, 70);
+}
