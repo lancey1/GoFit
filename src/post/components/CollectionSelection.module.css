@@ -2,6 +2,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  margin-right: 3px;
   font-weight: bold;
   color: rgb(70, 70, 70);
 } 
@@ -21,13 +22,14 @@
   color:white;
 }
 
-.col_select_container {
+/* .col_select_container {
   border: 1px solid black;
   border-radius: 5px;
   height: 100%;
   width: 170px;
+  margin-top: -14px;
   padding-top: 20px;
   padding-left: 20px;
   padding-bottom: 20px;
   margin-right: 4px;
-}
+} */
