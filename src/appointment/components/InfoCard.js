@@ -117,7 +117,8 @@ function InfoCard(props) {
             {/* <Success text='Appointment Created' onOk={okHandler} onClear={() => { setSuccess(false) }} onClick={event => event.stopPropagation()} nextAction='Go to profile'/> */}
 
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
-            <h1>Invitation Request</h1>
+            <img className={styles.inviteIcon} src="https://icon-library.com/images/invitation-icon/invitation-icon-13.jpg" />
+            <h1 className={styles.inviteRequestText}>Invitation Request</h1>
             <p onClick={onHideHandler}>{receiverName ? `To: ${receiverName}` : `To: Recipients `}</p>
 
             {showFollowers && (
@@ -127,24 +128,24 @@ function InfoCard(props) {
             )}
 
             <p>
-                <input type={'text'} placeholder='Subject' onChange={titleInputHandler} />
+                <input className={styles.inviteText} type={'text'} placeholder='Subject' onChange={titleInputHandler} />
             </p>
 
             <p>
-                <textarea placeholder='intro' onChange={descriptionInputHandler} />
+                <textarea className={styles.inviteText} placeholder='Request Message' onChange={descriptionInputHandler} />
             </p>
 
             <p>
-                <input type={'date'} onChange={pickDateHandler} />
+                <input className={styles.inviteText} type={'date'} onChange={pickDateHandler} />
             </p>
 
             <p>
-                <input type={'text'} placeholder='Address' onChange={addressInputHandler} />
+                <input className={styles.inviteText} type={'text'} placeholder='Meetup Location' onChange={addressInputHandler} />
             </p>
 
             <p>From: {user && `${user.name}`}</p>
 
-            <button onClick={onSubmitHandler}>Send</button>
+            <button className={styles.inviteSend_btn} onClick={onSubmitHandler}>Send</button>
 
         </article>
 
