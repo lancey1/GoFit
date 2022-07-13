@@ -84,9 +84,7 @@ function FollowButton(props) {
         <>
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
             {!isSelf && <button className={`${styles.follow_btn} ${isFollowing && styles.following}`} onClick={changeFollowStatus}>{isFollowing ? 'Unfollow' : 'Follow'}</button>}
-
         </>
-
     )
 }
 

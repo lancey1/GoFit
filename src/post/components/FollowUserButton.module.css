@@ -1,12 +1,12 @@
 .follow_btn {
-  border: 3px solid #f9627d;
+  border: 2px solid #f9627d;
   background-color: white;
   color: #f9627d;
   padding: 0.2rem 0.8rem;
   font-size: 1.2rem;
   cursor: pointer;
   border-radius: 13px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .follow_btn:hover {

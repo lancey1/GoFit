@@ -112,7 +112,7 @@ const UserInfo = (props) => {
                   </DarkerBackDrop>
                 )}
                 <p>
-                  <em>Likes</em> <b>{user.likes} </b>{" "}
+                  <em>Likes</em> <b>{user.likes} </b>
                 </p>
               </div>
               <button
