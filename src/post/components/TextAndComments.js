@@ -26,7 +26,7 @@ function TextAndComments(props) {
         if (comment.trim().length === 0) {
             setError('Comment can not be null.');
         };
-        
+
         if (!auth || !auth.user) {
             return setError('Please Login first!');
         };
@@ -87,7 +87,7 @@ function TextAndComments(props) {
                 <img className={`${styles.avatar}`} src={post.creator.image} alt="" />
                 <div className={`${styles.name_follow}`}>
                     <h3>{post.creator.name}</h3>
-                    <FollowUserButton post={post}/>
+                    <FollowUserButton post={post} />
                 </div>
             </div>
 
@@ -101,12 +101,12 @@ function TextAndComments(props) {
             </article>
 
             <section>
-                <i>{comments.length} comments</i>
+                <i>
+                    {comments.length} {comments.length === 1 ? 'comment' : 'comments'}</i>
                 <form onSubmit={commentSubmitHandler}>
                     {auth.user && <input className={`${styles.comment_input}`} type="text" placeholder="Write a comment...💭" value={comment} onChange={commentInputHandler} />}
-                    {auth.user && <button className={`${styles.submit_btn}`} disabled={!comment.trim().length}>Send</button>}
-                    {!auth.user && <input className={`${styles.comment_input}`} type="text" placeholder="Log in to leave a comment" value={comment} onChange={commentInputHandler} />}
-                    {!auth.user && <button className={`${styles.submit_btn}`} disabled={true}>Send</button>}
+
+                    {(comment.trim().length > 0) && auth.user && <button className={`${styles.submit_btn}`} disabled={!comment.trim().length}>Send</button>}
                 </form>
                 <CommentsList comments={comments} />
             </section>

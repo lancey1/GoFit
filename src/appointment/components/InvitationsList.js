@@ -34,7 +34,7 @@ function InvitationsList(props) {
             {(appointments && !isLoading) && appointments.map(ele => (
                 <AppointmentItem key={ele.id} id={ele.id} title={ele.title} description={ele.description}
                     address={ele.address} location={ele.location} avatar={ele.creator.image} reciever={ele.creator.name}
-                    appointmentDate={ele.date} pending={ele.pending} recieverAccepted={ele.recieverAccepted} recieverRejected={ele.recieverRejected} />
+                    appointmentDate={ele.appointmentDate} pending={ele.pending} recieverAccepted={ele.recieverAccepted} recieverRejected={ele.recieverRejected} />
             ))}
 
         </div>

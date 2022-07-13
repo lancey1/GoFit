@@ -24,7 +24,7 @@ function AppointmentItem(props) {
                 <div className={`${styles.user_img_name_follow}`}>
                     <img className={`${styles.avatar}`} src={avatar} alt="" />
                     <div className={`${styles.name_follow}`}>
-                        <h3>{reciever}</h3>
+                        <h4>{`${reciever}`}</h4>
                     </div>
                 </div>
                 <div className={`${styles.info}`}>

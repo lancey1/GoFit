@@ -10,24 +10,13 @@ const CollectionList = (props) => {
 
   const auth = useContext(AuthContext);
 
-  const { userId, onSelectCollection } = props.onSelectCollection;
+  const { userId, onSelectCollection } = props;
 
   const [title, setTitle] = useState('');
   const [error, setError] = useState(null);
   const [collections, setCollections] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [refresh, setRefresh] = useState(true);
-
-  const testData = [
-    {
-      title: 'Cats',
-      id: 1
-    },
-    {
-      title: 'Games',
-      id: 2
-    }
-  ]
 
   const inputChangeHandler = event => {
     setTitle(event.target.value);
@@ -43,7 +32,7 @@ const CollectionList = (props) => {
           Authorization: 'Bearer ' + auth.token
         },
         body: JSON.stringify({
-          creator: auth.userId,
+          creator: userId,
           title: title
         })
       });

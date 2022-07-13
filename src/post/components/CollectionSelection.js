@@ -12,7 +12,7 @@ function CollectionSelection(props) {
     const formInputs = collections.map(item => (
         <div key={item.id}>
             <input type="radio" id={item.id} name="collection" value={item.title} onChange={(event) => { setSeletedCol(item.id) }} />
-            <label htmlFor={item.id}>{item.title}?</label><br />
+            <label className={`${styles.label}`} htmlFor={item.id}>{item.title}</label><br />
         </div>
     ))
 

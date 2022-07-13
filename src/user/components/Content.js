@@ -43,7 +43,7 @@ const Content = (props) => {
 
             {myPostsSelected && <PostList posts={posts} />}
 
-            {myCollectionsSelected && <CollectionList collections={collections} onSelectCollection = {myColsClickHandler} userId={userId}/>}
+            {myCollectionsSelected && <CollectionList collections={collections} onSelectCollection={myColsClickHandler} userId={userId} />}
 
             {myLikesSelected && <PostList posts={likedPosts} />}
 
