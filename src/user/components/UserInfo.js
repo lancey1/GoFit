@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./UserInfo.module.css";
-import Fellows from "./FellowsList";
+import FellowList from "./FellowsList";
 import { useState } from "react";
 import DarkerBackDrop from "../../shared/components/DarkerBackDrop";
 import Notification from "./Notification";
@@ -8,11 +8,13 @@ import UnreadComments from "../../comment/components/UnreadComments";
 import BackDrop from "../../shared/components/BackDrop";
 
 const UserInfo = (props) => {
+  const { user } = props;
   const [showFollower, setShowFollower] = useState(false);
   const [showFollowing, setShowFollowing] = useState(false);
   const [showNotificationDiv, setShowNotificationDiv] = useState(true);
-
   const [showUnreadComments, setShowUnreadComments] = useState(false);
+  const [numOfFollows, setNumOfFollows] = useState(user.follows.length);
+  const [numOfFollowers, setNumOfFollowers] = useState(user.followers.length);
 
   const onChangeNotificationHandler = () => {
     setShowNotificationDiv(false);
@@ -35,7 +37,9 @@ const UserInfo = (props) => {
     }
   };
 
-  const { user } = props;
+  
+
+
   let gymMembership = [];
   if (user && user.gymMembership.length !== 0) {
     gymMembership = user.gymMembership.join(", ");
@@ -96,19 +100,19 @@ const UserInfo = (props) => {
             <div className={`${styles.follow_edit}`}>
               <div className={`${styles.follow}`}>
                 <p onClick={showFollowingClick}>
-                  Following <b>{user.follows.length}</b>
+                  Following <b>{numOfFollows}</b>
                 </p>
                 {showFollowing && (
                   <DarkerBackDrop>
-                    <Fellows fellow={user.follows} />
+                    <FellowList url={"followings"}/>
                   </DarkerBackDrop>
                 )}
                 <p onClick={showFollowerClick}>
-                  Followers <b>{user.followers.length}</b>
+                  Followers <b>{numOfFollowers}</b>
                 </p>
                 {showFollower && (
                   <DarkerBackDrop>
-                    <Fellows fellow={user.followers} />
+                    <FellowList url={"followers"}/>
                   </DarkerBackDrop>
                 )}
                 <p>
