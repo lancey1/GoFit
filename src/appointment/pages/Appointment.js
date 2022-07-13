@@ -100,7 +100,8 @@ function Appointment(props) {
                         <div>
                             <img className={`${styles.avatar}`} src={appointment.reciever.image} alt="avatar" />
                             <div>
-                                <h3>{`From: ${appointment.reciever.name}`}</h3>
+                                <h3>{`Sender: ${appointment.creator.name}`}</h3>
+                                <h3>{`Reciever: ${appointment.reciever.name}`}</h3>
                             </div>
                         </div>
                         <div className={`${styles.info}`}>

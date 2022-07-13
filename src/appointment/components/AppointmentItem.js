@@ -9,7 +9,7 @@ function AppointmentItem(props) {
 
     const history = useHistory();
     const auth = useContext(AuthContext);
-    const { id, title, description, avatar, address, reciever, appointmentDate, location, pending, recieverAccepted, recieverRejected } = props;
+    const { id, title, description, revieverAvatar, address, recieverName, appointmentDate, location, pending, recieverAccepted, recieverRejected, creatorName, creatorAvatar } = props;
     const [showReview, setShowReview] = useState(false);
 
     const btnClickHandler = (event) => {
@@ -43,15 +43,26 @@ function AppointmentItem(props) {
 
                 <div className={`${styles.user}`} >
                     <div className={`${styles.user_img_name_follow}`}>
-                        <img className={`${styles.avatar}`} src={avatar} alt="" />
+                        <img className={`${styles.avatar}`} src={revieverAvatar} alt="" />
                         <div className={`${styles.name_follow}`}>
-                            <h4>{`${reciever}`}</h4>
+                            <h4>{`${recieverName}`}</h4>
                         </div>
                     </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                    </svg>
+                    <div className={`${styles.user_img_name_follow}`}>
+                        <img className={`${styles.avatar}`} src={creatorAvatar} alt="" />
+                        <div className={`${styles.name_follow}`}>
+                            <h4>{`${creatorName}`}</h4>
+                        </div>
+                    </div>
+
                     <div className={`${styles.info}`}>
                         <h3>{`Title: ${title}`}</h3>
                         <p>{new Date(appointmentDate).toLocaleString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</p>
                     </div>
+
                 </div>
 
                 <div className={`${styles.status}`}>

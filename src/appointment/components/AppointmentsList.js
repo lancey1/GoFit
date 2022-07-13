@@ -33,8 +33,7 @@ function AppointmentsList(props) {
             AppointmentsList
             {(appointments && !isLoading) && appointments.map(ele => (
                 <AppointmentItem key={ele.id} id={ele.id} title={ele.title} description={ele.description}
-                    address={ele.address} location={ele.location} avatar={ele.reciever.image} reciever={ele.reciever.name}
-                    appointmentDate={ele.appointmentDate} pending={ele.pending} recieverAccepted={ele.recieverAccepted} recieverRejected={ele.recieverRejected} />
+                    address={ele.address} location={ele.location} revieverAvatar={ele.reciever.image} recieverName={ele.reciever.name} creatorName={ele.creator.name} creatorAvatar={ele.creator.image} appointmentDate={ele.appointmentDate} pending={ele.pending} recieverAccepted={ele.recieverAccepted} recieverRejected={ele.recieverRejected} />
             ))}
 
         </div>
