@@ -37,19 +37,24 @@
   margin: 3rem 0;
 }
 
-.newpost_top{
+.newpost_top {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 26px;
 }
 
-.newpost_text{
+.newpost_text {
   margin-left: 8px;
-  font-size: 32px;
+  font-size: 30px;
 }
 
-.newpost_icon{
+.newpost_icon {
   height: 40px;
   width: 40px;
+}
+
+.newpost_img {
+  width: 40px;
+  height: 40px;
 }
