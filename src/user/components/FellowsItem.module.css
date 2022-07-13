@@ -1,14 +1,33 @@
 .fellow_container{
-  display: flex;
-  flex-direction: row;
   border: .5em;
-  background-color: black;
-  border: 1px solid white
+  background-color: #fdfffc;
+  border: 1.5px solid black;
+  width: 18rem;
+  height: 30rem;
+  border-radius: 10px;
 }
+
 .image {
-border-radius: 100%;
-float: left;
-width:  100px;
-height: 100px;
-object-fit: cover;
+  border-radius: 100%;
+  float: left;
+  width: 3.2rem;
+  height: 3.2rem;
+  object-fit: cover;
+  margin: 14px 13px;
+}
+
+.fellow_p {
+  margin-top: 45px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.following_p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 18px;
+  font-weight: 800;
+  font-size: 17px;
+  border-bottom: 1.5px solid lightgrey;
 }
