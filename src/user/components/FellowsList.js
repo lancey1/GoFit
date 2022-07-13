@@ -6,7 +6,6 @@ function FellowList(props) {
   const params = useParams();
   const { userId } = params;
   const [data, setData] = useState([]);
-
   useEffect(() => {
     (async () => {
       try {
@@ -29,6 +28,7 @@ function FellowList(props) {
         key={item.id}
         userId={item.id}
         name={item.name}
+        numChanger={props.numChanger}
       />
     );
   });

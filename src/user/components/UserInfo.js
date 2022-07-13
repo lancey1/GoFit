@@ -18,11 +18,11 @@ const UserInfo = (props) => {
 
   const onChangeNotificationHandler = () => {
     setShowNotificationDiv(false);
-  }
+  };
 
   const onShowUnreadHandler = () => {
-    setShowUnreadComments(prev => !prev);
-  }
+    setShowUnreadComments((prev) => !prev);
+  };
 
   const showFollowerClick = (event) => {
     setShowFollower((current) => !current);
@@ -36,9 +36,6 @@ const UserInfo = (props) => {
       setShowFollowing(false);
     }
   };
-
-  
-
 
   let gymMembership = [];
   if (user && user.gymMembership.length !== 0) {
@@ -64,26 +61,35 @@ const UserInfo = (props) => {
 
   return (
     <div onClick={removeList} className={`${styles.containerdiv}`}>
-
-      {showUnreadComments && <BackDrop> <UnreadComments userId={user.id} onChangeShowUnread={onShowUnreadHandler} onChange={onChangeNotificationHandler}/></BackDrop>}
+      {showUnreadComments && (
+        <BackDrop>
+          {" "}
+          <UnreadComments
+            userId={user.id}
+            onChangeShowUnread={onShowUnreadHandler}
+            onChange={onChangeNotificationHandler}
+          />
+        </BackDrop>
+      )}
 
       {user && (
         <section style={sectionStyle}>
           <div className={`${styles.container}`}>
-
             <div className={`${styles.avatar_name}`}>
               <img className={`${styles.avatar}`} src={user.image} alt="" />
-              <div className={`${styles.name_id}`} >
+              <div className={`${styles.name_id}`}>
                 <p>{user.name}</p>
                 <span>id: {user.id}</span>
               </div>
 
-              {(user.unreadNotifications > 0 && showNotificationDiv) &&
-                <div className={`${styles.notification}`} onClick={onShowUnreadHandler}>
+              {user.unreadNotifications > 0 && showNotificationDiv && (
+                <div
+                  className={`${styles.notification}`}
+                  onClick={onShowUnreadHandler}
+                >
                   <Notification user={user} />
                 </div>
-              }
-
+              )}
             </div>
 
             <p>{user.bio}</p>
@@ -104,7 +110,10 @@ const UserInfo = (props) => {
                 </p>
                 {showFollowing && (
                   <DarkerBackDrop>
-                    <FellowList url={"followings"}/>
+                    <FellowList
+                      url={"followings"}
+                      numChanger={(diff) => setNumOfFollows(numOfFollows + diff)}
+                    />
                   </DarkerBackDrop>
                 )}
                 <p onClick={showFollowerClick}>
@@ -112,7 +121,10 @@ const UserInfo = (props) => {
                 </p>
                 {showFollower && (
                   <DarkerBackDrop>
-                    <FellowList url={"followers"}/>
+                    <FellowList
+                      url={"followers"}
+                      numChanger={(diff) => setNumOfFollows(numOfFollows + diff)}
+                    />
                   </DarkerBackDrop>
                 )}
                 <p>

@@ -7,6 +7,7 @@ import { AuthContext } from '../../context/AuthContext';
 function FellowsItem(props) {
   const auth = useContext(AuthContext);
   const history = useHistory();
+  console.log(props.add)
   const { name, image, userId} = props;
   const viewProfile = () => {
     history.push(`/user/${userId}`);
@@ -19,7 +20,7 @@ function FellowsItem(props) {
       <p>{name}</p>
       </div>
       <div>
-       {auth.isLoggedIn && <FollowButton {...props} />}
+       {auth.isLoggedIn && <FollowButton {...props} numChanger = {props.numChanger}/>}
       </div>
     </div>
   );
