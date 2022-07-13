@@ -1,11 +1,13 @@
 .post_image {
-  margin-block-start: 9rem;
-  object-fit: contain;
-  min-width: 500;
+  margin-block-start: 6rem;
+  object-fit: fill;
+  /* min-width: 500px; */
+  max-height: 600px;
   width: 100%;
   margin-right: 2rem;
   border-radius: 10px;
 }
+
 .post_details {
   display: flex;
   flex-direction: row;
