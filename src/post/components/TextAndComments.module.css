@@ -1,6 +1,6 @@
 .avatar {
-  max-height: 80px;
-  max-width: 80px;
+  height: 3.2rem;
+  width: 3.2rem;
   border-radius: 50%;
   margin-inline-end: 1rem;
 }
