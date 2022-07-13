@@ -1,9 +1,15 @@
 import React from 'react'
+import InfoCard from '../components/InfoCard';
+import styles from './NewAppointment.module.css';
 
 function NewAppointment(props) {
-  return (
-    <div>NewAppointment</div>
-  )
+    return (
+        <section className={`${styles.section}`}>
+
+            <InfoCard user={props.user} />
+
+        </section>
+    )
 }
 
-export default NewAppointment
+export default React.memo(NewAppointment);

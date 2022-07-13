@@ -10,7 +10,7 @@ import CollectionPosts from './collection/pages/CollectionPosts';
 import NewCollection from './collection/pages/NewCollection';
 import Home from './shared/pages/Home';
 import { AuthContext } from './context/AuthContext';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import EditProfile from './user/components/EditProfile';
 import Main from './shared/pages/Main';
 import ErrorModal from './shared/components/ErrorModal';
@@ -112,7 +112,7 @@ function App() {
           </Route>
 
           <Route path="/invite" exact>
-            <NewAppointment />
+            <NewAppointment user={useMemo(() => { if (user) return { name: user.name, id: userId } }, [userId])} />
           </Route>
 
           <Route path="/user/:userId" exact>
