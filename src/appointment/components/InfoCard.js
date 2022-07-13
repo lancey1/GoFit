@@ -66,9 +66,9 @@ function InfoCard(props) {
             return setError('Please check your inputs');
         }
 
-        if (Date.now() > new Date(date)) {
-            return setError('Date is not valid.');
-        }
+        // if (Date.now() > new Date(date)) {
+        //     return setError('Date is not valid.');
+        // }
 
         try {
             const response = await fetch('http://localhost:5000/api/appointments/', {
@@ -103,10 +103,16 @@ function InfoCard(props) {
 
 
     return (
-        
+
         <article className={`${styles.card}`}>
-            
-            {success && <Success text='Appointment Created' onOk={okHandler} onClear={() => { setSuccess(false) }} onClick={event => event.stopPropagation()} nextAction='Go to profile'/>}
+
+            {success &&
+                (
+                    <BackDrop onClear={() => { setSuccess(false) }}>
+                        <Success text='Appointment Created' onOk={okHandler} nextAction='Go to appointments' />
+                    </BackDrop>
+                )
+            }
             {/* //! need to style Success.js as well, this line below is only for css purpose, after styling Success.js, you can delete it */}
             {/* <Success text='Appointment Created' onOk={okHandler} onClear={() => { setSuccess(false) }} onClick={event => event.stopPropagation()} nextAction='Go to profile'/> */}
 

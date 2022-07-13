@@ -10,13 +10,12 @@ function Success(props) {
     }
 
     return (
-        <BackDrop onClear={props.onClear}>
-            <div className={`${styles.div}`}>
-                <p>{props.text}</p>
-                <button onClick={onClickHandler}>{props.nextAction}</button>
-            </div>
 
-        </BackDrop>
+        <div className={`${styles.div}`} onClick={event => event.stopPropagation()}>
+            <p>{props.text}</p>
+            <button onClick={onClickHandler}>{props.nextAction}</button>
+        </div>
+
 
     )
 }
