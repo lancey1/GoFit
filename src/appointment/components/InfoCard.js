@@ -111,6 +111,7 @@ function InfoCard(props) {
             {/* <Success text='Appointment Created' onOk={okHandler} onClear={() => { setSuccess(false) }} onClick={event => event.stopPropagation()} nextAction='Go to profile'/> */}
 
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
+            <h1>Invitation Request</h1>
             <p onClick={onHideHandler}>{receiverName ? `To: ${receiverName}` : `To: Recipients `}</p>
 
             {showFollowers && (

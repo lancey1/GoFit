@@ -1,34 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
+import { useParams } from "react-router-dom";
 import FellowsItem from "./FellowsItem";
 import styles from "./FellowsList.module.css";
-
-function Fellows(props) {
+function FellowList(props) {
+  const params = useParams();
+  const { userId } = params;
   const [data, setData] = useState([]);
-  const { fellow } = props;
-
   useEffect(() => {
     (async () => {
       try {
-        const responses = await Promise.all(
-          fellow.map((item) => {
-            return fetch(`http://localhost:5000/api/user/${item}`);
-          })
+        const response = await fetch(
+          `http://localhost:5000/api/user/${props.url}/${userId}`
         );
-        let responseDatas = await Promise.all(
-          responses.map((res) => res.json())
-        );
-        setData(responseDatas);
+        const responseData = await response.json();
+        setData(responseData.followings);
       } catch (error) {
         console.log(error);
       }
     })();
   }, []);
-  
+
   const followers = data.map((item) => {
-    return <FellowsItem key= {item.id} userid= {item.user.id} name={item.user.name} image={item.user.image} />;
+    return (
+      <FellowsItem
+        {...item}
+        image={item.image}
+        key={item.id}
+        userId={item.id}
+        name={item.name}
+        numChanger={props.numChanger}
+      />
+    );
   });
 
-  return <div className = {`${styles.container}`} >{followers}</div>;
+  return <div className={`${styles.container}`}>{followers}</div>;
 }
 
-export default Fellows;
+export default FellowList;

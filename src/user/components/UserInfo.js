@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./UserInfo.module.css";
-import Fellows from "./FellowsList";
+import FellowList from "./FellowsList";
 import { useState } from "react";
 import DarkerBackDrop from "../../shared/components/DarkerBackDrop";
 import Notification from "./Notification";
@@ -8,19 +8,21 @@ import UnreadComments from "../../comment/components/UnreadComments";
 import BackDrop from "../../shared/components/BackDrop";
 
 const UserInfo = (props) => {
+  const { user } = props;
   const [showFollower, setShowFollower] = useState(false);
   const [showFollowing, setShowFollowing] = useState(false);
   const [showNotificationDiv, setShowNotificationDiv] = useState(true);
-
   const [showUnreadComments, setShowUnreadComments] = useState(false);
+  const [numOfFollows, setNumOfFollows] = useState(user.follows.length);
+  const [numOfFollowers, setNumOfFollowers] = useState(user.followers.length);
 
   const onChangeNotificationHandler = () => {
     setShowNotificationDiv(false);
-  }
+  };
 
   const onShowUnreadHandler = () => {
-    setShowUnreadComments(prev => !prev);
-  }
+    setShowUnreadComments((prev) => !prev);
+  };
 
   const showFollowerClick = (event) => {
     setShowFollower((current) => !current);
@@ -35,7 +37,6 @@ const UserInfo = (props) => {
     }
   };
 
-  const { user } = props;
   let gymMembership = [];
   if (user && user.gymMembership.length !== 0) {
     gymMembership = user.gymMembership.join(", ");
@@ -60,26 +61,35 @@ const UserInfo = (props) => {
 
   return (
     <div onClick={removeList} className={`${styles.containerdiv}`}>
-
-      {showUnreadComments && <BackDrop> <UnreadComments userId={user.id} onChangeShowUnread={onShowUnreadHandler} onChange={onChangeNotificationHandler}/></BackDrop>}
+      {showUnreadComments && (
+        <BackDrop>
+          {" "}
+          <UnreadComments
+            userId={user.id}
+            onChangeShowUnread={onShowUnreadHandler}
+            onChange={onChangeNotificationHandler}
+          />
+        </BackDrop>
+      )}
 
       {user && (
         <section style={sectionStyle}>
           <div className={`${styles.container}`}>
-
             <div className={`${styles.avatar_name}`}>
               <img className={`${styles.avatar}`} src={user.image} alt="" />
-              <div className={`${styles.name_id}`} >
+              <div className={`${styles.name_id}`}>
                 <p>{user.name}</p>
                 <span>id: {user.id}</span>
               </div>
 
-              {(user.unreadNotifications > 0 && showNotificationDiv) &&
-                <div className={`${styles.notification}`} onClick={onShowUnreadHandler}>
+              {user.unreadNotifications > 0 && showNotificationDiv && (
+                <div
+                  className={`${styles.notification}`}
+                  onClick={onShowUnreadHandler}
+                >
                   <Notification user={user} />
                 </div>
-              }
-
+              )}
             </div>
 
             <p>{user.bio}</p>
@@ -96,19 +106,25 @@ const UserInfo = (props) => {
             <div className={`${styles.follow_edit}`}>
               <div className={`${styles.follow}`}>
                 <p onClick={showFollowingClick}>
-                  Following <b>{user.follows.length}</b>
+                  Following <b>{numOfFollows}</b>
                 </p>
                 {showFollowing && (
                   <DarkerBackDrop>
-                    <Fellows fellow={user.follows} />
+                    <FellowList
+                      url={"followings"}
+                      numChanger={(diff) => setNumOfFollows(numOfFollows + diff)}
+                    />
                   </DarkerBackDrop>
                 )}
                 <p onClick={showFollowerClick}>
-                  Followers <b>{user.followers.length}</b>
+                  Followers <b>{numOfFollowers}</b>
                 </p>
                 {showFollower && (
                   <DarkerBackDrop>
-                    <Fellows fellow={user.followers} />
+                    <FellowList
+                      url={"followers"}
+                      numChanger={(diff) => setNumOfFollows(numOfFollows + diff)}
+                    />
                   </DarkerBackDrop>
                 )}
                 <p>
