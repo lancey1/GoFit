@@ -33,7 +33,15 @@ function FellowList(props) {
     );
   });
 
-  return <div className={`${styles.container}`}>{followers}</div>;
+  return (
+    <div className={`${styles.container}`}>
+      <p className={`${styles.p}`}>
+        {props.text}
+        <hr className={`${styles.hr}`} />
+      </p>
+      {followers}
+    </div>
+  );
 }
 
 export default FellowList;

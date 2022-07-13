@@ -1,25 +1,28 @@
-.fellow_container{
-  border: .5em;
-  background-color: #fdfffc;
-  border: 1.5px solid black;
-  width: 18rem;
-  height: 30rem;
-  border-radius: 10px;
+.fellow_container {
+  display: flex;
+  border: 0.5em;
+  width: 16rem;
+  height: 8rem;
+  display: flex;
+  padding: 0px;
+  margin-left: 1.5em;
+  margin-right: 1em;
 }
 
 .image {
   border-radius: 100%;
   float: left;
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 4rem;
+  height: 4rem;
   object-fit: cover;
   margin: 14px 13px;
 }
 
 .fellow_p {
-  margin-top: 45px;
   font-weight: 500;
   font-size: 18px;
+  text-align: center;
+  margin-left: .3em
 }
 
 .following_p {
@@ -29,5 +32,33 @@
   margin-left: 18px;
   font-weight: 800;
   font-size: 17px;
-  border-bottom: 1.5px solid lightgrey;
+}
+.button_ctn {
+  height: 5rem;
+}
+
+.follow_btn {
+  border: 2px solid #f9627d;
+  background-color: white;
+  color: #f9627d;
+  padding: 0.2rem 0.8rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 13px;
+  font-weight: 600;
+  margin-top: 1.8rem;
+  min-width: 7rem;
+  margin-left: 1em;
+}
+
+.follow_btn:hover {
+  border-color: rgb(255, 111, 111);
+  background-color: rgb(255, 111, 111);
+  color: white;
+}
+
+.following {
+  border-color: rgb(255, 111, 111);
+  background-color: rgb(255, 111, 111);
+  color: white;
 }
