@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import FellowsItem from "./FellowsItem";
 import styles from "./FellowsList.module.css";
@@ -13,7 +13,7 @@ function FellowList(props) {
           `http://localhost:5000/api/user/${props.url}/${userId}`
         );
         const responseData = await response.json();
-        setData(responseData.followings);
+        setData(responseData[props.url]);
       } catch (error) {
         console.log(error);
       }

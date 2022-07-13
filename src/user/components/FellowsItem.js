@@ -7,7 +7,6 @@ import { AuthContext } from '../../context/AuthContext';
 function FellowsItem(props) {
   const auth = useContext(AuthContext);
   const history = useHistory();
-  console.log(props.add)
   const { name, image, userId} = props;
   const viewProfile = () => {
     history.push(`/user/${userId}`);
