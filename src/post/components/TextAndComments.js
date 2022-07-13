@@ -103,7 +103,7 @@ function TextAndComments(props) {
             <section>
                 <i>{comments.length} comments</i>
                 <form onSubmit={commentSubmitHandler}>
-                    {auth.user && <input className={`${styles.comment_input}`} type="text" placeholder="Leave a comment?" value={comment} onChange={commentInputHandler} />}
+                    {auth.user && <input className={`${styles.comment_input}`} type="text" placeholder="Write a comment...💭" value={comment} onChange={commentInputHandler} />}
                     {auth.user && <button className={`${styles.submit_btn}`} disabled={!comment.trim().length}>Send</button>}
                     {!auth.user && <input className={`${styles.comment_input}`} type="text" placeholder="Log in to leave a comment" value={comment} onChange={commentInputHandler} />}
                     {!auth.user && <button className={`${styles.submit_btn}`} disabled={true}>Send</button>}

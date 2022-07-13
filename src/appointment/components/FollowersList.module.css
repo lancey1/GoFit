@@ -1,0 +1,23 @@
+.container {
+    background-color:rgba(104, 104, 104, 0.567);
+    width: 50%;
+    height: 50%;
+    margin: 10% auto;
+    
+}
+
+.avatar {
+  width: 3rem;
+  height: 3rem;
+}
+
+.ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ul li {
+  margin: 0;
+  padding: 0;
+}
