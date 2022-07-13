@@ -28,7 +28,7 @@ function TextAndComments(props) {
         };
         
         if (!auth || !auth.user) {
-            return setError('Login first');
+            return setError('Please Login first!');
         };
 
         try {

@@ -32,7 +32,7 @@ function PostDetails(props) {
 
     const clickStarHandler = async (event) => {
         if (!auth || !auth.isLoggedIn) {
-            return setError('Login first');
+            return setError('Please Login first!');
         }
         
         if (!collected) {
@@ -64,7 +64,7 @@ function PostDetails(props) {
     const likePostHandler = async (event) => {
         event.preventDefault();
         if (!auth || !auth.isLoggedIn) {
-            return setError('Login first');
+            return setError('Please Login first!');
         }
         if (!liked) {
             try {

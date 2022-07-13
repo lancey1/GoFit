@@ -20,7 +20,7 @@ function FollowButton(props) {
     const changeFollowStatus = async (event) => {
         event.preventDefault();
         if (!auth || !auth.user) {
-            return setError('Login first');
+            return setError('Please Login first!');
         }
 
         if (isSelf) {
