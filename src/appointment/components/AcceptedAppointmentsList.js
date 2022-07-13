@@ -5,6 +5,7 @@ import styles from './AcceptedAppointmentsList.module.css';
 function AcceptedAppointmentsList(props) {
 
     const { userId } = props;
+    console.log(userId);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [appointments, setAppointments] = useState(null);
@@ -34,7 +35,7 @@ function AcceptedAppointmentsList(props) {
             {(appointments && !isLoading) && appointments.map(ele => (
                 <AppointmentItem key={ele.id} id={ele.id} title={ele.title} description={ele.description}
                     address={ele.address} location={ele.location} revieverAvatar={ele.reciever.image} recieverName={ele.reciever.name} creatorAvatar={ele.creator.image} creatorName={ele.creator.name}
-                    appointmentDate={ele.appointmentDate} pending={ele.pending} recieverAccepted={ele.recieverAccepted} recieverRejected={ele.recieverRejected} />
+                    appointmentDate={ele.appointmentDate} pending={ele.pending} recieverAccepted={ele.recieverAccepted} recieverRejected={ele.recieverRejected} reviews={ele.reviews}/>
             ))}
 
         </div>

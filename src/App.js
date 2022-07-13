@@ -31,11 +31,9 @@ function App() {
   const [tokenExpirationDate, setTokenExpirationDate] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  console.log(user);
   const [posts, setPosts] = useState([]);
 
   const login = useCallback((uid, token, user, expirationDate) => {
-    console.log(token);
     setUserId(uid);
     setToken(token);
     setUser(user);
@@ -81,10 +79,8 @@ function App() {
         if (!response.ok) {
           throw new Error(responseData.message);
         };
-        console.log(responseData)
         setPosts(responseData.posts);
       } catch (error) {
-        console.log(error)
         setError(error.message);
       }
       setIsLoading(false);
