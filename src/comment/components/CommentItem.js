@@ -38,7 +38,7 @@ function CommentItem(props) {
         event.preventDefault();
         
         if (!auth || !auth.isLoggedIn) {
-            return setError('Login first');
+            return setError('Please Login first!');
         }
         
         if (!liked) {
@@ -100,7 +100,7 @@ function CommentItem(props) {
         };
 
         if (!auth || !auth.user) {
-            return setError('Login first');
+            return setError('Please Login first!');
         }
 
         try {

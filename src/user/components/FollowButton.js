@@ -1,32 +1,31 @@
-import React, { useContext, useState} from 'react';
+import React, { useContext, useState, useEffect} from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import ErrorModal from '../../shared/components/ErrorModal';
 import styles from '../../post/components/FollowUserButton.module.css';
 
 function FollowButton(props) {
-
     const auth = useContext(AuthContext);
     const [error, setError] = useState(null);
+    const [data, setData] = useState(auth.user);
     const user = props.user;
-    //auth.userId.followers.includes(user)
-    const [isFollowing, setIsFollowing] = useState();
-    const [isSelf, setIsSelf] = useState(auth.userId == user.id);
-    // console.log(auth.user)
+    const [isFollowing, setIsFollowing] = useState(auth.user.follows.includes(user));
+    const [isSelf, setIsSelf] = useState(auth.userId === user);
+    // console.log({data})
+    // console.log("this is auth " + auth.userId)
     // console.log(auth.user.follows.includes(user))
-    // console.log(user)
-
+    // console.log({user})
+    
 
 
     const changeFollowStatus = async (event) => {
         event.preventDefault();
         if (!auth || !auth.user) {
-            return setError('Login first');
+            return setError('Please Login first!');
         }
 
         if (isSelf) {
             return;
         }
-
         if (!isFollowing) {
             try {
                 let response = await fetch(`http://localhost:5000/api/user/follow/${user}`, {
@@ -47,6 +46,7 @@ function FollowButton(props) {
                 };
                 console.log(responseData)
                 setIsFollowing(true);
+                data.follows.push(user);
             } catch (error) {
                 console.log(error)
             };
@@ -71,6 +71,7 @@ function FollowButton(props) {
                 };
                 console.log(responseData)
                 setIsFollowing(false);
+                setData(data.follows.includes(`${user}`) && data.follows.splice(data.follows.indexOf(`${user}`), 1));
             } catch (error) {
                 console.log(error)
             };

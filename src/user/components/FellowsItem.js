@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import styles from "./FellowsItem.module.css";
 import { useHistory } from "react-router-dom";
 import FollowButton from "./FollowButton";
+import { AuthContext } from '../../context/AuthContext';
 
 function FellowsItem(props) {
+  const auth = useContext(AuthContext);
   const history = useHistory();
   const { name, image, userid} = props;
 
@@ -17,7 +19,9 @@ function FellowsItem(props) {
       <img className={`${styles.image}`}src={image} alt="" />
       <p>{name}</p>
       </div>
-      <FollowButton user={userid} />
+      <div>
+      {auth.isLoggedIn && <FollowButton user={userid} />}
+      </div>
     </div>
   );
 }

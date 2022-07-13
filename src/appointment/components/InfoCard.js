@@ -108,7 +108,7 @@ function InfoCard(props) {
             
             {success && <Success text='Appointment Created' onOk={okHandler} onClear={() => { setSuccess(false) }} onClick={event => event.stopPropagation()} nextAction='Go to profile'/>}
             {/* //! need to style Success.js as well, this line below is only for css purpose, after styling Success.js, you can delete it */}
-            <Success text='Appointment Created' onOk={okHandler} onClear={() => { setSuccess(false) }} onClick={event => event.stopPropagation()} nextAction='Go to profile'/>
+            {/* <Success text='Appointment Created' onOk={okHandler} onClear={() => { setSuccess(false) }} onClick={event => event.stopPropagation()} nextAction='Go to profile'/> */}
 
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
             <p onClick={onHideHandler}>{receiverName ? `To: ${receiverName}` : `To: Recipients `}</p>
