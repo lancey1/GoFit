@@ -37,3 +37,18 @@
 .user_img_name_follow h3 {
   margin: 0;
 }
+
+.status{
+  align-self: center;
+}
+
+.btn{
+  width: 3.6rem;
+  border: 1px solid black;
+}
+
+.btn:hover{
+  width: 3.6rem;
+  background-color: gray;
+  color: white;
+}

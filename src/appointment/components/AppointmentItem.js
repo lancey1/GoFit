@@ -33,14 +33,14 @@ function AppointmentItem(props) {
                 </div>
             </div>
 
-            <div>
+            <div className={`${styles.status}`}>
                 {pending && <p>Pending</p>}
                 {recieverAccepted && <p>Accepted</p>}
                 {recieverRejected && <p>Rejected</p>}
 
             </div>
 
-            <button onClick={btnClickHandler}>View</button>
+            <button onClick={btnClickHandler} className={`${styles.btn}`}>View</button>
 
 
         </article>
