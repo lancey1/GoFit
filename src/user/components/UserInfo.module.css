@@ -79,17 +79,20 @@
 
 .notification{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: end;
   padding: 0 0.3rem;
-  border-bottom-style: inset;
+  /* border-bottom-style: inset;
   border-bottom-color: #f9627d;
-  border-bottom-width: 2px;
+  border-bottom-width: 2px; */
+  margin-block-end: 0.5rem;
 
 }
 
 .notification p{
   margin: 0.2rem 0;
+  margin-inline-start: 0.2rem;
   
 }
 

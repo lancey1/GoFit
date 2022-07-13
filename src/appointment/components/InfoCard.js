@@ -52,7 +52,7 @@ function InfoCard(props) {
     }, [])
 
     const okHandler = (event) => {
-        return history.push(`/user/${user.id}`);
+        return history.push(`/${user.id}/sent`);
     }
 
     const onSubmitHandler = async (event) => {

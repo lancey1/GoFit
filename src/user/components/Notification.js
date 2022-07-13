@@ -4,14 +4,14 @@ import styles from './Notification.module.css';
 
 function Notification(props) {
 
-    const { user } = props
+    const { text, title } = props
 
     return (
         <React.Fragment>
-            <p>Unread comments</p>
             <div className={`${styles.pending_user_count}`} >
-                <i >{user.unreadNotifications}</i>
+                <i >{text}</i>
             </div>
+            <p>{` ${title}`}</p>
         </React.Fragment>
     )
 }

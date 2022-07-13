@@ -14,6 +14,8 @@ function Appointment(props) {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    console.log(auth.userId);
+
     const acceptBtnHandler = async () => {
         try {
             setIsLoading(true);
@@ -32,7 +34,7 @@ function Appointment(props) {
             if (!response.ok) {
                 throw new Error(responseData.message);
             }
-            history.replace(`/${auth.userId}/appointments`);
+            history.push(`/${auth.userId}/accepted`);
         } catch (error) {
             setError(error.message);
         }
@@ -58,7 +60,7 @@ function Appointment(props) {
                 throw new Error(responseData.message);
             }
             setAppointment(responseData.appointment);
-            history.replace(`/${appointment.reciever}/appointments`);
+            history.push(`/user/${auth.userId}`);
         } catch (error) {
             setError(error.message);
         }
@@ -111,7 +113,7 @@ function Appointment(props) {
 
                             <p>{new Date(appointment.appointmentDate).toLocaleString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</p>
 
-                            {(appointment.reciever.id === auth.userId) &&
+                            {(appointment.reciever.id === auth.userId && !appointment.recieverAccepted && !appointment.recieverRejected) &&
                                 <div>
                                     <button onClick={rejectBtnHandler}>{`Reject`}</button>
                                     <button onClick={acceptBtnHandler}>{`Accept`}</button>

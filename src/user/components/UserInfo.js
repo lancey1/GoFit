@@ -6,8 +6,11 @@ import DarkerBackDrop from "../../shared/components/DarkerBackDrop";
 import Notification from "./Notification";
 import UnreadComments from "../../comment/components/UnreadComments";
 import BackDrop from "../../shared/components/BackDrop";
+import { useHistory } from "react-router-dom";
 
 const UserInfo = (props) => {
+
+  const history = useHistory();
   const { user } = props;
   const [showFollower, setShowFollower] = useState(false);
   const [showFollowing, setShowFollowing] = useState(false);
@@ -19,6 +22,10 @@ const UserInfo = (props) => {
   const onChangeNotificationHandler = () => {
     setShowNotificationDiv(false);
   };
+  {/* <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to={`/${auth.userId}/invitations`} exact>Invites(Recieved)</NavLink> */ }
+  const onRedirectToNewInvitations = event => {
+    history.push(`/${user.id}/invitations`)
+  }
 
   const onShowUnreadHandler = () => {
     setShowUnreadComments((prev) => !prev);
@@ -74,22 +81,38 @@ const UserInfo = (props) => {
 
       {user && (
         <section style={sectionStyle}>
+
           <div className={`${styles.container}`}>
+
             <div className={`${styles.avatar_name}`}>
+
               <img className={`${styles.avatar}`} src={user.image} alt="" />
+
               <div className={`${styles.name_id}`}>
                 <p>{user.name}</p>
                 <span>id: {user.id}</span>
               </div>
 
-              {user.unreadNotifications > 0 && showNotificationDiv && (
-                <div
-                  className={`${styles.notification}`}
-                  onClick={onShowUnreadHandler}
-                >
-                  <Notification user={user} />
-                </div>
-              )}
+              <div>
+                {user.unreadNotifications > 0 && showNotificationDiv && (
+                  <div
+                    className={`${styles.notification}`}
+                    onClick={onShowUnreadHandler}
+                  >
+                    <Notification text={user.unreadNotifications} title={`New comments`} />
+                  </div>
+                )}
+
+                {user.invitations.length > 0 && showNotificationDiv && (
+                  <div
+                    className={`${styles.notification}`}
+                    onClick={onRedirectToNewInvitations}
+                  >
+                    <Notification text={user.invitations.length} title={`New invitation`} />
+                  </div>
+                )}
+              </div>
+
             </div>
 
             <p>{user.bio}</p>
@@ -104,7 +127,9 @@ const UserInfo = (props) => {
             {athleteTypes.length > 0 && <p>Athlete Types: {athleteTypes}</p>}
 
             <div className={`${styles.follow_edit}`}>
+
               <div className={`${styles.follow}`}>
+
                 <p onClick={showFollowingClick}>
                   Following <b>{numOfFollows}</b>
                 </p>
@@ -130,17 +155,23 @@ const UserInfo = (props) => {
                 <p>
                   <em>Likes</em> <b>{user.likes} </b>
                 </p>
+
               </div>
+
               <button
                 className={`${styles.userinfo_btn}`}
                 onClick={props.onShowEditPage}
               >
                 Edit Profile
               </button>
+
             </div>
+
           </div>
+
         </section>
       )}
+
     </div>
   );
 };
