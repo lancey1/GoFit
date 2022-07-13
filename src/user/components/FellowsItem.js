@@ -13,13 +13,12 @@ function FellowsItem(props) {
   }
 
   return (
-    <div>
-      <div onClick={viewProfile} className={`${styles.fellow_container}`}>
-        <p className={styles.following_p}>Following</p>
+    <div className={`${styles.fellow_container}`}>
+      <div onClick={viewProfile}>
         <img className={`${styles.image}`}src={image} alt="" />
         <p className={styles.fellow_p}>{name}</p>
       </div>
-      <div>
+      <div className={styles.button_ctn}>
        {auth.isLoggedIn && <FollowButton {...props} numChanger = {props.numChanger}/>}
       </div>
     </div>

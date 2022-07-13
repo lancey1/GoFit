@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import ErrorModal from "../../shared/components/ErrorModal";
-import styles from "../../post/components/FollowUserButton.module.css";
+import styles from "./FellowsItem.module.css";
 
 function FollowButton(props) {
   const auth = useContext(AuthContext);

@@ -117,7 +117,6 @@ const UserInfo = (props) => {
 
             <p>{user.bio}</p>
 
-            <hr className={`${styles.hr}`} />
 
             <p>Age {user.age}</p>
 
@@ -138,6 +137,7 @@ const UserInfo = (props) => {
                     <FellowList
                       url={"followings"}
                       numChanger={(diff) => setNumOfFollows(numOfFollows + diff)}
+                      text={"Following"}
                     />
                   </DarkerBackDrop>
                 )}
@@ -149,6 +149,7 @@ const UserInfo = (props) => {
                     <FellowList
                       url={"followers"}
                       numChanger={(diff) => setNumOfFollows(numOfFollows + diff)}
+                      text = {"Followers"}
                     />
                   </DarkerBackDrop>
                 )}
