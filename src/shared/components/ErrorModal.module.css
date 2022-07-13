@@ -3,11 +3,12 @@
   justify-content:space-between;
   align-items: center;
   border: 1px solid;
+  border-radius: 10px;
   margin: 10px auto;
   padding: 15px 10px 15px 50px;
   background-repeat: no-repeat;
   background-position: 10px center;
-  max-width: 310px;
+  max-width: 308px;
   height: 13px;
   color: #D8000C;
   background-color: #FFBABA;
@@ -20,6 +21,8 @@
   padding: 1rem;
   font-size: 1.2rem;
   margin-top: 10px;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .card div {
