@@ -11,9 +11,9 @@ function FollowButton(props) {
     //auth.userId.followers.includes(user)
     const [isFollowing, setIsFollowing] = useState();
     const [isSelf, setIsSelf] = useState(auth.userId == user.id);
-    console.log(auth.user)
-    console.log(auth.user.follows.includes(user))
-    console.log(user)
+    // console.log(auth.user)
+    // console.log(auth.user.follows.includes(user))
+    // console.log(user)
 
 
 
@@ -83,9 +83,7 @@ function FollowButton(props) {
         <>
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
             {!isSelf && <button className={`${styles.follow_btn} ${isFollowing && styles.following}`} onClick={changeFollowStatus}>{isFollowing ? 'Unfollow' : 'Follow'}</button>}
-
         </>
-
     )
 }
 

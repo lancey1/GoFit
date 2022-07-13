@@ -34,7 +34,7 @@ function Navbar() {
 
                 {auth.isLoggedIn &&
                     <li className={`${styles.li}`}>
-                        <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/create' exact>Send Invitation</NavLink>
+                        <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/invite' exact>Send Invitation</NavLink>
                     </li>
                 }
 

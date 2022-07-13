@@ -14,6 +14,7 @@ import { useCallback, useEffect, useState } from 'react';
 import EditProfile from './user/components/EditProfile';
 import Main from './shared/pages/Main';
 import ErrorModal from './shared/components/ErrorModal';
+import NewAppointment from './appointment/pages/NewAppointment';
 
 let logoutTimer;
 
@@ -108,6 +109,10 @@ function App() {
 
           <Route path="/create" exact>
             <NewPost />
+          </Route>
+
+          <Route path="/invite" exact>
+            <NewAppointment />
           </Route>
 
           <Route path="/user/:userId" exact>

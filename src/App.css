@@ -33,6 +33,7 @@ p {
   width: 80%;
   margin: 0 auto;
   margin-block-start: 4rem;
+  max-width: 1200px;
 }
 
 input {
