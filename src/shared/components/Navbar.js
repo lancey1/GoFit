@@ -38,6 +38,24 @@ function Navbar() {
                     </li>
                 }
 
+                {auth.isLoggedIn &&
+                    <li className={`${styles.li}`}>
+                        <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to={`/${auth.userId}/sent`} exact>Sent(All)</NavLink>
+                    </li>
+                }
+
+                {auth.isLoggedIn &&
+                    <li className={`${styles.li}`}>
+                        <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to={`/${auth.userId}/invitations`} exact>Invites(Recieved)</NavLink>
+                    </li>
+                }
+
+                {auth.isLoggedIn &&
+                    <li className={`${styles.li}`}>
+                        <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to={`/${auth.userId}/accepted`} exact>Accepted</NavLink>
+                    </li>
+                }
+
                 {!auth.isLoggedIn &&
                     <li className={`${styles.li}`}>
                         <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/signup' exact>Signup</NavLink>
@@ -55,7 +73,7 @@ function Navbar() {
                         <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/messenger' exact>Messages</NavLink>
                     </li>
                 }
-                
+
             </div>
 
             {auth.isLoggedIn &&

@@ -15,6 +15,10 @@ import EditProfile from './user/components/EditProfile';
 import Main from './shared/pages/Main';
 import ErrorModal from './shared/components/ErrorModal';
 import NewAppointment from './appointment/pages/NewAppointment';
+import UserAppointments from './appointment/pages/UserAppointments';
+import Appointment from './appointment/pages/Appointment';
+import UserInvitations from './appointment/pages/UserInvitations';
+import AcceptedAppointments from './appointment/pages/AcceptedAppointments';
 
 let logoutTimer;
 
@@ -113,6 +117,22 @@ function App() {
 
           <Route path="/invite" exact>
             <NewAppointment user={useMemo(() => { if (user) return { name: user.name, id: userId } }, [userId])} />
+          </Route>
+
+          <Route path="/:userId/invitations" exact>
+            <UserInvitations />
+          </Route>
+
+          <Route path="/:userId/sent" exact>
+            <UserAppointments />
+          </Route>
+
+          <Route path="/:userId/accepted" exact>
+            <AcceptedAppointments />
+          </Route>
+
+          <Route path="/:userId/appointment/:appointmentId" exact>
+            <Appointment />
           </Route>
 
           <Route path="/user/:userId" exact>

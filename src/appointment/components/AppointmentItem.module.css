@@ -1,0 +1,39 @@
+.article {
+  border: solid 1px black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0.9;
+}
+
+.info {
+  flex-grow: 1;
+}
+
+.avatar {
+  max-height: 3rem;
+  max-width: 3rem;
+  border-radius: 50%;
+  margin-inline-end: 1rem;
+}
+
+.user_img_name_follow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.user_img_name_follow img {
+  margin: 0.2rem 0.4rem;
+}
+
+.user_img_name_follow h3 {
+  margin: 0;
+}

@@ -14,7 +14,7 @@ function FollowButton(props) {
     // console.log("this is auth " + auth.userId)
     // console.log(auth.user.follows.includes(user))
     // console.log({user})
-    
+    //! user.followers.includes(auth.userId)
 
 
     const changeFollowStatus = async (event) => {
