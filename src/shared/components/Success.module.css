@@ -1,6 +1,64 @@
-.div{
-    width: 30rem;
-    height: 10rem;
-    background-color: yellow;
+.div {
+    width: 28rem;
+    background-color: white;
     z-index: 20;
+    margin-top: 7rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+}
+
+.innerContainer {
+    border-radius: 8px;
+}
+
+.button {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 800;
+    background-color: white;
+    border: 1px solid #2ca02c;
+    color: #2ca02c;
+}
+
+.button:hover {
+    cursor:pointer;
+    color: white;
+    background-color: #2ca02c;
+    transition: 0.25s all;
+}
+
+.titleContainer {
+    text-align: center;
+    background-color: #2ca02c;
+    padding: 0.1rem;
+    color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.bodyContainer {
+    border-bottom: 1.8px solid #6c757d;
+}
+
+.bodyInnerContainer {
+    padding: 1rem;
+    text-align: center;
+}
+
+.imageContainer {
+    margin-bottom: 1rem;
+}
+
+.footerContainer {
+    padding: 1rem;
+}
+
+.successBtn {
+    width: 60px;
+    height: 60px;
+}
+
+.gotoapptBtn {
+    text-align: center;
 }
