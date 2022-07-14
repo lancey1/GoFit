@@ -60,3 +60,11 @@ input {
 .rec.rec-dot {
   background-color: white;
 }
+
+#chat_btn{
+  position: fixed;
+  bottom: 9%;
+  right: 6%;
+  cursor: pointer;
+}
+

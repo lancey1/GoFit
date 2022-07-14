@@ -46,7 +46,7 @@ function ImageUpload(props) {
 
             <input ref={imagePickerRef} type='file' id={props.id} style={{ display: 'none' }} accept=".jpg, .png, .jpeg" onChange={pickerHandler} />
 
-            <div className={`${styles.image_upload}`}>
+            <div>
                 <div className={`${styles.image_preview}`}>
                     {previewUrl && <img src={previewUrl} className={`${styles.image}`} alt='Preview' />}
                 </div>

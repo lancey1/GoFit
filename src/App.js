@@ -12,8 +12,6 @@ import Home from './shared/pages/Home';
 import Messenger from './shared/pages/Messenger';
 import { AuthContext } from './context/AuthContext';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import EditProfile from './user/components/EditProfile';
-import Main from './shared/pages/Main';
 import ErrorModal from './shared/components/ErrorModal';
 import NewAppointment from './appointment/pages/NewAppointment';
 import UserAppointments from './appointment/pages/UserAppointments';
@@ -21,6 +19,7 @@ import Appointment from './appointment/pages/Appointment';
 import UserInvitations from './appointment/pages/UserInvitations';
 import AcceptedAppointments from './appointment/pages/AcceptedAppointments';
 import Chat from './shared/UI/Chat';
+import send from '../src/images/send64.png'
 
 let logoutTimer;
 
@@ -57,6 +56,7 @@ function App() {
   const logout = useCallback(() => {
     setIsLoggedIn(false);
     setUserId(null);
+    setUser(null);
     setToken(null);
     localStorage.removeItem('userData')
   }, []);
@@ -104,7 +104,8 @@ function App() {
       <Navbar />
       <section id='main-section'>
 
-        <button onClick={onShowChat}>Chat</button>
+        <img id='chat_btn' src={send} onClick={onShowChat} />
+
         {showChat && <Chat user={user} onHide={onShowChat} />}
 
         <Switch>

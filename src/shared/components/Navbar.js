@@ -68,11 +68,11 @@ function Navbar() {
                     </li>
                 }
 
-                {auth.isLoggedIn &&
+                {/* {auth.isLoggedIn &&
                     <li className={`${styles.li}`}>
                         <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/messenger' exact>Messages</NavLink>
                     </li>
-                }
+                } */}
 
             </div>
 

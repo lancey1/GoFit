@@ -110,7 +110,7 @@ function InfoCard(props) {
             {success &&
                 (
                     <BackDrop onClear={() => { setSuccess(false) }}>
-                    <Success text='Invitation Requested' onOk={okHandler} nextAction='Go To Appointments' />
+                        <Success text='Invitation Requested' onOk={okHandler} nextAction='Go To Appointments' />
                     </BackDrop>
                 )
             }
@@ -120,7 +120,7 @@ function InfoCard(props) {
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
             <img className={styles.inviteIcon} src="https://icon-library.com/images/invitation-icon/invitation-icon-13.jpg" />
             <h1 className={styles.inviteRequestText}>Invitation Request</h1>
-            <p onClick={onHideHandler}>{receiverName ? `To: ${receiverName}` : `To: Recipients `}</p>
+            <p className={styles.to} onClick={onHideHandler}>{receiverName ? `To: ${receiverName}` : `To: Recipients `}</p>
 
             {showFollowers && (
                 <BackDrop onClear={() => { setShowFollowers(false) }}>
@@ -144,7 +144,7 @@ function InfoCard(props) {
                 <input className={styles.inviteText} type={'text'} placeholder='Meetup Location' onChange={addressInputHandler} />
             </p>
 
-            <p>From: {user && `${user.name}`}</p>
+            <p className={styles.from}>From: {user && `${user.name}`}</p>
 
             <button className={styles.inviteSend_btn} onClick={onSubmitHandler}>Send</button>
 
