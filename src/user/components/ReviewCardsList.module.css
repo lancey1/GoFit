@@ -1,6 +1,20 @@
-.container{
-    background-color: aqua;
-    padding: 3rem;
-    width: 50%;
-    margin: 0 auto;
+.container {
+  background-color: transparent;
+  width: 50%;
+  margin: auto auto;
+  min-width: 30rem;
+  max-height: 69%;
+  margin-block-start: 12%;
+  overflow: auto;
+}
+
+.btn_div {
+  display: flex;
+  justify-content: end;
+}
+
+.btn_div button {
+  width: 9rem;
+  font-size: 1.2rem;
+  padding: 0.2rem 1rem;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "./UserInfo.module.css";
 import FellowList from "./FellowsList";
 import { useState } from "react";
@@ -8,8 +8,11 @@ import UnreadComments from "../../comment/components/UnreadComments";
 import BackDrop from "../../shared/components/BackDrop";
 import { useHistory } from "react-router-dom";
 import ReviewCardsList from "./ReviewCardsList";
+import { AuthContext } from "../../context/AuthContext";
 
 const UserInfo = (props) => {
+
+  const auth = useContext(AuthContext);
 
   const history = useHistory();
   const { user } = props;
@@ -19,8 +22,32 @@ const UserInfo = (props) => {
   const [showUnreadComments, setShowUnreadComments] = useState(false);
   const [numOfFollows, setNumOfFollows] = useState(user.follows.length);
   const [numOfFollowers, setNumOfFollowers] = useState(user.followers.length);
+  const [error, setError] = useState(null);
 
   const [showFeedBack, setShowFeedback] = useState(false);
+  const [reviews, setReviews] = useState();
+  // get all feed backs and filter
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/reviews/user/${user.id}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'Application/json',
+            Authorization: 'Bearer ' + auth.token
+          }
+        });
+        const responseData = await response.json();
+        if (!response.ok) {
+          throw new Error(responseData.message);
+        }
+        console.log(responseData)
+        setReviews(responseData.reviews.filter(ele => ele.creator.id !== user.id));
+      } catch (error) {
+        setError(error.message);
+      }
+    })();
+  }, [])
 
   // ! here here here here here here here here here here here here here here here here here here here here
   const onShowFeedbackHandler = () => {
@@ -92,6 +119,7 @@ const UserInfo = (props) => {
           <ReviewCardsList
             userId={user.id}
             onChange={onShowFeedbackHandler}
+            reviews={reviews}
           />
         </BackDrop>
       )}
@@ -110,31 +138,43 @@ const UserInfo = (props) => {
                 <span>id: {user.id}</span>
               </div>
 
-              <div>
-                {user.unreadNotifications > 0 && showNotificationDiv && (
-                  <div
-                    className={`${styles.notification}`}
-                    onClick={onShowUnreadHandler}
-                  >
-                    <Notification text={user.unreadNotifications} title={`New comments`} />
-                  </div>
-                )}
+              {auth.userId === user.id && (
+                <div>
+                  {user.unreadNotifications > 0 && showNotificationDiv && (
+                    <div
+                      className={`${styles.notification}`}
+                      onClick={onShowUnreadHandler}
+                    >
+                      <Notification text={user.unreadNotifications} title={`New comments`} />
+                    </div>
+                  )}
 
-                {user.invitations.length > 0 && showNotificationDiv && (
-                  <div
-                    className={`${styles.notification}`}
-                    onClick={onRedirectToNewInvitations}
-                  >
-                    <Notification text={user.invitations.length} title={`New invitation`} />
-                  </div>
-                )}
-              </div>
+                  {user.invitations.length > 0 && showNotificationDiv && (
+                    <div
+                      className={`${styles.notification}`}
+                      onClick={onRedirectToNewInvitations}
+                    >
+                      <Notification text={user.invitations.length} title={`New invitation`} />
+                    </div>
+                  )}
+                </div>
+              )}
 
             </div>
             {/* HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE */}
+
             <div>
+
               <p>{user.bio}</p>
-              <button onClick={onShowFeedbackHandler}>Feedbacks</button>
+
+              {(reviews && reviews.length > 0) && (
+                <button className={`${styles.feedback_btn}`} onClick={onShowFeedbackHandler}>Feedbacks</button>
+              )}
+
+              {(reviews && reviews.length === 0) && (
+                <p className={`${styles.nofeedback_p}`}>No feedbacks yet</p>
+              )}
+
             </div>
 
             <hr></hr>
@@ -177,15 +217,20 @@ const UserInfo = (props) => {
                 <p>
                   <em>Likes</em> <b>{user.likes} </b>
                 </p>
-
               </div>
 
-              <button
-                className={`${styles.userinfo_btn}`}
-                onClick={props.onShowEditPage}
-              >
-                Edit Profile
-              </button>
+              {auth.userId === user.id && (
+                <div>
+                  <button
+                    className={`${styles.userinfo_btn}`}
+                    onClick={props.onShowEditPage}
+                  >
+                    Edit Profile
+                  </button>
+                </div>
+              )}
+
+
 
             </div>
 
