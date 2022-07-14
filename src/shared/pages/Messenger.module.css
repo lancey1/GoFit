@@ -1,0 +1,5 @@
+.msg_div{
+    max-height: 60vh;
+    margin-block-end: 10rem;
+    object-fit: contain;
+}

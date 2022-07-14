@@ -12,30 +12,23 @@ import {
   LoadingIndicator,
 } from "stream-chat-react";
 import "@stream-io/stream-chat-css/dist/css/index.css";
+import { AuthContext } from "../../context/AuthContext";
 
-const App = (props) => {
 
+
+const App = () => {
   const [client, setClient] = useState(null);
 
-  const { user } = props;
+  const auth = useContext(AuthContext);
+  const streamUser = {
+    id: auth.userId,
+    name: auth.user.name,
+  };
 
-  let streamUser;
-  let filters;
-
-  if (user) {
-    streamUser = {
-      id: user.id,
-      name: user.name,
-      image: user.avatar
-    };
-    filters = { type: "messaging", members: { $in: [streamUser.id] } };
-  }
-
+  const filters = { type: "messaging", members: { $in: [streamUser.id] } };
   const sort = { last_message_at: -1 };
-  const streamKey = process.env.REACT_APP_STREAM_KEY;
-
+  const streamKey = process.env.REACT_APP_STREAM_KEY
   useEffect(() => {
-
     async function init() {
       const newClient = StreamChat.getInstance(streamKey);
       await newClient.connectUser(streamUser, newClient.devToken(streamUser.id));
@@ -46,26 +39,17 @@ const App = (props) => {
       });
       setClient(newClient);
     }
+    init();
+  }, []);
 
-    if (streamUser) init();
-
-    return async () => { if (client) await client.disconnectUser(); }
-
-  }, [user]);
-
-  if (!user) return;
-
-  console.log('here')
   if (!client) return <LoadingIndicator />;
 
-  console.log('there')
-  if (client) return (
-
+  return (
     <Chat client={client}>
-      <ChannelList
-        filters={filters}
-        sort={sort}
-        showChannelSearch={true}
+      <ChannelList 
+      filters={filters} 
+      sort={sort} 
+      showChannelSearch={true} 
       />
       <Channel>
         <Window>
@@ -76,8 +60,7 @@ const App = (props) => {
         <Thread />
       </Channel>
     </Chat>
-
   );
 };
 
-export default React.memo(App);
+export default App;

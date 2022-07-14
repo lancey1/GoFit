@@ -20,6 +20,7 @@ import UserAppointments from './appointment/pages/UserAppointments';
 import Appointment from './appointment/pages/Appointment';
 import UserInvitations from './appointment/pages/UserInvitations';
 import AcceptedAppointments from './appointment/pages/AcceptedAppointments';
+import Chat from './shared/UI/Chat';
 
 let logoutTimer;
 
@@ -33,6 +34,13 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [posts, setPosts] = useState([]);
+
+  const [showChat, setShowChat] = useState(false);
+
+  const onShowChat = (event) => {
+    event.stopPropagation();
+    setShowChat(prev => !prev);
+  }
 
   const login = useCallback((uid, token, user, expirationDate) => {
     setUserId(uid);
@@ -95,6 +103,10 @@ function App() {
 
       <Navbar />
       <section id='main-section'>
+
+        <button onClick={onShowChat}>Chat</button>
+        {showChat && <Chat user={user} onHide={onShowChat} />}
+
         <Switch>
           <Route path="/home" exact>
             <Home posts={posts} />
@@ -113,7 +125,7 @@ function App() {
           </Route>
 
           <Route path="/messenger" exact>
-            <Messenger/>
+            <Messenger user={user} />
           </Route>
 
           <Route path="/invite" exact>
