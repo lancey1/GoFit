@@ -9,7 +9,7 @@ function AppointmentItem(props) {
 
     const history = useHistory();
     const auth = useContext(AuthContext);
-    const { id, title, description, revieverAvatar, reviewRecieverId, address, recieverName, appointmentDate, location, pending, recieverAccepted, recieverRejected, creatorName, creatorAvatar, reviews } = props;
+    const { onRefresh, id, title, description, revieverAvatar, reviewRecieverId, address, recieverName, appointmentDate, location, pending, recieverAccepted, recieverRejected, creatorName, creatorAvatar, reviews, all } = props;
 
     let reviewers = [];
     let avgRating;
@@ -50,7 +50,7 @@ function AppointmentItem(props) {
 
             {showReview && (
                 <BackDrop onClear={hideShowReview}>
-                    <NewReview appointmentId={id} reviewRecieverId={reviewRecieverId} />
+                    <NewReview appointmentId={id} reviewRecieverId={reviewRecieverId} all onRefresh={onRefresh}/>
                 </BackDrop>
             )}
 

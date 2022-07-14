@@ -4,12 +4,12 @@ import ReviewForm from './ReviewForm'
 
 function NewReview(props) {
 
-    const { appointmentId, reviewRecieverId } = props;
+    const { appointmentId, reviewRecieverId,onRefresh } = props;
     console.log(reviewRecieverId)
 
     return (
         <section className={`${styles.container}`} onClick={event => event.stopPropagation()}>
-            <ReviewForm appointmentId={appointmentId} reviewRecieverId={reviewRecieverId} />
+            <ReviewForm appointmentId={appointmentId} reviewRecieverId={reviewRecieverId} all onRefresh={onRefresh}/>
         </section>
 
     )

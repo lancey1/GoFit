@@ -12,7 +12,7 @@ import { useHistory } from 'react-router-dom';
 // router.post('/', createReview);
 function ReviewForm(props) {
 
-    const { appointmentId, reviewRecieverId } = props;
+    const { appointmentId, reviewRecieverId, all, onRefresh } = props;
 
     console.log(reviewRecieverId);
     const auth = useContext(AuthContext);
@@ -34,7 +34,10 @@ function ReviewForm(props) {
     }
 
     const okHandler = () => {
-        return history.push(`/${auth.userId}/sent`);
+        console.log('ok')
+        setSuccess(false);
+        onRefresh();
+        // return history.replace(`/${auth.userId}/sent`);
     }
 
     const submitReviewHandler = async (event) => {
@@ -81,7 +84,7 @@ function ReviewForm(props) {
 
             {success && (
                 <BackDrop onClear={okHandler}>
-                    <Success text='Review Created' onOk={okHandler} nextAction='Ok' />
+                    <Success text='Review Created' onOk={okHandler} nextAction='Ok' info='Review is successfully created!'/>
                 </BackDrop>
             )}
 

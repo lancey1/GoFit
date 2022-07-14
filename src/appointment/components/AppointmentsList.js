@@ -8,6 +8,7 @@ function AppointmentsList(props) {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [appointments, setAppointments] = useState(null);
+    const [refresh, setRefresh] = useState(false);
 
     //* fetch all appointments by user id
     useEffect(() => {
@@ -26,7 +27,7 @@ function AppointmentsList(props) {
             }
             setIsLoading(false);
         })();
-    }, [])
+    }, [refresh])
 
     return (
         <div>
@@ -34,7 +35,7 @@ function AppointmentsList(props) {
             {(appointments && !isLoading) && appointments.map(ele => (
                 <AppointmentItem key={ele.id} id={ele.id} title={ele.title} description={ele.description}
                     address={ele.address} location={ele.location} reviewRecieverId={ele.creator.id} revieverAvatar={ele.reciever.image} recieverName={ele.reciever.name} creatorName={ele.creator.name} creatorAvatar={ele.creator.image}
-                    appointmentDate={ele.appointmentDate} pending={ele.pending} recieverAccepted={ele.recieverAccepted} recieverRejected={ele.recieverRejected} reviews={ele.reviews} />
+                    appointmentDate={ele.appointmentDate} pending={ele.pending} recieverAccepted={ele.recieverAccepted} recieverRejected={ele.recieverRejected} reviews={ele.reviews} all onRefresh={()=>setRefresh(true)}/>
             ))}
 
         </div>
