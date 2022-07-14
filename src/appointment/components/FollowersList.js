@@ -31,20 +31,25 @@ function FollowersList(props) {
     }, [])
 
     return (
-        <div className={`${styles.container}`} onClick={event => event.stopPropagation()}>
-            <div className={styles.followingContainer}>
-                <p className={styles.followings_p}>Followings</p>
-            </div>
+        <React.Fragment>
+
             {error && <ErrorModal error={error} onClear={() => { setError(null) }} />}
-            {followers && followers.map(ele => (
-                <ul key={ele.id} className={`${styles.ul}`}>
-                    <li className={styles.followerContainer} onClick={event => { event.stopPropagation(); onSelect(ele.id, ele.name) }}>
-                        <img className={`${styles.avatar}`} src={ele.image} alt="avatar" />
-                        <p className={styles.followerName} value={ele.id}>{ele.name}</p>
-                    </li>
+
+            <div className={`${styles.container}`} onClick={event => event.stopPropagation()}>
+
+                <div className={styles.title}>
+                    <p className={styles.followings_p}>Followings</p>
+                </div>
+                <ul className={`${styles.ul}`}>
+                    {followers && followers.map(ele => (
+                        <li key={ele.id} className={`${styles.li}`} onClick={event => { event.stopPropagation(); onSelect(ele.id, ele.name) }}>
+                            <img className={`${styles.avatar}`} src={ele.image} alt="avatar" />
+                            <p className={styles.followerName} value={ele.id}>{ele.name}</p>
+                        </li>
+                    ))}
                 </ul>
-            ))}
-        </div>
+            </div>
+        </React.Fragment>
     )
 }
 
