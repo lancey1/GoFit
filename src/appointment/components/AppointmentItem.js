@@ -11,8 +11,6 @@ function AppointmentItem(props) {
     const auth = useContext(AuthContext);
     const { id, title, description, revieverAvatar, reviewRecieverId, address, recieverName, appointmentDate, location, pending, recieverAccepted, recieverRejected, creatorName, creatorAvatar, reviews } = props;
 
-    console.log(reviewRecieverId);
-
     let reviewers = [];
     let avgRating;
     if (reviews && reviews.length > 0) {

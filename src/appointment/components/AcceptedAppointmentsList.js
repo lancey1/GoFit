@@ -5,7 +5,6 @@ import styles from './AcceptedAppointmentsList.module.css';
 function AcceptedAppointmentsList(props) {
 
     const { userId } = props;
-    console.log(userId);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [appointments, setAppointments] = useState(null);

@@ -6,7 +6,6 @@ import PostItem from "./PostItem";
 
 function PostList(props) {
 
-  console.log(props);
   const posts = props.posts;
 
   if (!props || props.posts.length === 0) {

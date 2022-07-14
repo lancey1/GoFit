@@ -20,8 +20,6 @@ const Profile = props => {
     const params = useParams();
     const { userId } = params;
 
-    console.log('===============', userId)
-
     const showEditPageHandler = () => {
         setShowEditPage(true);
         console.log('set')
@@ -32,9 +30,7 @@ const Profile = props => {
             try {
                 let response = await fetch(`http://localhost:5000/api/user/${userId}`);
                 let responseData = await response.json();
-                console.log(responseData)
                 if (!response.ok) {
-                    console.log(response);
                     throw new Error(responseData.message);
                 };
                 setUser(responseData.user);

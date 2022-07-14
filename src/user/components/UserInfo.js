@@ -88,7 +88,7 @@ const UserInfo = (props) => {
       )}
 
       {showFeedBack && (
-        <BackDrop>
+        <BackDrop onClear={onShowFeedbackHandler}>
           <ReviewCardsList
             userId={user.id}
             onChange={onShowFeedbackHandler}
