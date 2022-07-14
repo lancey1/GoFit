@@ -14,6 +14,7 @@
   overflow: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  position: relative;
 }
 
 .container::-webkit-scrollbar {
@@ -28,11 +29,13 @@
 }
 
 .ul {
+  margin-top: 2.8em;
+  position: absolute;
+  top: 0;
   padding-left: 0;
   width: 100%;
   list-style: none;
   text-align: center;
-  overflow-y: auto;
   max-height: 29.5rem;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -56,6 +59,8 @@
   align-items: center;
   justify-content: left;
   margin: .5rem 0;
+  padding-top: .3rem;
+  padding-bottom: .1rem;
   padding-left:1em;
   border-left: 2em;
 }
@@ -69,6 +74,9 @@ background-color: #D3D3D3;
 }
 
 .title {
+  position: absolute;
+  top: 0;
+  vertical-align: top;
   width: 100%;
   display: flex;
   justify-content: center;

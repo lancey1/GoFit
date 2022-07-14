@@ -1,15 +1,23 @@
 .picker {
   width: 100%;
+  text-align: center;
+
 }
 
 .button {
-  width: 100%;
+  width: 45%;
   height: 2rem;
   color:white;
   font-weight: bold;
-  border: 1px solid #42a5f5;
-  background-color: #42a5f5;
+  border: 1px solid #4267B2;
+  background-color: #4267B2;
   padding-left: 10px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: white;
+  color:#4267B2;
   border-radius: 5px;
 }
 
