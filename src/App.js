@@ -125,7 +125,7 @@ function App() {
           </Route>
 
           <Route path="/messenger" exact>
-            <Messenger user={user} />
+            <Messenger />
           </Route>
 
           <Route path="/invite" exact>

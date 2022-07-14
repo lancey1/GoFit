@@ -109,7 +109,7 @@ function InfoCard(props) {
             {success &&
                 (
                     <BackDrop onClear={() => { setSuccess(false) }}>
-                        <Success text='Appointment Created' onOk={okHandler} nextAction='Go to appointments' />
+                    <Success text='Invitation Requested' onOk={okHandler} nextAction='Go To Appointments' />
                     </BackDrop>
                 )
             }
