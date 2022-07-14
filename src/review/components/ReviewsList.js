@@ -11,7 +11,8 @@ function ReviewsList(props) {
     return (
 
         <div className={`${styles.container}`}>
-            <h1>{'Feedback'}</h1>
+            <h3>{"User's Feedback"}</h3>
+            <hr/>
             {reviews.map(ele => (
                 <ReviewItem key={ele.id} review={ele} />
             ))}
