@@ -31,7 +31,7 @@ function FollowersList(props) {
     }, [])
 
     return (
-        <div className={`${styles.container}`}>
+        <div className={`${styles.container}`} onClick={event=>event.stopPropagation()}>
             {error && <ErrorModal error={error} onClear={() => { setError(null) }} />}
             {followers && followers.map(ele => (
                 <ul key={ele.id} className={`${styles.ul}`}>
