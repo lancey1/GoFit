@@ -123,8 +123,9 @@ function Appointment(props) {
                             }
                         </div>
 
-                        <ReviewsList appointmentId={appointmentId} reviews={appointment.reviews} />
-
+                        {(appointment.reviews && appointment.reviews.length > 0) &&
+                            <ReviewsList reviews={appointment.reviews} />
+                        }
                     </div>
                 </article>
             }

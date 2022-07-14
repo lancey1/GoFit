@@ -27,10 +27,10 @@ const App = () => {
 
   const filters = { type: "messaging", members: { $in: [streamUser.id] } };
   const sort = { last_message_at: -1 };
-
+  const streamKey = process.env.REACT_APP_STREAM_KEY
   useEffect(() => {
     async function init() {
-      const newClient = StreamChat.getInstance(process.env.REACT_APP_STREAM_API_KEY);
+      const newClient = StreamChat.getInstance(streamKey);
       await newClient.connectUser(streamUser, newClient.devToken(streamUser.id));
 
       const channel = newClient.channel("messaging", "react-talk", {

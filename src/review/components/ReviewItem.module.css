@@ -1,9 +1,33 @@
-.card{
-    border: 1px solid black;
-    margin: 1rem 0;
+.card {
+  border: 1px solid black;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: row;
 }
 
-.avatar{
-    width: 3rem;
-    height: 3rem;
+.card p {
+  font-size: 20px;
+}
+
+.avatar {
+  width: 3rem;
+  height: 3rem;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+}
+
+.stars{
+    margin-inline-end: 1rem;
 }
