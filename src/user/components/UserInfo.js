@@ -9,6 +9,9 @@ import BackDrop from "../../shared/components/BackDrop";
 import { useHistory } from "react-router-dom";
 import ReviewCardsList from "./ReviewCardsList";
 import { AuthContext } from "../../context/AuthContext";
+import ChangeBackground from "./ChangeBackground";
+import ChangeImage from "./ChangeImage";
+import BackgroundForm from "./BackgroundForm";
 
 const UserInfo = (props) => {
 
@@ -16,16 +19,24 @@ const UserInfo = (props) => {
 
   const history = useHistory();
   const { user } = props;
+  const [error, setError] = useState(null);
   const [showFollower, setShowFollower] = useState(false);
   const [showFollowing, setShowFollowing] = useState(false);
   const [showNotificationDiv, setShowNotificationDiv] = useState(true);
   const [showUnreadComments, setShowUnreadComments] = useState(false);
   const [numOfFollows, setNumOfFollows] = useState(user.follows.length);
   const [numOfFollowers, setNumOfFollowers] = useState(user.followers.length);
-  const [error, setError] = useState(null);
+
+  const [showChangeImage, setShowChangeImage] = useState(false);
+  const [showChangeBackground, setShowChangeBackground] = useState(false);
 
   const [showFeedBack, setShowFeedback] = useState(false);
   const [reviews, setReviews] = useState();
+
+  // ! here here here here here here here here here here here here here here here here here here here here
+
+
+
   // get all feed backs and filter
   useEffect(() => {
     (async () => {
@@ -49,7 +60,6 @@ const UserInfo = (props) => {
     })();
   }, [])
 
-  // ! here here here here here here here here here here here here here here here here here here here here
   const onShowFeedbackHandler = () => {
     console.log('ok');
     setShowFeedback(prev => !prev);
@@ -104,6 +114,13 @@ const UserInfo = (props) => {
 
   return (
     <div onClick={removeList} className={`${styles.containerdiv}`}>
+
+      {showChangeBackground && (
+        <BackDrop onClear={() => { setShowChangeBackground(false) }}>
+          <BackgroundForm onHideForm={() => { setShowChangeBackground(false) }} />
+        </BackDrop>
+      )}
+
       {showUnreadComments && (
         <BackDrop>
           <UnreadComments
@@ -161,7 +178,6 @@ const UserInfo = (props) => {
               )}
 
             </div>
-            {/* HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE */}
 
             <div>
 
@@ -218,6 +234,10 @@ const UserInfo = (props) => {
                   <em>Likes</em> <b>{user.likes} </b>
                 </p>
               </div>
+              {/* HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE */}
+
+              <button onClick={() => { setShowChangeBackground(true) }}>Background</button>
+              <button onClick={() => { setShowChangeImage(true) }}>Avatar</button>
 
               {auth.userId === user.id && (
                 <div>

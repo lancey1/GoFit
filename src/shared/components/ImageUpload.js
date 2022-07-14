@@ -26,6 +26,7 @@ function ImageUpload(props) {
             fileIsValid = true;
         } else {
             setIsValid(false);
+            setPreviewUrl(null);
             fileIsValid = false;
         };
         props.onInput(event, pickedFile, isValid, 'pick image on change');
@@ -42,7 +43,7 @@ function ImageUpload(props) {
     return (
         <div className={`${styles.picker}`}>
 
-            {!isValid && <ErrorModal error={'Please pick a valid file.'} />}
+            {!isValid && <ErrorModal error={'Please pick a valid file.'} onClear={() => { setIsValid(true); setPreviewUrl(null); }} />}
 
             <input ref={imagePickerRef} type='file' id={props.id} style={{ display: 'none' }} accept=".jpg, .png, .jpeg" onChange={pickerHandler} />
 

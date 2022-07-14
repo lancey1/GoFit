@@ -6,6 +6,8 @@ import ErrorModal from "../../shared/components/ErrorModal";
 import { AuthContext } from "../../context/AuthContext";
 import styles from './Profile.module.css';
 import EditProfile from "../components/EditProfile";
+import ChangeBackground from "../components/ChangeBackground";
+import ChangeImage from "../components/ChangeImage";
 
 const Profile = props => {
 
