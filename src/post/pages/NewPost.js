@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import ImageUpload from "../../shared/components/ImageUpload";
 import ErrorModal from "../../shared/components/ErrorModal";
+import createpostImg from '../../images/createpost.png';
 
 function NewPost(props) {
   const auth = useContext(AuthContext);
@@ -96,24 +97,24 @@ function NewPost(props) {
 
       {error && <ErrorModal error={error} onClear={() => { setError(null) }} />}
       <div className={styles.newpost_top}>
-        <img className={styles.newpost_img} src="https://www.freeiconspng.com/thumbs/picker-icon/picker-icon-5.png" />
-        <h1 className={styles.newpost_text}>Create New Post</h1>
+        <img className={styles.newpost_img} src={createpostImg} alt=""/>
       </div>
-      <form className={`${styles.form}`} onSubmit={postSubmitHandler}>
+      <form className={`${styles.newpostForm}`} onSubmit={postSubmitHandler}>
 
         <ImageUpload onInput={imageOnInputHandler} text={'Select an image'} imageFor={'post'} />
-
-        <div>
-          <input type="text" className={`${styles.text_input}`} placeholder="Add a title" onChange={titleOnChangeHandler} value={title} />
-        </div>
-        <div>
-          <textarea type="text" className={`${styles.text_input}`} placeholder="Add text" onChange={descriptionOnChangeHandler} value={description} rows={4} />
-        </div>
-        <div>
-          <input type="text" className={`${styles.text_input}`} ref={tagsInputRef} placeholder="Tags (separate by coma)" onChange={tagsOnChangeHandler} value={tags.join(',')} />
-        </div>
-        <div>
-          <input type="text" className={`${styles.text_input}`} placeholder="Location" onChange={locationOnChangeHandler} value={location} />
+        <div className={styles.inputContainer}>
+          <div>
+            <input type="text" className={`${styles.text_input}`} placeholder="Title" onChange={titleOnChangeHandler} value={title} />
+          </div>
+          <div>
+            <textarea type="text" className={`${styles.text_input}`} placeholder="Post Description" onChange={descriptionOnChangeHandler} value={description} rows={4} />
+          </div>
+          <div>
+            <input type="text" className={`${styles.text_input}`} ref={tagsInputRef} placeholder="Tags (separate by coma)" onChange={tagsOnChangeHandler} value={tags.join(',')} />
+          </div>
+          <div>
+            <input type="text" className={`${styles.text_input}`} placeholder="Location" onChange={locationOnChangeHandler} value={location} />
+          </div>
         </div>
         <button className={`${styles.button}`}>Post</button>
       </form>
