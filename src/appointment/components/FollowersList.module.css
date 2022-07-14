@@ -1,23 +1,61 @@
 .container {
-    background-color:rgba(104, 104, 104, 0.567);
-    width: 50%;
-    height: 50%;
-    margin: 10% auto;
-    
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.5em;
+    border-radius: 8px;
+    width: 33%;
+    margin: 6.25rem auto;
+    height: 26%;
 }
 
 .avatar {
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .ul {
   list-style: none;
-  margin: 0;
+  text-align: center;
+  /* margin: 0; */
+  margin-right: 12rem;
+  margin-left: 12.4rem;
   padding: 0;
+  overflow-y: auto;
+  max-height: 16rem;
 }
 
-.ul li {
-  margin: 0;
-  padding: 0;
+.followerName {
+  margin-left: 0.75rem;
+  text-align: center;
+  font-weight: 800;
+}
+
+.followerContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.3rem;
+}
+
+.confirmBtn {
+  margin-top: 20px;
+}
+
+.followingContainer {
+  width: 100%;
+  text-align: center;
+  background-color: #f9627d;
+  padding: 0.1rem;
+  color: white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.followings_p {
+  color: white;
+  font-weight: bold;
 }

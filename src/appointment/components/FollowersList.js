@@ -31,17 +31,19 @@ function FollowersList(props) {
     }, [])
 
     return (
-        <div className={`${styles.container}`} onClick={event=>event.stopPropagation()}>
+        <div className={`${styles.container}`} onClick={event => event.stopPropagation()}>
+            <div className={styles.followingContainer}>
+                <p className={styles.followings_p}>Followings</p>
+            </div>
             {error && <ErrorModal error={error} onClear={() => { setError(null) }} />}
             {followers && followers.map(ele => (
                 <ul key={ele.id} className={`${styles.ul}`}>
-                    <li onClick={event => { event.stopPropagation(); onSelect(ele.id, ele.name) }}>
+                    <li className={styles.followerContainer} onClick={event => { event.stopPropagation(); onSelect(ele.id, ele.name) }}>
                         <img className={`${styles.avatar}`} src={ele.image} alt="avatar" />
-                        <p value={ele.id}>{ele.name}</p>
+                        <p className={styles.followerName} value={ele.id}>{ele.name}</p>
                     </li>
                 </ul>
             ))}
-            <button>Confirm</button>
         </div>
     )
 }

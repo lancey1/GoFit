@@ -48,6 +48,7 @@ function InfoCard(props) {
     const onSelectHandler = useCallback((userId, userName) => {
         setReceiver(userId);
         setReceiverName(userName);
+        setShowFollowers(false);
         console.log(userId, userName);
     }, [])
 
