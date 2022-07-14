@@ -177,7 +177,7 @@ function EditProfile(props) {
 
                 <div className={`${styles.input_label}`}>
                     <input className={`${styles.text_input}`} type='text' value={athleteTypes.join(',')} onChange={athleteTypesChangeHandler} ref={athleteTypesRef} />
-                    <label>AthleteTypes (separate by comma)</label>
+                    <label>Prefered Activity (separate by comma)</label>
                 </div>
 
                 <div className={`${styles.input_label}`}>

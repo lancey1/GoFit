@@ -23,7 +23,7 @@ function Success(props) {
                         <div className={styles.imageContainer}>
                             <img className={styles.successBtn} src="http://assets.stickpng.com/images/5aa78e207603fc558cffbf19.png" />
                         </div>
-                        <p>Your appointment is successfully requested!</p>
+                        <p><b>Appointment request has been sent.</b></p>
                     </div>
                 </div>
                 <div className={styles.footerContainer}>
