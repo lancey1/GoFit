@@ -138,7 +138,7 @@ const UserInfo = (props) => {
                 <span>id: {user.id}</span>
               </div>
 
-              {auth.user && (
+              {auth.userId === user.id && (
                 <div>
                   {user.unreadNotifications > 0 && showNotificationDiv && (
                     <div
@@ -219,7 +219,7 @@ const UserInfo = (props) => {
                 </p>
               </div>
 
-              {auth.user && (
+              {auth.userId === user.id && (
                 <div>
                   <button
                     className={`${styles.userinfo_btn}`}
