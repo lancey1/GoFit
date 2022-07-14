@@ -120,7 +120,7 @@ function InfoCard(props) {
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
             <img className={styles.inviteIcon} src="https://icon-library.com/images/invitation-icon/invitation-icon-13.jpg" />
             <h1 className={styles.inviteRequestText}>Send Invitation</h1>
-            <button className={styles.to} onClick={onHideHandler}>{receiverName ? `${receiverName}` : `Invite Friend`}</button>
+            <button className={styles.to} onClick={onHideHandler}>{receiverName ? `To: ${receiverName}` : `Invite Friend`}</button>
 
             {showFollowers && (
                 <BackDrop onClear={() => { setShowFollowers(false) }}>
