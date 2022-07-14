@@ -1,11 +1,12 @@
 .container {
   max-width: 19rem;
-  max-height: auto;
+  max-height: calc(100vh - 24rem);
   margin: auto;
-  margin-top: 18em;
+  margin-top: 12em;
   border-radius: 8%;
   background-color: #fdfffc;
-  padding-bottom: 1em;
+  padding: 1rem;
+  overflow: scroll;
 }
 
 .p {
