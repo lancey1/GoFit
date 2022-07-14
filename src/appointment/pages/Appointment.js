@@ -4,6 +4,7 @@ import { AuthContext } from '../../context/AuthContext';
 import ErrorModal from '../../shared/components/ErrorModal';
 import styles from './Appointment.module.css'
 import Map from '../../shared/UI/Map';
+import ReviewsList from '../../review/components/ReviewsList';
 
 function Appointment(props) {
     const { appointmentId } = useParams();
@@ -120,8 +121,10 @@ function Appointment(props) {
                                     <button onClick={acceptBtnHandler}>{`Accept`}</button>
                                 </div>
                             }
-
                         </div>
+
+                        <ReviewsList appointmentId={appointmentId} reviews={appointment.reviews} />
+
                     </div>
                 </article>
             }
@@ -130,6 +133,3 @@ function Appointment(props) {
 }
 
 export default Appointment
-
-// let response = await fetch(`http://localhost:5000/api/comments/unread/${userId}`, {
-//    

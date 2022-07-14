@@ -1,0 +1,9 @@
+.card{
+    border: 1px solid black;
+    margin: 1rem 0;
+}
+
+.avatar{
+    width: 3rem;
+    height: 3rem;
+}
