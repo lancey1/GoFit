@@ -9,7 +9,7 @@ function AcceptedAppointments(props) {
     
     return (
         <div className={`${styles.section}`}>
-            <h1>All</h1>
+            <h1>Invitations <i className={`${'fas fa-angle-right'} ${styles.right}`}></i> Accepted</h1>
             <AcceptedAppointmentsList userId={userId} />
         </div>
     )

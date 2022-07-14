@@ -9,7 +9,7 @@ function UserInvitations(props) {
 
     return (
         <div className={`${styles.section}`}>
-            <h1>All</h1>
+            <h1>Invitations <i className={`${'fas fa-angle-right'} ${styles.right}`}></i> Received</h1>
             <InvitationsList userId={userId} />
         </div>
     )
