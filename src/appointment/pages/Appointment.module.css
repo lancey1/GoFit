@@ -2,3 +2,10 @@
     border-radius: 1rem;
     overflow: hidden;
 }
+
+.avatar{
+    width: 8%;
+    height: 3.5em;
+    border-radius: 100%;
+    background-color: white;
+}

@@ -99,21 +99,23 @@ function Appointment(props) {
 
                     <div>
                         <div>
-                            <img className={`${styles.avatar}`} src={appointment.reciever.image} alt="avatar" />
                             <div>
+                            <img className={`${styles.avatar}`} src={appointment.reciever.image} alt="avatar" />
                                 <h3>{`Sender: ${appointment.creator.name}`}</h3>
-                                <h3>{`Reciever: ${appointment.reciever.name}`}</h3>
+                                {/* <h3>{`Reciever: ${appointment.reciever.name}`}</h3> */}
                             </div>
                         </div>
                         <div className={`${styles.info}`}>
                             <h3>{`Title: ${appointment.title}`}</h3>
-                            <p>{`Text: ${appointment.description}`}</p>
+                            <hr />
+                            <p>{`Message: ${appointment.description}`}</p>
+                            <p><b>{`Address: ${appointment.address}`}</b></p>
+
+                            <p><b>{new Date(appointment.appointmentDate).toLocaleString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</b></p>
                             <div className={`${styles.map}`}>
                                 <Map center={appointment.location} zoom={12} />
                             </div>
-                            <p>{`Address: ${appointment.address}`}</p>
 
-                            <p>{new Date(appointment.appointmentDate).toLocaleString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</p>
 
                             {(appointment.reciever.id === auth.userId && !appointment.recieverAccepted && !appointment.recieverRejected) &&
                                 <div>

@@ -119,7 +119,7 @@ function InfoCard(props) {
 
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
             <img className={styles.inviteIcon} src="https://icon-library.com/images/invitation-icon/invitation-icon-13.jpg" />
-            <h1 className={styles.inviteRequestText}>Invitation Request</h1>
+            <h1 className={styles.inviteRequestText}>Invite Sent</h1>
             <p className={styles.to} onClick={onHideHandler}>{receiverName ? `To: ${receiverName}` : `To: Recipients `}</p>
 
             {showFollowers && (

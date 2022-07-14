@@ -144,7 +144,7 @@ const UserInfo = (props) => {
             <p>{userAddress}</p>
 
             {gymMembership.length > 0 && <p>Gym Membership: {gymMembership}</p>}
-            {athleteTypes.length > 0 && <p>Athlete Types: {athleteTypes}</p>}
+            {athleteTypes.length > 0 && <p>Activities: {athleteTypes}</p>}
 
             <div className={`${styles.follow_edit}`}>
 
