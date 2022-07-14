@@ -12,8 +12,9 @@ import { useHistory } from 'react-router-dom';
 // router.post('/', createReview);
 function ReviewForm(props) {
 
-    const { appointmentId } = props;
+    const { appointmentId, reviewRecieverId } = props;
 
+    console.log(reviewRecieverId);
     const auth = useContext(AuthContext);
     const history = useHistory();
 
@@ -55,7 +56,8 @@ function ReviewForm(props) {
                     text: text.trim(),
                     creator: auth.userId,
                     rating: rating,
-                    appointment: appointmentId
+                    appointment: appointmentId,
+                    reciever: reviewRecieverId
                 })
             });
             let responseData = await response.json();

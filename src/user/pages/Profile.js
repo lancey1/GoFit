@@ -29,7 +29,6 @@ const Profile = props => {
 
     useEffect(() => {
         (async () => {
-
             try {
                 let response = await fetch(`http://localhost:5000/api/user/${userId}`);
                 let responseData = await response.json();

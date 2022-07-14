@@ -7,6 +7,7 @@ import Notification from "./Notification";
 import UnreadComments from "../../comment/components/UnreadComments";
 import BackDrop from "../../shared/components/BackDrop";
 import { useHistory } from "react-router-dom";
+import ReviewCardsList from "./ReviewCardsList";
 
 const UserInfo = (props) => {
 
@@ -18,6 +19,14 @@ const UserInfo = (props) => {
   const [showUnreadComments, setShowUnreadComments] = useState(false);
   const [numOfFollows, setNumOfFollows] = useState(user.follows.length);
   const [numOfFollowers, setNumOfFollowers] = useState(user.followers.length);
+
+  const [showFeedBack, setShowFeedback] = useState(false);
+
+  // ! here here here here here here here here here here here here here here here here here here here here
+  const onShowFeedbackHandler = () => {
+    console.log('ok');
+    setShowFeedback(prev => !prev);
+  }
 
   const onChangeNotificationHandler = () => {
     setShowNotificationDiv(false);
@@ -70,11 +79,19 @@ const UserInfo = (props) => {
     <div onClick={removeList} className={`${styles.containerdiv}`}>
       {showUnreadComments && (
         <BackDrop>
-          {" "}
           <UnreadComments
             userId={user.id}
             onChangeShowUnread={onShowUnreadHandler}
             onChange={onChangeNotificationHandler}
+          />
+        </BackDrop>
+      )}
+
+      {showFeedBack && (
+        <BackDrop>
+          <ReviewCardsList
+            userId={user.id}
+            onChange={onShowFeedbackHandler}
           />
         </BackDrop>
       )}
@@ -114,8 +131,11 @@ const UserInfo = (props) => {
               </div>
 
             </div>
-
-            <p>{user.bio}</p>
+            {/* HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE */}
+            <div>
+              <p>{user.bio}</p>
+              <button onClick={onShowFeedbackHandler}>Feedbacks</button>
+            </div>
 
             <hr></hr>
 
