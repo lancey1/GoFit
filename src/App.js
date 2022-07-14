@@ -9,6 +9,7 @@ import NewPost from './post/pages/NewPost';
 import CollectionPosts from './collection/pages/CollectionPosts';
 import NewCollection from './collection/pages/NewCollection';
 import Home from './shared/pages/Home';
+import Messenger from './shared/pages/Messenger';
 import { AuthContext } from './context/AuthContext';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import EditProfile from './user/components/EditProfile';
@@ -109,6 +110,10 @@ function App() {
 
           <Route path="/create" exact>
             <NewPost />
+          </Route>
+
+          <Route path="/messenger" exact>
+            <Messenger/>
           </Route>
 
           <Route path="/invite" exact>

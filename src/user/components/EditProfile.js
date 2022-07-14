@@ -21,6 +21,8 @@ function EditProfile(props) {
 
     const [error, setError] = useState(null);
 
+    console.log(auth)
+
     let gymMembershipPlaceHolder;
 
     if (gymMembership.length === 0) {
