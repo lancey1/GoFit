@@ -1,6 +1,10 @@
 .container{
-    background-color: aqua;
+    background-color: transparent;
     padding: 3rem;
     width: 50%;
-    margin: 0 auto;
+    margin: auto auto;
+    min-width: 30rem;
+    max-height: 69%;
+    margin-block-start: 10%;
+    overflow: auto;
 }

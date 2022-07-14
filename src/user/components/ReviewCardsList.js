@@ -49,4 +49,4 @@ function ReviewCardsList(props) {
     )
 }
 
-export default ReviewCardsList
+export default React.memo(ReviewCardsList);

@@ -15,8 +15,8 @@ function ReviewCard(props) {
                     <p>{text}</p>
                 </div>
                 <div className={`${styles.rating_date}`}>
-                    {stars[(rating - 1)]}
                     <p>{new Date(date).toLocaleString()}</p>
+                    {stars[(rating - 1)]}
                 </div>
             </div>
             <hr></hr>
@@ -24,4 +24,4 @@ function ReviewCard(props) {
     )
 }
 
-export default ReviewCard
+export default React.memo(ReviewCard);

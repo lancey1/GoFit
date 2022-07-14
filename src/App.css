@@ -68,3 +68,6 @@ input {
   cursor: pointer;
 }
 
+div{
+  overflow-wrap:break-word;
+}
