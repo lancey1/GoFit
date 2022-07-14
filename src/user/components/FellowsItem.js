@@ -26,7 +26,6 @@ function FellowsItem(props) {
         </div>
 
       </div>
-      <hr />
     </React.Fragment>
   );
 }

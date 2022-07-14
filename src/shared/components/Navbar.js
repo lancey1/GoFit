@@ -46,8 +46,6 @@ function Navbar() {
             </NavLink>
           </li>
         )}
-        {/* ---------------------- */}
-
         {auth.isLoggedIn && (
           <div className={`${styles.dropdown}`}>
             <button className={`${styles.dropbtn}`}>Invitation</button>
@@ -63,8 +61,6 @@ function Navbar() {
             </div>
           </div>
         )}
-        {/* ============= */}
-
         {!auth.isLoggedIn && (
           <li className={`${styles.li}`}>
             <NavLink
