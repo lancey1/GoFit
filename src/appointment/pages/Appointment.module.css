@@ -5,10 +5,10 @@
 }
 
 .avatar{
-  width: 8%;
-  height: 5em;
+  width: 4em;
+  height: 4em;
   background-color: white;
-  border-radius: 100%;
+  border-radius: 50%;
 }
 
 .article{

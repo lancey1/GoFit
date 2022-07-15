@@ -112,7 +112,7 @@ function Appointment(props) {
             <img
               onClick={viewProfile}
               className={`${styles.avatar}`}
-              src={appointment.reciever.image}
+              src={appointment.creator.image}
               alt="avatar"
             />
             {appointment.creator.name} invited you to {appointment.title}
