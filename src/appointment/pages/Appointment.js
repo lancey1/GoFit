@@ -108,7 +108,7 @@ function Appointment(props) {
       {error && <ErrorModal error={error} onClear={() => setError(null)} />}
       {appointment && !isLoading && (
         <article className={`${styles.article}`}>
-          <h1>
+          <h1 className={styles.appointmentName}>
             <img
               onClick={viewProfile}
               className={`${styles.avatar}`}
