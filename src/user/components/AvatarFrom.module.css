@@ -1,0 +1,8 @@
+.img {
+  background-color: aqua;
+  width: 80%;
+  height: 30rem;
+  margin: 0 auto;
+  margin-block-start: 10rem;
+  border-radius: 3px;
+}

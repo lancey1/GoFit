@@ -12,6 +12,7 @@ import { AuthContext } from "../../context/AuthContext";
 import ChangeBackground from "./ChangeBackground";
 import ChangeImage from "./ChangeImage";
 import BackgroundForm from "./BackgroundForm";
+import AvatarForm from "./AvatarFrom";
 
 const UserInfo = (props) => {
 
@@ -118,6 +119,12 @@ const UserInfo = (props) => {
       {showChangeBackground && (
         <BackDrop onClear={() => { setShowChangeBackground(false) }}>
           <BackgroundForm onHideForm={() => { setShowChangeBackground(false) }} />
+        </BackDrop>
+      )}
+
+      {showChangeImage && (
+        <BackDrop onClear={() => { setShowChangeImage(false) }}>
+          <AvatarForm onHideForm={() => { setShowChangeImage(false) }} />
         </BackDrop>
       )}
 
