@@ -149,9 +149,9 @@ function Appointment(props) {
               {appointment.reciever.id === auth.userId &&
                 !appointment.recieverAccepted &&
                 !appointment.recieverRejected && (
-                  <div>
-                    <button className= {`${styles.button} ${styles.accept}`} onClick={acceptBtnHandler}>{`Accept`}</button>
-                    <button className= {`${styles.button} ${styles.reject}`} onClick={rejectBtnHandler}>{`Reject`}</button>
+                  <div className={styles.acceptRejectBtn}>
+                    <button className= {`${styles.accept}`} onClick={acceptBtnHandler}>{`Accept`}</button>
+                    <button className= {`${styles.reject}`} onClick={rejectBtnHandler}>{`Reject`}</button>
                   </div>
                 )}
               <div className={`${styles.map}`}>

@@ -1,0 +1,41 @@
+.start-input {
+  margin-bottom: 20px;
+}
+
+.writereviewContainer {
+  width: 24rem;
+  height: 9.375rem;
+  margin-bottom: 3rem;
+  border: 1px solid #dbdbdb;
+  background-color: #f3f3f4;
+  padding-left: 10px;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1.2rem;
+}
+
+.reviewImg {
+  height: 8.75rem;
+  width: 8.75rem;
+}
+
+.rateText {
+  font-weight: 800;
+  font-size: large;
+  text-align: center;
+}
+
+.reviewImgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}

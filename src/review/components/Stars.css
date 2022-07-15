@@ -1,10 +1,12 @@
 .star-rating form {
   display: none;
+  margin: 1rem auto;
+  
 }
+
 .star-rating .thanks-msg {
   display: none;
-  font-size: 20px;
-  margin: 40px auto;
+  font-size: 20px;  
   color: #4caf50;
   background-color: rgba(76, 175, 80, 0.1411764705882353);
   padding: 8px 20px;
@@ -15,9 +17,10 @@
   display: none;
 }
 .star-rating {
-  margin: 50px auto;
+  margin: 1rem auto;
   display: table;
   width: 350px;
+  flex-grow: 1;
 }
 .star-rating label {
   padding: 10px;

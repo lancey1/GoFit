@@ -158,12 +158,12 @@ const UserInfo = (props) => {
               <img className={`${styles.avatar}`} src={user.image} alt="" />
 
               <div className={`${styles.name_id}`}>
-                <p>{user.name}</p>
+                <p className={styles.whiteback}>{user.name}</p>
                 <span>id: {user.id}</span>
               </div>
 
               {auth.userId === user.id && (
-                <div>
+                <div className={`${styles.notification_div}`}>
                   {user.unreadNotifications > 0 && showNotificationDiv && (
                     <div
                       className={`${styles.notification}`}
@@ -188,23 +188,23 @@ const UserInfo = (props) => {
 
             <div>
 
-              <p>{user.bio}</p>
+              <p className={styles.whiteback}>{user.bio}</p>
 
               {(reviews && reviews.length > 0) && (
-                <button className={`${styles.feedback_btn}`} onClick={onShowFeedbackHandler}>Feedbacks</button>
+                <button className={`${styles.feedback_btn} ${styles.whiteback}`} onClick={onShowFeedbackHandler}>Feedbacks</button>
               )}
 
               {(reviews && reviews.length === 0) && (
-                <p className={`${styles.nofeedback_p}`}>No feedbacks yet</p>
+                <p className={`${styles.nofeedback_p} ${styles.whiteback}`}>No feedbacks yet</p>
               )}
 
             </div>
 
             <hr></hr>
 
-            <p>Age {user.age}</p>
+            <p className={styles.whiteback}>Age {user.age}</p>
 
-            <p>{userAddress}</p>
+            <p className={styles.whiteback}>{userAddress}</p>
 
             {gymMembership.length > 0 && <p>Gym Membership: {gymMembership}</p>}
             {athleteTypes.length > 0 && <p>Activities: {athleteTypes}</p>}
@@ -213,7 +213,7 @@ const UserInfo = (props) => {
 
               <div className={`${styles.follow}`}>
 
-                <p onClick={showFollowingClick}>
+                <p onClick={showFollowingClick} className={styles.whiteback}>
                   Following <b>{numOfFollows}</b>
                 </p>
                 {showFollowing && (
@@ -225,7 +225,7 @@ const UserInfo = (props) => {
                     />
                   </DarkerBackDrop>
                 )}
-                <p onClick={showFollowerClick}>
+                <p onClick={showFollowerClick} className={styles.whiteback}>
                   Followers <b>{numOfFollowers}</b>
                 </p>
                 {showFollower && (
@@ -237,7 +237,7 @@ const UserInfo = (props) => {
                     />
                   </DarkerBackDrop>
                 )}
-                <p>
+                <p className={styles.whiteback}>
                   <em>Likes</em> <b>{user.likes} </b>
                 </p>
               </div>

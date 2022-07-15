@@ -11,7 +11,7 @@ function Notification(props) {
             <div className={`${styles.pending_user_count}`} >
                 <i >{text}</i>
             </div>
-            <p>{` ${title}`}</p>
+            <p className={styles.p}>{` ${title}`}</p>
         </React.Fragment>
     )
 }

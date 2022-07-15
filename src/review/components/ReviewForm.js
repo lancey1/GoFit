@@ -77,20 +77,21 @@ function ReviewForm(props) {
 
     return (
 
-        <section>
-
+        <section className={styles.section}>
 
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
 
             {success && (
                 <BackDrop onClear={okHandler}>
-                    <Success text='Review Created' onOk={okHandler} nextAction='Ok' info='Review is successfully created!'/>
+                    <Success text='Review Created' onOk={okHandler} nextAction='Ok' info='Review is successfully created!' />
                 </BackDrop>
             )}
 
-            <textarea placeholder='Write review...' value={text} onChange={textChangeHandler} />
-
             <div className="star-rating">
+                <h1 className={styles.rateText}>Rate Your Appointment</h1>
+                <div className={styles.reviewImgContainer}>
+                    <img className={styles.reviewImg} src="https://cdn.iconscout.com/icon/free/png-256/employee-review-1956269-1650432.png" />
+                </div>
                 <div className="thanks-msg">Thanks for your feedback !!!</div>
                 <div className="star-input">
                     <input type="radio" name="rating" id="rating-5" />
@@ -108,8 +109,11 @@ function ReviewForm(props) {
                         <button type="submit" className="submit-rating">Submit</button>
                     </form>
                 </div>
-            </div>
 
+            </div>
+            <div>
+                <textarea className={styles.writereviewContainer} placeholder='Write your review...' value={text} onChange={textChangeHandler} />
+            </div>
         </section>
     )
 }
