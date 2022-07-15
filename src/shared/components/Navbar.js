@@ -3,6 +3,8 @@ import { NavLink, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import styles from "./Navbar.module.css";
 
+import teamfitLogo from '../../images/teamfit_logo.png';
+
 function Navbar() {
   //* logo(home), add, search bar, following, explore, profile
   const history = useHistory();
@@ -17,6 +19,7 @@ function Navbar() {
             to="/home"
             exact
           >
+          {/* <img className={styles.teamfitLogo} src={teamfitLogo} alt="" /> */}
             Home
           </NavLink>
         </li>
