@@ -118,7 +118,7 @@ function InfoCard(props) {
             {/* <Success text='Appointment Created' onOk={okHandler} onClear={() => { setSuccess(false) }} onClick={event => event.stopPropagation()} nextAction='Go to profile'/> */}
 
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
-            <img className={styles.inviteIcon} src="https://icon-library.com/images/invitation-icon/invitation-icon-13.jpg" />
+            <img className={styles.inviteIcon} src="https://cdn-icons-png.flaticon.com/512/980/980240.png" />
             <h1 className={styles.inviteRequestText}>Send Invitation</h1>
             <button className={styles.to} onClick={onHideHandler}>{receiverName ? `To: ${receiverName}` : `Invite Friend`}</button>
 
