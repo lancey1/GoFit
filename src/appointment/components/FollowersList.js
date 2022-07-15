@@ -38,7 +38,7 @@ function FollowersList(props) {
             <div className={`${styles.container}`} onClick={event => event.stopPropagation()}>
 
                 <div className={styles.title}>
-                    <p className={styles.followings_p}>Followings</p>
+                    <p className={styles.followings_p}>Invite Friend</p>
                 </div>
                 <ul className={`${styles.ul}`}>
                     {followers && followers.map(ele => (

@@ -1,0 +1,32 @@
+.start-input {
+  margin-bottom: 20px;
+}
+
+.writereviewContainer {
+  margin-top: 30px;
+  margin-left: 20px;
+  width: 18.25rem;
+  height: 9.375rem;
+  margin-bottom: 12px;
+  border: 1px solid #DBDBDB;
+  background-color: #f3f3f4;
+  padding-left: 10px;
+  border-radius: 5px;
+}
+
+.reviewImg {
+  height: 8.75rem;
+  width: 8.75rem;
+}
+
+.rateText {
+  font-weight: 800;
+  font-size: large;
+  text-align: center;
+}
+
+.reviewImgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

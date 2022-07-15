@@ -50,13 +50,13 @@ function Navbar() {
           <div className={`${styles.dropdown}`}>
             <button className={`${styles.dropbtn}`}>Invitation</button>
             <div className={`${styles.content}`}>
-              <p onClick={() => history.push(`/invite`)}>Send Invitation</p>
-              <p onClick={() => history.push(`/${auth.userId}/sent`)}>Sent </p>
+              <p onClick={() => history.push(`/invite`)}>Send Invites</p>
+              <p onClick={() => history.push(`/${auth.userId}/sent`)}>Sent Invites </p>
               <p onClick={() => history.push(`/${auth.userId}/invitations`)}>
-                Received
+                Received Invites
               </p>
               <p onClick={() => history.push(`/${auth.userId}/accepted`)}>
-                Accepted
+                Accepted Invites
               </p>
             </div>
           </div>

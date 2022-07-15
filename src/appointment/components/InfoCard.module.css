@@ -57,11 +57,23 @@
 }
 
 .to {
-  width: 69%;
-  text-align: start;
-  font-size: 1.2rem;
-  margin: 0.9rem 0;
+  width: 7rem;
+  height: 2.25rem;
+  margin-top: 5px;
+  font-weight: bold;
+  border: 1px solid #4267B2;
+  border-radius: 5px;
+  background-color: white;
+  color: #4267B2;
 }
+
+.to:hover {
+  border: 1px solid #4267B2;
+  border-radius: 5px;
+  background-color: #4267B2;
+  color: white;
+}
+
 
 .from {
   width: 69%;
