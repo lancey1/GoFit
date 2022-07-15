@@ -17,5 +17,6 @@
   width: 136px;
   border: 2.5px solid #DBDBDB;
   background-color: #f5f3f4;
-  padding: 1.5px;
+  padding: 0.1rem 1rem;
+  font-style: italic;
 }

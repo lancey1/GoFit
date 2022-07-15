@@ -36,9 +36,9 @@ const Content = (props) => {
         <div>
 
             <ul className={`${styles.ul}`}>
-                <li className={`${styles.li}`} onClick={myPostsClickHandler}>My Posts</li>
-                <li className={`${styles.li}`} onClick={myColsClickHandler}>Collections</li>
-                <li className={`${styles.li}`} onClick={myLikesClickHandler}>Likes</li>
+                <li className={`${styles.li} ${myPostsSelected && styles.active}`} onClick={myPostsClickHandler}>My Posts</li>
+                <li className={`${styles.li} ${myCollectionsSelected && styles.active}`} onClick={myColsClickHandler}>Collections</li>
+                <li className={`${styles.li} ${myLikesSelected && styles.active}`} onClick={myLikesClickHandler}>Likes</li>
             </ul>
 
             {myPostsSelected && <PostList posts={posts} />}
