@@ -243,18 +243,28 @@ const UserInfo = (props) => {
               </div>
               {/* HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE */}
 
-              <button onClick={() => { setShowChangeBackground(true) }}>Background</button>
-              <button onClick={() => { setShowChangeImage(true) }}>Avatar</button>
-
               {auth.userId === user.id && (
-                <div>
-                  <button
-                    className={`${styles.userinfo_btn}`}
-                    onClick={props.onShowEditPage}
-                  >
-                    Edit Profile
-                  </button>
-                </div>
+
+                <section className={`${styles.action_btns}`} >
+
+                  <div>
+                    <button className={`${styles.userimg_btn}`} onClick={() => { setShowChangeBackground(true) }}>Background</button>
+                  </div>
+
+                  <div>
+                    <button className={`${styles.userimg_btn}`} onClick={() => { setShowChangeImage(true) }}>Avatar</button>
+                  </div>
+
+                  <div>
+                    <button
+                      className={`${styles.userinfo_btn}`}
+                      onClick={props.onShowEditPage}
+                    >
+                      Edit Profile
+                    </button>
+                  </div>
+                </section>
+
               )}
 
 

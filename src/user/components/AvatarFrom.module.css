@@ -6,3 +6,10 @@
   margin-block-start: 10rem;
   border-radius: 3px;
 }
+
+.btn{
+    margin-block-start: 1rem;
+    width: 100%;
+    padding: 0.3rem;
+    font-size: 1.5rem;
+}
