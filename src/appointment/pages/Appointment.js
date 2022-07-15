@@ -129,9 +129,7 @@ function Appointment(props) {
               <p>
                 <b>{`Message: ${appointment.description}`}</b>
               </p>
-              <p>
-                <b>{`Address: ${appointment.address}`}</b>
-              </p>
+
               <p>
                 <b>
                   Date:{" "}
@@ -146,12 +144,15 @@ function Appointment(props) {
                   )}
                 </b>
               </p>
+              <p>
+                <b>{`Address: ${appointment.address}`}</b>
+              </p>
               {appointment.reciever.id === auth.userId &&
                 !appointment.recieverAccepted &&
                 !appointment.recieverRejected && (
                   <div className={styles.acceptRejectBtn}>
-                    <button className= {`${styles.accept}`} onClick={acceptBtnHandler}>{`Accept`}</button>
-                    <button className= {`${styles.reject}`} onClick={rejectBtnHandler}>{`Reject`}</button>
+                    <button className={`${styles.accept}`} onClick={acceptBtnHandler}>{`Accept`}</button>
+                    <button className={`${styles.reject}`} onClick={rejectBtnHandler}>{`Reject`}</button>
                   </div>
                 )}
               <div className={`${styles.map}`}>

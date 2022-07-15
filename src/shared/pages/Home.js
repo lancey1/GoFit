@@ -8,17 +8,34 @@ import ErrorModal from "../components/ErrorModal";
 
 function Home(props) {
 
-    const { posts } = props;
+    const { posts, onChangePosts, userId } = props;
 
     const [followingSelected, setFollowingSelected] = useState(false);
     const [exploreSelected, setExploreSelected] = useState(true);
     const [nearbySelected, setNearbySelected] = useState(false);
+    const [error, setError] = useState(null);
 
-    const clickFollowingHandler = () => {
+    const clickFollowingHandler = async () => {
         setFollowingSelected(true);
         setExploreSelected(false);
         setNearbySelected(false);
         console.log('Following');
+        try {
+            const response = await fetch(`http://localhost:5000/api/posts/followings/${userId}`)
+            const responseData = await response.json();
+            if (!response.ok) {
+                throw new Error(responseData.error);
+            }
+            let posts = [];
+            console.log(responseData)
+            for (let ele of responseData.user.follows) {
+                posts = posts.concat(ele.posts);
+            }
+            
+            onChangePosts(posts);
+        } catch (error) {
+            setError(error.message);
+        }
     };
 
     const clickExploreHandler = () => {
@@ -26,6 +43,21 @@ function Home(props) {
         setExploreSelected(true);
         setNearbySelected(false);
         console.log('Explore');
+        (async () => {
+            try {
+                // setIsLoading(true);
+                let response = await fetch('http://localhost:5000/api/posts');
+                let responseData = await response.json();
+                // setIsLoading(false);
+                if (!response.ok) {
+                    throw new Error(responseData.message);
+                };
+                onChangePosts(responseData.posts);
+            } catch (error) {
+                setError(error.message);
+            }
+            // setIsLoading(false);
+        })();
     };
 
     const clickNearbyHandler = () => {
@@ -38,14 +70,15 @@ function Home(props) {
     return (
 
         <MainPageContainer>
-
+            {error && <ErrorModal error={error} onClear={() => setError(null)} />}
             <ul className={`${styles.ul}`}>
-                <li className={`${styles.li}`} onClick={clickFollowingHandler}>Following</li>
-                <li className={`${styles.li}`} onClick={clickExploreHandler}>Explore</li>
-                <li className={`${styles.li}`} onClick={clickNearbyHandler}>NearBy</li>
+                <li className={`${styles.li} ${followingSelected && styles.active}`} onClick={clickFollowingHandler}>Following</li>
+                <li className={`${styles.li} ${exploreSelected && styles.active}`} onClick={clickExploreHandler}>Explore</li>
+                <li className={`${styles.li} ${nearbySelected && styles.active}`} onClick={clickNearbyHandler}>NearBy</li>
             </ul>
 
-            <PostList posts={posts} />
+            {posts && <PostList posts={posts} />}
+
 
         </MainPageContainer>
 

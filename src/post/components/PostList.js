@@ -8,6 +8,8 @@ function PostList(props) {
 
   const posts = props.posts;
 
+  console.log(posts);
+
   if (!props || props.posts.length === 0) {
     return (
       <div>
@@ -36,4 +38,4 @@ function PostList(props) {
     </PostsContainer>);
 }
 
-export default PostList;
+export default React.memo(PostList)

@@ -110,7 +110,7 @@ function App() {
 
         <Switch>
           <Route path="/home" exact>
-            <Home posts={posts} />
+            <Home posts={posts} onChangePosts={(posts) => { setPosts(posts) }} userId={userId} />
           </Route>
 
           <Route path="/login" exact>
