@@ -13,6 +13,7 @@
   height: auto;
   width: auto;
 }
+
 .image {
   max-width: 100%;
   max-height: 100%;
@@ -35,7 +36,8 @@
 
 .button {
   width: 17rem;
-  height: 2.25rem;
+  height: 2rem;
+  margin-top: 5px;
   font-weight: bold;
   border: 1px solid #f9627d;
   border-radius: 5px;
@@ -47,7 +49,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 26px;
 }
 
 .newpost_text {
@@ -63,7 +64,6 @@
 .newpost_img {
   width: 16.25rem;
   height: 15.75rem;
-  margin-left: 1.25rem;
 }
 
 .inputContainer {

@@ -127,23 +127,12 @@ function InfoCard(props) {
                     <FollowersList onSelect={onSelectHandler} onSubmit={onHideHandler} />
                 </BackDrop>
             )}
-
-            <p>
-                <input className={styles.inviteText} type={'text'} placeholder='Subject' onChange={titleInputHandler} />
-            </p>
-
-            <p>
-                <textarea className={styles.inviteText} placeholder='Request Message' onChange={descriptionInputHandler} />
-            </p>
-
-            <p>
-                <input className={styles.inviteText} type={'date'} onChange={pickDateHandler} />
-            </p>
-
-            <p>
-                <input className={styles.inviteText} type={'text'} placeholder='Meetup Location' onChange={addressInputHandler} />
-            </p>
-
+    
+            <input className={styles.inviteText} type={'text'} placeholder='Subject' onChange={titleInputHandler} />
+            <textarea className={styles.inviteText} placeholder='Request Message' onChange={descriptionInputHandler} />
+            <input className={styles.inviteText} type={'date'} onChange={pickDateHandler} />
+            <input className={styles.inviteText} type={'text'} placeholder='Meetup Location' onChange={addressInputHandler} />
+        
             {/* <p className={styles.from}>From: {user && `${user.name}`}</p> */}
 
             <button className={styles.inviteSend_btn} onClick={onSubmitHandler}>Send</button>

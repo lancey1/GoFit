@@ -5,6 +5,10 @@ html {
   color: rgb(60, 60, 60);
 }
 
+html, body, * {
+  box-sizing: border-box;
+}
+
 a {
   color: gray;
   text-decoration: none;
