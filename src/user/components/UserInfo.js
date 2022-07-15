@@ -238,7 +238,7 @@ const UserInfo = (props) => {
                   </DarkerBackDrop>
                 )}
                 <p className={styles.whiteback}>
-                  <em>Likes</em> <b>{user.likes} </b>
+                  <em>Likes </em><b>{user.likes} </b>
                 </p>
               </div>
               {/* HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE */}
