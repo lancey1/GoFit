@@ -70,13 +70,16 @@
 .star-rating form .submit-rating {
   border: none;
   outline: none;
-  background: #795548;
-  color: #ffc107;
-  font-size: 18px;
+  background: #4eb7ff;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
   border-radius: 4px;
   padding: 5px 15px;
+  margin-top: 3px;
   cursor: pointer;
   float: right;
+
 }
 form .submit-rating:hover {
   background-color: #333;
