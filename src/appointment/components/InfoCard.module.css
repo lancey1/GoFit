@@ -12,7 +12,7 @@
 .card textarea {
   font-family: inherit;
   margin-block-end: 0;
-  height: 3rem;
+  height: 7rem;
 }
 
 .card [type="date"] {
@@ -22,9 +22,8 @@
 .inviteSend_btn {
   width: 6rem;
   height: 2.25rem;
-  margin-top: 5px;
   font-weight: bold;
-  border: 1px solid #f9627d;
+  border: 3px solid #f9627d;
   border-radius: 5px;
   background-color: white;
   color: #f9627d;
@@ -59,9 +58,8 @@
 .to {
   width: 7rem;
   height: 2.25rem;
-  margin-top: 5px;
   font-weight: bold;
-  border: 1px solid #4267B2;
+  border: 3px solid #4267B2;
   border-radius: 5px;
   background-color: white;
   color: #4267B2;
