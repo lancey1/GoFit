@@ -29,6 +29,10 @@ p {
   margin-bottom: 12px;
 }
 
+textarea {
+  font-family: inherit;
+}
+
 #main-section {
   width: 80%;
   margin: 0 auto;

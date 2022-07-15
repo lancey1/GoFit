@@ -18,6 +18,11 @@
   max-height: 100%;
 }
 
+.imageUploadContainer {
+  width: 17rem;
+  margin: auto;
+}
+
 .text_input {
   width: 16.125rem;
   height: 2.25rem;
@@ -29,15 +34,13 @@
 }
 
 .button {
-  width: 5.625rem;
+  width: 17rem;
   height: 2.25rem;
-  margin-top: 5px;
   font-weight: bold;
   border: 1px solid #f9627d;
   border-radius: 5px;
   background-color: #f9627d;
   color: white;
-  margin-left: 21.5rem;
 }
 
 .newpost_top {

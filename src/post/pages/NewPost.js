@@ -100,8 +100,9 @@ function NewPost(props) {
         <img className={styles.newpost_img} src={createpostImg} alt=""/>
       </div>
       <form className={`${styles.newpostForm}`} onSubmit={postSubmitHandler}>
-
-        <ImageUpload onInput={imageOnInputHandler} text={'Select an image'} imageFor={'post'} />
+        <div className={styles.imageUploadContainer}>
+          <ImageUpload onInput={imageOnInputHandler} text={'Select an image'} imageFor={'post'} />
+        </div>
         <div className={styles.inputContainer}>
           <div>
             <input type="text" className={`${styles.text_input}`} placeholder="Title" onChange={titleOnChangeHandler} value={title} />
@@ -115,8 +116,8 @@ function NewPost(props) {
           <div>
             <input type="text" className={`${styles.text_input}`} placeholder="Location" onChange={locationOnChangeHandler} value={location} />
           </div>
-        </div>
         <button className={`${styles.button}`}>Post</button>
+        </div>
       </form>
     </section>
   );
