@@ -36,7 +36,6 @@ function AppointmentsList(props) {
                     address={ele.address} location={ele.location} reviewRecieverId={ele.creator.id} revieverAvatar={ele.reciever.image} recieverName={ele.reciever.name} creatorName={ele.creator.name} creatorAvatar={ele.creator.image}
                     appointmentDate={ele.appointmentDate} pending={ele.pending} recieverAccepted={ele.recieverAccepted} recieverRejected={ele.recieverRejected} reviews={ele.reviews} all onRefresh={()=>setRefresh(true)}/>
             ))}
-
         </div>
     )
 }
