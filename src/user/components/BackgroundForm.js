@@ -64,8 +64,10 @@ function BackgroundForm(props) {
     return (
         <React.Fragment>
             {error && <ErrorModal error={error} onClear={() => { setError(false) }} />}
-            <div className={`${styles.img}`} onClick={event=>event.stopPropagation()}>
-                <ImageUpload onInput={imageOnInputHandler} text={'Upload background image'} />
+            <div className={`${styles.img}`} onClick={event => event.stopPropagation()}>
+                <div className={styles.upload}>
+                    <ImageUpload onInput={imageOnInputHandler} text={'Upload profile image'} />
+                </div>
                 {image && <button onClick={submitHandler} className={`${styles.btn}`}>
                     Submit
                 </button>}
