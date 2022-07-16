@@ -3,6 +3,7 @@
 import React from "react";
 import PostsContainer from "../../shared/UI/PostsContainer";
 import PostItem from "./PostItem";
+import styles from './PostList.module.css';
 
 function PostList(props) {
 
@@ -10,7 +11,7 @@ function PostList(props) {
 
   if (!props || props.posts.length === 0) {
     return (
-      <div>
+      <div className={styles.p}>
         No posts yet.
       </div>)
   }
