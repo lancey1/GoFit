@@ -18,11 +18,11 @@
 }
 
 .li:hover {
-  background-color: rgb(255, 210, 127);
+  background-color: #eef0f2;
   border-radius: 3px;
 }
 
 .active {
-  background-color: rgb(255, 210, 127);
+  background-color: #eef0f2;
   border-radius: 3px;
 }

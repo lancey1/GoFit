@@ -190,7 +190,7 @@ const UserInfo = (props) => {
               <p className={styles.whiteback}>{user.bio}</p>
 
               {(reviews && reviews.length > 0) && (
-                <button className={`${styles.feedback_btn} ${styles.whiteback}`} onClick={onShowFeedbackHandler}>Feedbacks</button>
+                <button className={`${styles.feedback_btn} ${styles.whiteback}`} onClick={onShowFeedbackHandler}>My Feedbacks</button>
               )}
 
               {(reviews && reviews.length === 0) && (
