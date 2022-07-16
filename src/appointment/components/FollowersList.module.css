@@ -6,10 +6,10 @@
   justify-content: center;
   border: 0.5em;
   border-radius: 8px;
-  width: 22%;
+  width: 15%;
   height: 40%;
   margin: 0 auto;
-  margin-block-start: 20%;
+  margin-block-start: 16%;
   max-height: 50%;
   overflow: scroll;
   -ms-overflow-style: none; /* IE and Edge */
@@ -87,7 +87,9 @@ background-color: #D3D3D3;
 }
 
 .followings_p {
-  margin: 0;
+  display:flex;
+  justify-content: center;
+  align-items: center;
   color: white;
   font-weight: bold;
 }
