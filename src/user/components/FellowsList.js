@@ -35,10 +35,12 @@ function FellowList(props) {
 
   return (
     <div className={`${styles.container}`}>
+      <div className={styles.titleP}>
       <p className={`${styles.p}`}>
         {props.text}
-        <hr className={`${styles.hr}`} />
-      </p>
+        {/* <hr className={`${styles.hr}`} /> */}
+        </p>
+      </div>
       {followers}
     </div>
   );
