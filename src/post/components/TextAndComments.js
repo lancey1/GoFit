@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import CommentsList from '../../comment/components/CommentsList';
 import { AuthContext } from '../../context/AuthContext';
 import ErrorModal from '../../shared/components/ErrorModal';
@@ -9,6 +10,7 @@ import styles from './TextAndComments.module.css';
 function TextAndComments(props) {
 
     const auth = useContext(AuthContext);
+    const history = useHistory();
 
     const post = props.post;
     const [comments, setComments] = useState([]);
@@ -16,6 +18,10 @@ function TextAndComments(props) {
     const [error, setError] = useState(null);
     const [isLoading, setIsloading] = useState(false);
     const [fetchComments, setFetchComments] = useState(false);
+
+    const imgOnClickHandler = () => {
+        return history.push(`/user/${post.creator.id}`);
+    }
 
     const commentInputHandler = event => {
         setComment(event.target.value);
@@ -84,7 +90,7 @@ function TextAndComments(props) {
         <React.Fragment>
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
             <div className={`${styles.user_img_name_follow}`}>
-                <img className={`${styles.avatar}`} src={post.creator.image} alt="" />
+                <img className={`${styles.avatar}`} src={post.creator.image} alt="avatar" onClick={imgOnClickHandler}/>
                 <div className={`${styles.name_follow}`}>
                     <h3>{post.creator.name}</h3>
                     <FollowUserButton post={post} />
