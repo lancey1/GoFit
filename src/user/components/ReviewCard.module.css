@@ -1,21 +1,24 @@
 .card {
   display: flex;
   flex-direction: column;
-  background-color: rgb(255, 221, 118);
-  padding: 0.3rem;
+  background-color: white;
+  padding: 2rem;
   border-radius: 3px;
+  border: 1px solid grey;
 }
 
 .avatar {
   width: 3rem;
   height: 3rem;
+  border-radius: 50%;
 }
 
 .img_text {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
   margin-block-end: 1.5rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .img_text p {
