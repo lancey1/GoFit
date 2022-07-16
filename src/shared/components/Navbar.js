@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import styles from "./Navbar.module.css";
 
@@ -12,36 +12,28 @@ function Navbar() {
 
   return (
     <header className={styles.header}>
+
       <div className={`${styles.homediv}`}>
         <li className={`${styles.li}`}>
           <NavLink
-            activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`}
+            className={` ${styles.a}`}
+            activeClassName={`${styles.active} `}
             to="/home"
             exact
           >
-          {/* <img className={styles.teamfitLogo} src={teamfitLogo} alt="" /> */}
+            {/* <img className={styles.teamfitLogo} src={teamfitLogo} alt="" /> */}
             Home
           </NavLink>
         </li>
       </div>
 
       <div className={`${styles.navlinks}`}>
-        {auth.isLoggedIn && (
-          <li className={`${styles.li}`}>
-            <NavLink
-              activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`}
-              to={`/user/${auth.userId}`}
-              exact
-            >
-              Profile
-            </NavLink>
-          </li>
-        )}
 
         {auth.isLoggedIn && (
           <li className={`${styles.li}`}>
             <NavLink
-              activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`}
+              className={`  ${styles.a}`}
+              activeClassName={`${styles.active}`}
               to="/create"
               exact
             >
@@ -49,9 +41,13 @@ function Navbar() {
             </NavLink>
           </li>
         )}
+
         {auth.isLoggedIn && (
           <div className={`${styles.dropdown}`}>
-            <button className={`${styles.dropbtn}`}>Invitation</button>
+            <div className={`${styles.dropbtn}`}>
+              <p>Invitation</p>
+            </div>
+
             <div className={`${styles.content}`}>
               <p onClick={() => history.push(`/invite`)}>Send Invites</p>
               <p onClick={() => history.push(`/${auth.userId}/sent`)}>All Invites </p>
@@ -62,12 +58,14 @@ function Navbar() {
                 Accepted Invites
               </p>
             </div>
+
           </div>
         )}
         {!auth.isLoggedIn && (
           <li className={`${styles.li}`}>
             <NavLink
-              activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`}
+              className={`  ${styles.a}`}
+              activeClassName={`${styles.active} `}
               to="/signup"
               exact
             >
@@ -79,7 +77,8 @@ function Navbar() {
         {!auth.isLoggedIn && (
           <li className={`${styles.li}`}>
             <NavLink
-              activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`}
+              className={`  ${styles.a}`}
+              activeClassName={`${styles.active}`}
               to="/login"
               exact
             >
@@ -88,20 +87,21 @@ function Navbar() {
           </li>
         )}
 
-        {/* {auth.isLoggedIn &&
-                    <li className={`${styles.li}`}>
-                        <NavLink activeClassName={`${styles.active} ${styles.a} ${styles.navlinks}`} to='/messenger' exact>Messages</NavLink>
-                    </li>
-                } */}
+        {auth.isLoggedIn && (
+          <div >
+            <Link
+              className={` ${styles.a}`}
+              activeClassName={`${styles.active}`}
+              to={`/user/${auth.userId}`}
+              exact
+            >
+              <img className={styles.avatar} src={auth.user.image} alt="user" />
+            </Link>
+          </div>
+        )}
+
       </div>
 
-      {auth.isLoggedIn && (
-        <div className={`${styles.logoutdiv}`}>
-          <li className={`${styles.li}`}>
-            <button onClick={auth.logout}>Logout</button>
-          </li>
-        </div>
-      )}
     </header>
   );
 }

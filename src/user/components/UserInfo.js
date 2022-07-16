@@ -256,12 +256,17 @@ const UserInfo = (props) => {
 
                   <div>
                     <button
-                      className={`${styles.userinfo_btn}`}
+                      className={`${styles.userimg_btn}`}
                       onClick={props.onShowEditPage}
                     >
                       Edit Profile
                     </button>
                   </div>
+
+                  <div>
+                    <button className={`${styles.userlogout_btn}`} onClick={auth.logout}>Logout</button>
+                  </div>
+
                 </section>
 
               )}

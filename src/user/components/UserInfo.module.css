@@ -1,5 +1,6 @@
 .containerdiv {
   position: relative;
+  margin-block-start: 5rem;
 }
 
 .container {
@@ -74,10 +75,6 @@
   align-items: center;
   justify-content: end;
   padding: 0 0.3rem;
-  /* border-bottom-style: inset;
-  border-bottom-color: #f9627d;
-  border-bottom-width: 2px; */
-  /* margin-block-end: 0.5rem; */
   margin: 0.2rem 0;
 }
 
@@ -108,18 +105,18 @@
   color: white;
 }
 
-.userinfo_btn {
+.userlogout_btn {
   border: 1px solid #f9627d;
   background-color: white;
   color: #f9627d;
   font-size: 0.8rem;
   font-style: italic;
   cursor: pointer;
-  padding: 0.2rem 0.3rem;
+  padding: 0.2rem 0.6rem;
   margin: 0 0.1rem;
 }
 
-.userinfo_btn:hover {
+.userlogout_btn:hover {
   background-color: #f9627d;
   color: white;
 }

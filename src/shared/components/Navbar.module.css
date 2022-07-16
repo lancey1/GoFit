@@ -1,8 +1,9 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  background-color: rgb(241, 241, 241);
   height: 4rem;
+  display: flex;
+  padding: 0 9%;
+  justify-content: space-between;
+  background-color: rgb(255, 210, 127);
   align-items: center;
   position: fixed;
   width: 100%;
@@ -10,68 +11,87 @@
   z-index: 10;
 }
 
-.navlinks {
+.li {
+  font-size: 1.2rem;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: 0 1rem;
+}
+
+.navlinks {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  color: gray;
+  justify-content: end;
   align-items: center;
-  text-decoration: none;
 }
 
-.li {
-  margin: 1rem;
-  list-style: none;
+.a {
+  padding: 0 1rem;
+}
+
+a:hover {
+  background-color: rgba(255, 255, 255, 0.848);
+  text-decoration: none;
 }
 
 .active {
-  color: black;
-  text-decoration: none;
+  color: rgb(0, 0, 0);
 }
 
-
 .dropbtn {
-  color: gray;
-  padding: 16px;
-  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+  font-size: 1.2rem;
   border: none;
   cursor: pointer;
 }
 
+.dropbtn p {
+  margin: 0;
+  padding: 23px;
+  color: rgb(90, 90, 90);
+}
+
 .dropdown {
-  position: relative;
-  display: inline-block;
+  /* position: relative;
+  display: inline-block; */
 }
 
 .content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
+  background-color: rgb(255, 210, 127);
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
   z-index: 1;
 }
 
 .content p {
   cursor: pointer;
-  color: black;
+  color: rgb(60, 60, 60);
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-.content p:hover {background-color: #ddd;}
+.content p:hover {
+  background-color: white;
+}
 
-.dropdown:hover .content {display: block;}
+.dropdown:hover .content {
+  display: block;
+}
 
-.dropdown:hover .dropbtn {background-color: whitesmoke;}
-/* 
-.teamfitLogo {
-  height: 100px;
-  width: 100px;
-} */
+.dropdown:hover .dropbtn {
+  background-color: white;
+}
+
+.avatar {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
