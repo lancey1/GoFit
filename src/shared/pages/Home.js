@@ -11,7 +11,7 @@ import './SearchBar.css';
 function Home(props) {
 
     const { userId, userLocation, address, posts, tagInputHandler, tagInputSubmitHandler, clickFollowingHandler, clickExploreHandler,
-        clickNearbyHandler, followingSelected, exploreSelected, nearbySelected,tag } = props;
+        clickNearbyHandler, followingSelected, exploreSelected, nearbySelected, tag } = props;
 
     // const [followingSelected, setFollowingSelected] = useState(false);
     // const [exploreSelected, setExploreSelected] = useState(true);
@@ -162,7 +162,7 @@ function Home(props) {
             <ul className={`${styles.ul}`}>
                 {userId && <li className={`${styles.li} ${followingSelected && styles.active}`} onClick={clickFollowingHandler}>Following</li>}
                 <li className={`${styles.li} ${exploreSelected && styles.active}`} onClick={clickExploreHandler}>Explore</li>
-                <li className={`${styles.li} ${nearbySelected && styles.active}`} onClick={clickNearbyHandler}>NearBy</li>
+                {userId && <li className={`${styles.li} ${nearbySelected && styles.active}`} onClick={clickNearbyHandler}>NearBy</li>}
             </ul>
 
             {posts && <PostList posts={posts} />}
