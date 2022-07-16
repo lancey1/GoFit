@@ -20,6 +20,7 @@ import UserInvitations from './appointment/pages/UserInvitations';
 import AcceptedAppointments from './appointment/pages/AcceptedAppointments';
 import Chat from './shared/UI/Chat';
 import send from '../src/images/send64.png'
+import haversine_distance from './util/Haversine_distance'
 
 let logoutTimer;
 
@@ -35,6 +36,97 @@ function App() {
   // const [posts, setPosts] = useState([]);
 
   const [showChat, setShowChat] = useState(false);
+
+  const [posts, setPosts] = useState(null);
+  const [followingSelected, setFollowingSelected] = useState(false);
+  const [exploreSelected, setExploreSelected] = useState(true);
+  const [nearbySelected, setNearbySelected] = useState(false);
+
+  const [tag, setTag] = useState('');
+
+  const tagInputHandler = event => {
+    setTag((event.target.value).toUpperCase());
+  };
+
+  const tagInputSubmitHandler = async event => {
+    event.preventDefault();
+    if (!tag || tag.trim().length === 0) return
+
+    try {
+      const response = await fetch(`http://localhost:5000/api/posts/tags/${tag.trim()}`);
+      const responseData = await response.json();
+      if (!response.ok) {
+        throw new Error(responseData.error);
+      };
+      setPosts(responseData.posts);
+    } catch (error) {
+      setError(error.message);
+    }
+  }
+
+  const clickFollowingHandler = async () => {
+    setFollowingSelected(true);
+    setExploreSelected(false);
+    setNearbySelected(false);
+    console.log('Following');
+    try {
+      const response = await fetch(`http://localhost:5000/api/posts/followings/${userId}`)
+      const responseData = await response.json();
+      if (!response.ok) {
+        throw new Error(responseData.error);
+      }
+      let posts = [];
+      for (let ele of responseData.user.follows) {
+        posts = posts.concat(ele.posts);
+      }
+      setPosts(posts);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const clickExploreHandler = () => {
+    setFollowingSelected(false);
+    setExploreSelected(true);
+    setNearbySelected(false);
+    console.log('Explore');
+    (async () => {
+      try {
+        // setIsLoading(true);
+        let response = await fetch('http://localhost:5000/api/posts');
+        let responseData = await response.json();
+        // setIsLoading(false);
+        if (!response.ok) {
+          throw new Error(responseData.message);
+        };
+        setPosts(responseData.posts);
+      } catch (error) {
+        setError(error.message);
+      }
+      // setIsLoading(false);
+    })();
+  };
+
+  const clickNearbyHandler = async () => {
+    setFollowingSelected(false);
+    setExploreSelected(false);
+    setNearbySelected(true);
+    console.log('Nearby');
+    try {
+      // setIsLoading(true);
+      let response = await fetch('http://localhost:5000/api/posts');
+      let responseData = await response.json();
+      // setIsLoading(false);
+      if (!response.ok) {
+        throw new Error(responseData.message);
+      };
+      let nearbyPosts = [];
+      nearbyPosts = responseData.posts.map(ele => ({ ...ele, distance: haversine_distance(user.location, ele.location) })).filter(ele => (ele.distance < 50));
+      setPosts(nearbyPosts);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   const onShowChat = (event) => {
     event.stopPropagation();
@@ -78,23 +170,23 @@ function App() {
     };
   }, [login]);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       setIsLoading(true);
-  //       let response = await fetch('http://localhost:5000/api/posts');
-  //       let responseData = await response.json();
-  //       setIsLoading(false);
-  //       if (!response.ok) {
-  //         throw new Error(responseData.message);
-  //       };
-  //       setPosts(responseData.posts);
-  //     } catch (error) {
-  //       setError(error.message);
-  //     }
-  //     setIsLoading(false);
-  //   })();
-  // }, [])
+  useEffect(() => {
+    (async () => {
+      try {
+        setIsLoading(true);
+        let response = await fetch('http://localhost:5000/api/posts');
+        let responseData = await response.json();
+        setIsLoading(false);
+        if (!response.ok) {
+          throw new Error(responseData.message);
+        };
+        setPosts(responseData.posts);
+      } catch (error) {
+        setError(error.message);
+      }
+      setIsLoading(false);
+    })();
+  }, [])
 
   return (
     <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, userId: userId, token: token, user: user, login: login, logout: logout }}>
@@ -110,7 +202,12 @@ function App() {
 
         <Switch>
           <Route path="/home" exact>
-            <Home userId={userId} userLocation={user && user.location} address={user && user.address}/>
+            <Home userId={userId} userLocation={user && user.location} address={user && user.address} posts={useMemo(() => posts, [posts])}
+              tagInputHandler={tagInputHandler} tagInputSubmitHandler={tagInputSubmitHandler} clickFollowingHandler={clickFollowingHandler}
+              clickExploreHandler={clickExploreHandler} clickNearbyHandler={clickNearbyHandler}
+              followingSelected={followingSelected} exploreSelected={exploreSelected} nearbySelected={nearbySelected} tag={tag}
+
+            />
           </Route>
 
           <Route path="/login" exact>
