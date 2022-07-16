@@ -28,6 +28,7 @@
 
 .follow p {
   margin-inline-end: 1rem;
+  cursor: pointer;
 }
 
 .avatar {
@@ -83,6 +84,7 @@
 .notification p {
   margin: 0.2rem 0;
   margin-inline-start: 0.2rem;
+  cursor: pointer;
 }
 
 .nofeedback_p {
