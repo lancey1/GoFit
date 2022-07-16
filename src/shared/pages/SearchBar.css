@@ -1,0 +1,65 @@
+:root {
+  --bgColor: #ffffff;
+  --primaryColor: #2a3640;
+  --secondaryColor: #ffffff;
+  --txtColor: #2f3640;
+}
+
+.searchBox {
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  background: #2f3640;
+  /* height: 40px; */
+  border-radius: 40px;
+  padding: 3px;
+}
+
+.searchBox:hover {
+  box-shadow: 0px 0px 6px var(--primaryColor);
+}
+
+.searchBox:hover > .searchInput {
+  width: 16rem;
+  padding: 0 6px;
+}
+
+.searchBox:hover > .searchButton {
+  background: var(--secondaryColor);
+  color: var(--txtColor);
+}
+
+.searchButton {
+    color: var(--secondaryColor);
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primaryColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+
+.searchInput {
+    border:none;
+    background: none;
+    outline:none;
+    float:left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+}
+
+@media screen and (max-width: 620px) {
+    .searchBox:hover > .searchInput {
+        width: 150px;
+        padding: 0 6px;
+    }
+    }
+    

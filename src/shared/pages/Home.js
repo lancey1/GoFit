@@ -5,6 +5,7 @@ import PostList from '../../post/components/PostList';
 import styles from './Home.module.css';
 import MainPageContainer from "../UI/MainPageContainer";
 import ErrorModal from "../components/ErrorModal";
+import './SearchBar.css';
 
 function Home(props) {
 
@@ -16,6 +17,29 @@ function Home(props) {
     const [nearbySelected, setNearbySelected] = useState(false);
     const [error, setError] = useState(null);
     const [posts, setPosts] = useState(null);
+
+    const [tag, setTag] = useState(null);
+
+    const tagInputHandler = event => {
+        setTag((event.target.value).toUpperCase());
+    };
+
+    const tagInputSubmitHandler = async event => {
+        event.preventDefault();
+        if (!tag || tag.trim().length === 0) return
+
+        try {
+            const response = await fetch(`http://localhost:5000/api/posts/tags/${tag.trim()}`);
+            const responseData = await response.json();
+            console.log(responseData);
+            if (!response.ok) {
+                throw new Error(responseData.error);
+            };
+            setPosts(responseData.posts);
+        } catch (error) {
+            setError(error.message);
+        }
+    }
 
     const clickFollowingHandler = async () => {
         setFollowingSelected(true);
@@ -33,7 +57,6 @@ function Home(props) {
             for (let ele of responseData.user.follows) {
                 posts = posts.concat(ele.posts);
             }
-
             setPosts(posts);
         } catch (error) {
             setError(error.message);
@@ -91,6 +114,16 @@ function Home(props) {
 
         <MainPageContainer>
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
+
+            <form class="searchBox" onSubmit={tagInputSubmitHandler}>
+                <input class="searchInput" type="text" name="" placeholder="Search" onChange={tagInputHandler} value={tag} />
+                <button class="searchButton" >
+                    <i class="material-icons">
+                        search
+                    </i>
+                </button>
+            </form>
+
             <ul className={`${styles.ul}`}>
                 {userId && <li className={`${styles.li} ${followingSelected && styles.active}`} onClick={clickFollowingHandler}>Following</li>}
                 <li className={`${styles.li} ${exploreSelected && styles.active}`} onClick={clickExploreHandler}>Explore</li>
@@ -98,7 +131,6 @@ function Home(props) {
             </ul>
 
             {posts && <PostList posts={posts} />}
-
 
         </MainPageContainer>
 
