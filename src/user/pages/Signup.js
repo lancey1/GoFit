@@ -89,7 +89,7 @@ function Signup() {
       }
       console.log(responseData);
       auth.login(responseData.user.id, responseData.token, responseData.user);
-      history.push(`/user/${responseData.user.id}`);
+      history.replace(`/user/${responseData.user.id}`);
 
     } catch (error) {
       console.log(error);

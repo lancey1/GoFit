@@ -53,7 +53,7 @@ function Login() {
         responseData.token,
         responseData.user
       );
-      history.push(`/user/${responseData.user.id}`);
+      history.replace(`/user/${responseData.user.id}`);
     } catch (error) {
       setError(error.message || "Unexpected error occured.");
     }
