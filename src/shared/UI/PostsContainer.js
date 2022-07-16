@@ -3,9 +3,9 @@ import styles from './PostsContainer.module.css';
 
 const PostsContainer = props => {
     return (
-        <ul className={`${styles.card} ${props.className} `}>
+        <div className={`${styles.card} ${props.className}`}>
             {props.children}
-        </ul>
+        </div>
     );
 };
 

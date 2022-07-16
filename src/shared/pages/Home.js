@@ -8,12 +8,14 @@ import ErrorModal from "../components/ErrorModal";
 
 function Home(props) {
 
-    const { posts, onChangePosts, userId } = props;
+    console.log('in home');
+    const { userId } = props;
 
     const [followingSelected, setFollowingSelected] = useState(false);
     const [exploreSelected, setExploreSelected] = useState(true);
     const [nearbySelected, setNearbySelected] = useState(false);
     const [error, setError] = useState(null);
+    const [posts, setPosts] = useState(null);
 
     const clickFollowingHandler = async () => {
         setFollowingSelected(true);
@@ -31,8 +33,8 @@ function Home(props) {
             for (let ele of responseData.user.follows) {
                 posts = posts.concat(ele.posts);
             }
-            
-            onChangePosts(posts);
+
+            setPosts(posts);
         } catch (error) {
             setError(error.message);
         }
@@ -52,7 +54,7 @@ function Home(props) {
                 if (!response.ok) {
                     throw new Error(responseData.message);
                 };
-                onChangePosts(responseData.posts);
+                setPosts(responseData.posts);
             } catch (error) {
                 setError(error.message);
             }
@@ -67,12 +69,30 @@ function Home(props) {
         console.log('Nearby');
     };
 
+    useEffect(() => {
+        (async () => {
+            try {
+                // setIsLoading(true);
+                let response = await fetch('http://localhost:5000/api/posts');
+                let responseData = await response.json();
+                // setIsLoading(false);
+                if (!response.ok) {
+                    throw new Error(responseData.message);
+                };
+                setPosts(responseData.posts);
+            } catch (error) {
+                setError(error.message);
+            }
+            // setIsLoading(false);
+        })();
+    }, [])
+
     return (
 
         <MainPageContainer>
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
             <ul className={`${styles.ul}`}>
-                <li className={`${styles.li} ${followingSelected && styles.active}`} onClick={clickFollowingHandler}>Following</li>
+                {userId && <li className={`${styles.li} ${followingSelected && styles.active}`} onClick={clickFollowingHandler}>Following</li>}
                 <li className={`${styles.li} ${exploreSelected && styles.active}`} onClick={clickExploreHandler}>Explore</li>
                 <li className={`${styles.li} ${nearbySelected && styles.active}`} onClick={clickNearbyHandler}>NearBy</li>
             </ul>
@@ -85,4 +105,4 @@ function Home(props) {
     )
 };
 
-export default Home;
+export default React.memo(Home);

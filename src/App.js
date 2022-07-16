@@ -32,7 +32,7 @@ function App() {
   const [tokenExpirationDate, setTokenExpirationDate] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
 
   const [showChat, setShowChat] = useState(false);
 
@@ -78,23 +78,23 @@ function App() {
     };
   }, [login]);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        setIsLoading(true);
-        let response = await fetch('http://localhost:5000/api/posts');
-        let responseData = await response.json();
-        setIsLoading(false);
-        if (!response.ok) {
-          throw new Error(responseData.message);
-        };
-        setPosts(responseData.posts);
-      } catch (error) {
-        setError(error.message);
-      }
-      setIsLoading(false);
-    })();
-  }, [])
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       setIsLoading(true);
+  //       let response = await fetch('http://localhost:5000/api/posts');
+  //       let responseData = await response.json();
+  //       setIsLoading(false);
+  //       if (!response.ok) {
+  //         throw new Error(responseData.message);
+  //       };
+  //       setPosts(responseData.posts);
+  //     } catch (error) {
+  //       setError(error.message);
+  //     }
+  //     setIsLoading(false);
+  //   })();
+  // }, [])
 
   return (
     <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, userId: userId, token: token, user: user, login: login, logout: logout }}>
@@ -110,7 +110,7 @@ function App() {
 
         <Switch>
           <Route path="/home" exact>
-            <Home posts={posts} onChangePosts={(posts) => { setPosts(posts) }} userId={userId} />
+            <Home userId={userId} />
           </Route>
 
           <Route path="/login" exact>
