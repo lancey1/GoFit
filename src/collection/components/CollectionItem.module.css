@@ -7,8 +7,15 @@
   color: black;
   margin: 22px 3px;
   font-size: 1.5rem;
-  border: 0 0 1px;
   border-radius: 5px;
   border-width: 2px;
   border-style: solid;
+}
+
+.col_container svg{
+  right: 12%;
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
 }

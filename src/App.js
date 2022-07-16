@@ -161,7 +161,7 @@ function App() {
             <NewCollection />
           </Route>
 
-          <Route path="/:userId/collections/:collectionId" exact>
+          <Route path="/:userId/collections/:title/:collectionId" exact>
             <CollectionPosts />
           </Route>
 

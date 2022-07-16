@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import PostList from '../../post/components/PostList';
 import ErrorModal from '../../shared/components/ErrorModal';
+import styles from './CollectionPosts.module.css';
 
 const CollectionPosts = (props) => {
 
     const params = useParams();
-    const { collectionId } = params;
+    const { title, collectionId } = params;
     const [posts, setPosts] = useState(null);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -39,8 +41,8 @@ const CollectionPosts = (props) => {
             {(posts && !isLoading) &&
                 <div>
                     {error && <ErrorModal error={error} onClear={() => setError(null)} />}
-                    CollectionPosts
-                    <p>{collectionId}</p>
+                    <p className={styles.title}>{title}</p>
+                    <PostList posts={posts} />
                 </div>
             }
         </React.Fragment>

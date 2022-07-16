@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import ErrorModal from '../../shared/components/ErrorModal';
 import CollectionSelection from './CollectionSelection';
@@ -8,8 +9,8 @@ function PostDetails(props) {
 
     const auth = useContext(AuthContext);
     const post = props.post;
+    const history = useHistory();
 
-    console.log(post);
     let likedAlready;
     if (auth && auth.isLoggedIn) {
         likedAlready = post.likedBy.includes(auth.userId);
@@ -125,6 +126,7 @@ function PostDetails(props) {
                 setCollected(true);
                 setCollections(prev => prev + 1);
                 setOpenSelection(false);
+                // history.go(0)
             } catch (error) {
                 console.log(error)
             };

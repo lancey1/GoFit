@@ -8,7 +8,7 @@ const CollectionItem = (props) => {
   const history = useHistory();
 
   const clickHandler = () => {
-    history.push(`/:userId/collections/${props.id}`);
+    history.push(`/:userId/collections/${props.title}/${props.id}`);
   };
 
   return (

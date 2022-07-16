@@ -1,0 +1,12 @@
+.title {
+  text-align: center;
+  font-size: 2rem;
+  padding: 1rem;
+  width: 80%;
+  clip-path: polygon(3% 0%, 100% 0%, 97% 100%, 0% 100%);
+  color: rgb(60,60,60);
+  background-color: rgb(255, 210, 127);
+  margin: 0 auto;
+  margin-top: 5.4rem;
+  border-radius: 6px;
+}
