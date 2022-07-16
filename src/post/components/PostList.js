@@ -27,6 +27,7 @@ function PostList(props) {
         postImage={elm.image}
         likes={elm.likes}
         likedBy={elm.likedBy}
+        distance={elm.distance && elm.distance}
       />
     );
   });

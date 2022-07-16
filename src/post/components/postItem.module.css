@@ -41,8 +41,12 @@
   padding-inline-end: 1rem;
 }
 
+.likes svg {
+  margin-inline-start: 0.6rem;
+}
+
 .likes p {
-  padding-inline-start: 0.5rem;
+  padding-inline-start: 0.3rem;
 }
 
 .clickable:hover {

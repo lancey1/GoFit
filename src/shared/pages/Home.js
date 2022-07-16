@@ -97,7 +97,7 @@ function Home(props) {
                 throw new Error(responseData.message);
             };
             let nearbyPosts = [];
-            nearbyPosts = responseData.posts.filter(ele => (haversine_distance(userLocation, ele.location) < 50))
+            nearbyPosts = responseData.posts.map(ele => ({ ...ele, distance: haversine_distance(userLocation, ele.location) })).filter(ele => (ele.distance < 50));
             setPosts(nearbyPosts);
         } catch (error) {
             setError(error.message);
