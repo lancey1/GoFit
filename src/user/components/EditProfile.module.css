@@ -1,10 +1,24 @@
 .container {
+  position: relative;
+  top: -2.4rem;
   width: 50%;
   margin: 0 auto;
   margin-top: 8rem;
 }
 
-.form{
+.svg{
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.svg svg{
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.form {
   width: 100%;
 }
 
@@ -19,7 +33,7 @@
 .text_input {
   font-size: 1.5rem;
   width: 100%;
-  
+
   outline: 0;
   border-width: 0 0 1px;
   border-color: rgb(30, 30, 30);
@@ -44,34 +58,39 @@
 
 .container_btn {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   margin-top: 20px;
-
 }
 
 .editsubmit_btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 90px;
-  height: 36px;
-  margin-right:10px;
+  padding: 0.6rem 1.2rem;
+  margin-right: 10px;
   font-weight: bold;
   border-radius: 5px;
   border: 1px solid #f9627d;
-  background-color: #f9627d;
-  color:white;
+  background-color:white;
+  color: #f9627d;
+  cursor: pointer;
 }
 
 .backtoprofile_btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 111px;
-  height: 36px;
+  padding: 0.3rem 1rem;
   font-weight: bold;
   border-radius: 5px;
   border: 1px solid #f9627d;
+  background-color: white;
+  color: #f9627d;
+  cursor: pointer;
+}
+
+.editsubmit_btn:hover{
   background-color: #f9627d;
-  color:white;
+  color: white;
+  box-shadow: 2px 2px 2px gray;
+}
+
+.backtoprofile_btn:hover{
+  background-color: #f9627d;
+  color: white;
+  box-shadow: 2px 2px 2px gray;
 }
