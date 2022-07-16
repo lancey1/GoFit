@@ -113,7 +113,7 @@ function NewPost(props) {
             <textarea type="text" className={`${styles.text_input}`} placeholder="Post Description" onChange={descriptionOnChangeHandler} value={description} rows={4} />
           </div>
           <div>
-            <input type="text" ref={tagsInputRef} placeholder="Tags (separate by coma)" onChange={tagsOnChangeHandler} value={tags.join(',')} />
+            <input type="text" ref={tagsInputRef} placeholder="Tags (please separate by comma)" onChange={tagsOnChangeHandler} value={tags.join(',')} />
           </div>
           <div>
             <input type="text" placeholder="Location" onChange={locationOnChangeHandler} value={location} />

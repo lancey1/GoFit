@@ -14,6 +14,7 @@
 .upload button{
   width: 80%;
   margin-block-start: 1rem;
+  cursor: pointer;
 }
 
 .inputContainer {
@@ -55,7 +56,7 @@
 .button {
   width: 100%;
   margin-top: 5px;
-  font-size: 2rem;
+  font-size: 1.3rem;
   font-weight: bold;
   border: 1px solid #f9627d;
   border-radius: 5px;
