@@ -6,7 +6,7 @@
   justify-content: center;
   border: 0.5em;
   border-radius: 8px;
-  width: 24%;
+  width: 22%;
   height: 40%;
   margin: 0 auto;
   margin-block-start: 20%;
@@ -47,6 +47,7 @@
 
 .followerName {
   margin: 0;
+  margin-right: 3rem;
   text-align: center;
   font-weight: 800;
   flex-grow: 0.5;
@@ -58,9 +59,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: left;
-  margin: .5rem 0;
+  margin: 1rem 0;
   padding-top: .3rem;
-  padding-bottom: .1rem;
+  padding-bottom: .3rem;
   padding-left:1em;
   border-left: 2em;
 }
