@@ -12,7 +12,6 @@ function ErrorModal(props) {
                 <div>
                     <button onClick={props.onClear}>Ok</button>
                 </div>
-
             </section>
         </BackDrop>
     )

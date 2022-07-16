@@ -1,40 +1,30 @@
 .card {
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
   border: 1px solid;
-  border-radius: 10px;
-  margin: 10px auto;
-  padding: 15px 10px 15px 50px;
+  border-radius: 3px;
+  margin: 1rem auto;
+  padding: 1rem 0.6rem 1rem 50px;
   background-repeat: no-repeat;
   background-position: 10px center;
-  max-width: 308px;
-  height: 13px;
-  color: #D8000C;
-  background-color: #FFBABA;
+  width: 36%;
+  height: 3rem;
+  color: #d8000c;
+  background-color: #ffbaba;
   background-image: url(https://i.imgur.com/GnyDvKN.png);
 }
 
 .card p {
   color: rgb(30, 30, 30);
-  flex-grow: 0.8;
-  padding: 1rem;
-  font-size: 1.2rem;
-  margin-top: 10px;
-  font-size: 15px;
+  font-size: 1rem;
   font-weight: bold;
 }
 
 .card div {
-    margin: 1rem;
+  margin: 1rem;
 }
 
 .card button {
-    padding: 0.4rem 2rem;
-    margin-top: 3px;
-    width: 14px;
-    height: 28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  padding: 0.3rem 2rem;
 }

@@ -130,9 +130,13 @@ function EditProfile(props) {
             if (!response.ok) {
                 throw new Error(responseData.message);
             };
-            console.log(responseData);
             props.onBackToProfile();
-
+            auth.logout()
+            auth.login(
+                responseData.user.id,
+                responseData.token,
+                responseData.user
+            );
         } catch (error) {
             console.log(error);
             setError(error.message || 'Unexpected error occured.');
@@ -185,9 +189,9 @@ function EditProfile(props) {
                     <label>Address</label>
                 </div>
                 <div className={`${styles.container_btn}`}>
-                <button className={`${styles.editsubmit_btn}`}>Submit</button>
+                    <button className={`${styles.editsubmit_btn}`}>Submit</button>
 
-                <button className={`${styles.backtoprofile_btn}`} onClick={props.onBackToProfile}>Back to Profile</button>
+                    <button className={`${styles.backtoprofile_btn}`} onClick={props.onBackToProfile}>Back to Profile</button>
                 </div>
             </form>
 

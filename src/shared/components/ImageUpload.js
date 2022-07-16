@@ -16,7 +16,11 @@ function ImageUpload(props) {
 
     const pickerHandler = event => {
         console.log(event.target.files);
+
+        if (event.target.files.length === 0) return;
+
         let pickedFile;
+
         let fileIsValid = isValid;
         if (event.target.files && event.target.files.length === 1) {
             pickedFile = event.target.files[0];

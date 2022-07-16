@@ -5,12 +5,12 @@ import PostList from '../../post/components/PostList';
 import styles from './Home.module.css';
 import MainPageContainer from "../UI/MainPageContainer";
 import ErrorModal from "../components/ErrorModal";
+import haversine_distance from "../../util/Haversine_distance";
 import './SearchBar.css';
 
 function Home(props) {
 
-    console.log('in home');
-    const { userId } = props;
+    const { userId, userLocation, address } = props;
 
     const [followingSelected, setFollowingSelected] = useState(false);
     const [exploreSelected, setExploreSelected] = useState(true);
@@ -18,7 +18,7 @@ function Home(props) {
     const [error, setError] = useState(null);
     const [posts, setPosts] = useState(null);
 
-    const [tag, setTag] = useState(null);
+    const [tag, setTag] = useState('');
 
     const tagInputHandler = event => {
         setTag((event.target.value).toUpperCase());
@@ -31,7 +31,6 @@ function Home(props) {
         try {
             const response = await fetch(`http://localhost:5000/api/posts/tags/${tag.trim()}`);
             const responseData = await response.json();
-            console.log(responseData);
             if (!response.ok) {
                 throw new Error(responseData.error);
             };
@@ -53,7 +52,6 @@ function Home(props) {
                 throw new Error(responseData.error);
             }
             let posts = [];
-            console.log(responseData)
             for (let ele of responseData.user.follows) {
                 posts = posts.concat(ele.posts);
             }
@@ -85,11 +83,25 @@ function Home(props) {
         })();
     };
 
-    const clickNearbyHandler = () => {
+    const clickNearbyHandler = async () => {
         setFollowingSelected(false);
         setExploreSelected(false);
         setNearbySelected(true);
         console.log('Nearby');
+        try {
+            // setIsLoading(true);
+            let response = await fetch('http://localhost:5000/api/posts');
+            let responseData = await response.json();
+            // setIsLoading(false);
+            if (!response.ok) {
+                throw new Error(responseData.message);
+            };
+            let nearbyPosts = [];
+            nearbyPosts = responseData.posts.filter(ele => (haversine_distance(userLocation, ele.location) < 50))
+            setPosts(nearbyPosts);
+        } catch (error) {
+            setError(error.message);
+        }
     };
 
     useEffect(() => {
@@ -115,10 +127,10 @@ function Home(props) {
         <MainPageContainer>
             {error && <ErrorModal error={error} onClear={() => setError(null)} />}
 
-            <form class="searchBox" onSubmit={tagInputSubmitHandler}>
-                <input class="searchInput" type="text" name="" placeholder="Search" onChange={tagInputHandler} value={tag} />
-                <button class="searchButton" >
-                    <i class="material-icons">
+            <form className="searchBox" onSubmit={tagInputSubmitHandler}>
+                <input className="searchInput" type="text" name="" placeholder="Search" onChange={tagInputHandler} value={tag} />
+                <button className="searchButton" >
+                    <i className="material-icons">
                         search
                     </i>
                 </button>

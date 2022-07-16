@@ -8,8 +8,6 @@ function PostList(props) {
 
   const posts = props.posts;
 
-  console.log(posts);
-
   if (!props || props.posts.length === 0) {
     return (
       <div>

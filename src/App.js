@@ -110,7 +110,7 @@ function App() {
 
         <Switch>
           <Route path="/home" exact>
-            <Home userId={userId} />
+            <Home userId={userId} userLocation={user && user.location} address={user && user.address}/>
           </Route>
 
           <Route path="/login" exact>

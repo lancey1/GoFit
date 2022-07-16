@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./NewPost.module.css";
 import { AuthContext } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
@@ -17,6 +17,7 @@ function NewPost(props) {
   const [tags, setTags] = useState([]);
   const [location, setLocation] = useState("");
 
+  const botRef = useRef(null);
   const tagsInputRef = useRef();
 
   const titleOnChangeHandler = (event) => {
@@ -44,7 +45,6 @@ function NewPost(props) {
   const imageOnInputHandler = (event, pickedFile, isValid) => {
     if (isValid) {
       setImage(pickedFile);
-      console.log(pickedFile);
     };
   }
 
@@ -65,8 +65,6 @@ function NewPost(props) {
       formData.append('image', image);
       formData.append('creator', auth.userId);
 
-      console.log(formData)
-
       setIsLoading(true);
       const response = await fetch('http://localhost:5000/api/posts/', {
         method: 'POST',
@@ -82,7 +80,6 @@ function NewPost(props) {
         throw new Error(responseData.message);
       }
 
-      console.log(responseData);
       history.push(`/user/${auth.userId}`);
 
     } catch (error) {
@@ -92,33 +89,42 @@ function NewPost(props) {
     setIsLoading(false);
   }
 
+  useEffect(() => {
+    botRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [image])
+
   return (
     <section className={`${styles.section}`}>
-
       {error && <ErrorModal error={error} onClear={() => { setError(null) }} />}
       <div className={styles.newpost_top}>
-        <img className={styles.newpost_img} src={createpostImg} alt=""/>
+        <img className={styles.newpost_img} src={createpostImg} alt="" />
       </div>
       <form className={`${styles.newpostForm}`} onSubmit={postSubmitHandler}>
-        <div className={styles.imageUploadContainer}>
+
+        <div className={styles.upload}>
           <ImageUpload onInput={imageOnInputHandler} text={'Select an image'} imageFor={'post'} />
         </div>
+
         <div className={styles.inputContainer}>
           <div>
-            <input type="text" className={`${styles.text_input}`} placeholder="Title" onChange={titleOnChangeHandler} value={title} />
+            <input type="text" placeholder="Title" onChange={titleOnChangeHandler} value={title} />
           </div>
           <div>
             <textarea type="text" className={`${styles.text_input}`} placeholder="Post Description" onChange={descriptionOnChangeHandler} value={description} rows={4} />
           </div>
           <div>
-            <input type="text" className={`${styles.text_input}`} ref={tagsInputRef} placeholder="Tags (separate by coma)" onChange={tagsOnChangeHandler} value={tags.join(',')} />
+            <input type="text" ref={tagsInputRef} placeholder="Tags (separate by coma)" onChange={tagsOnChangeHandler} value={tags.join(',')} />
           </div>
           <div>
-            <input type="text" className={`${styles.text_input}`} placeholder="Location" onChange={locationOnChangeHandler} value={location} />
+            <input type="text" placeholder="Location" onChange={locationOnChangeHandler} value={location} />
           </div>
-        <button className={`${styles.button}`}>Post</button>
+          <div>
+            <button className={`${styles.button}`}>Post</button>
+          </div>
+
         </div>
       </form>
+      <div ref={botRef} > </div>
     </section>
   );
 }

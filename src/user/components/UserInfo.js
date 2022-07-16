@@ -53,7 +53,6 @@ const UserInfo = (props) => {
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-        console.log(responseData)
         setReviews(responseData.reviews.filter(ele => ele.creator.id !== user.id));
       } catch (error) {
         setError(error.message);
