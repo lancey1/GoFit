@@ -10,7 +10,7 @@ function UserAppointments(props) {
 
     return (
         <div className={`${styles.section}`}>
-            <h1>Invitations <i className={`${'fas fa-angle-right'} ${styles.right}`}></i> Sent</h1>
+            <h1>Invitations <i className={`${'fas fa-angle-right'} ${styles.right}`}></i> All</h1>
             <AppointmentsList userId={userId} />
         </div>
     )
