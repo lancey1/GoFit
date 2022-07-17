@@ -12,6 +12,9 @@
 }
 
 .li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1.2rem;
   list-style: none;
   margin: 0 1rem;
@@ -26,7 +29,7 @@
 }
 
 .a {
-  padding: 21px;
+  padding: 1.331rem;
 }
 
 a:hover {
