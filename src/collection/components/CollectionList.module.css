@@ -1,21 +1,54 @@
 .colcreate_btn {
-  font-size: 1rem;
-  margin: 1.2rem 1rem;
+  margin-left: 14px;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #212529;
+  cursor: pointer;
+  border: 2px solid;
   border-radius: 5px;
-  padding: 0.6rem 1rem;
-  font-weight: bold;
-  border: 1px solid #6c757d;
-  background-color: #6c757d;
-  color:white;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.colcreate_btn:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+@media (min-width: 768px) {
+  .colcreate_btn {
+    padding: 0.6em 0.85em;
+  }
 }
 
 .colinput {
   font-size: 1rem;
   margin-left: 8px;
   border-radius: 5px;
-  width: 15rem;
+  width: 13rem;
   border: 2px solid #DBDBDB;
   background-color: #f5f3f4;
   padding: 0.6rem 1rem;
   font-style: italic;
+}
+
+.collectionIcon {
+  height: 2.813rem;
+  width: 2.813rem;
+  margin-right: 6px;
+}
+
+.collectionContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 3.25rem;
+  margin-bottom: 2.75rem;
 }
