@@ -12,21 +12,11 @@ function Navbar() {
 
   return (
     <header className={styles.header}>
-
       <div className={`${styles.homediv}`}>
         <li className={`${styles.li}`}>
-          <NavLink
-            className={` ${styles.a}`}
-            activeClassName={`${styles.active} `}
-            to="/home"
-            exact
-          >
-            {/* <img className={styles.teamfitLogo} src={teamfitLogo} alt="" /> */}
-            Home
-          </NavLink>
+            <img onClick= {()=>history.push('/home')}className={styles.homeLogo} src={teamfitLogo} alt="" />
         </li>
       </div>
-
       <div className={`${styles.navlinks}`}>
 
         {auth.isLoggedIn && (
@@ -87,21 +77,17 @@ function Navbar() {
           </li>
         )}
 
-        {auth.isLoggedIn && (
-          <div >
-            <Link
-              className={` ${styles.a}`}
-              activeClassName={`${styles.active}`}
-              to={`/user/${auth.userId}`}
-              exact
-            >
-              <img className={styles.avatar} src={auth.user.image} alt="user" />
-            </Link>
-          </div>
-        )}
-
+          {auth.isLoggedIn && (
+          <div className={`${styles.dropdown} ${styles.avatarlink}`}>
+            <div className={`${styles.dropbtn}`}>
+            <img className={styles.avatar} src={auth.user.image} alt="user" />
+            </div>
+            <div className={`${styles.content}`}>
+              <p onClick={() => history.push(`/user/${auth.userId}`)}>Profile</p>
+              <p onClick={auth.logout}> Logout </p>
+            </div>
+          </div>)}
       </div>
-
     </header>
   );
 }

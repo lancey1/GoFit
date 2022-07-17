@@ -263,9 +263,9 @@ const UserInfo = (props) => {
                     </button>
                   </div>
 
-                  <div>
+                  {/* <div>
                     <button className={`${styles.userlogout_btn}`} onClick={auth.logout}>Logout</button>
-                  </div>
+                  </div> */}
 
                 </section>
 
