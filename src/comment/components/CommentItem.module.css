@@ -99,7 +99,7 @@
 }
 
 .time_location_svg svg {
-  padding-inline-end: 1rem;
+  margin-inline-end: 1rem;
   cursor: pointer;
 }
 

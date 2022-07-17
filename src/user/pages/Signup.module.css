@@ -58,10 +58,12 @@
   color:white;
 }
 
-.teamfitLogo{
-  width: 100%;
-  margin-top: 20px;
-  padding: 10px 10px;
+.gofitLogo{
+  display: block;
+  width: 50%;
+  margin-top: 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .fitnessLogo {

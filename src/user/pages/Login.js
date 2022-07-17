@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import ErrorModal from "../../shared/components/ErrorModal";
 import styles from "./Login.module.css";
 
-import teamfitLogo from "../../images/teamfit_logo.png";
+import gofitLogo from '../../images/gofitlogo.png';
 import fitnessLogo from "../../images/loginlogo.png";
 
 function Login() {
@@ -78,7 +78,7 @@ function Login() {
         </div>
         <div className={styles.rightSection}>
           <div className={styles.imageContainer}>
-            <img className={styles.teamfitLogo} src={teamfitLogo} alt="" />
+            <img className={styles.gofitLogo} src={gofitLogo} alt="" />
           </div>
 
           <form className={styles.form} onSubmit={loginSubmitHandler}>

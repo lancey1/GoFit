@@ -21,7 +21,7 @@
 }
 
 .homeLogo{
-  height: 3em;
+  height: 3rem;
 }
 
 .homeLogo:hover{
@@ -61,6 +61,7 @@ background-color: rgb(255, 210, 127);
   border: none;
   cursor: pointer;
   margin-inline-end: 1rem;
+  height: 100%;
 }
 
 .dropbtn p {
@@ -84,9 +85,10 @@ background-color: rgb(255, 210, 127);
 }
 
 .content p {
+  margin: 0;
   cursor: pointer;
   color: rgb(60, 60, 60);
-  padding: 12px 16px;
+  padding: 1.125rem 1rem;
   text-decoration: none;
   display: block;
   text-align: center;
@@ -109,4 +111,7 @@ background-color: rgb(255, 210, 127);
   width: 2.8rem;
   height: 2.8rem;
   border-radius: 50%;
+}
+.avatarlink {
+  height: 100%;
 }

@@ -32,6 +32,12 @@
 .imageandname {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageandname p {
+  margin:0;
 }
 
 .likes {

@@ -5,7 +5,7 @@ import ErrorModal from "../../shared/components/ErrorModal";
 import ImageUpload from "../../shared/components/ImageUpload";
 import styles from './Signup.module.css';
 
-import teamfitLogo from '../../images/teamfit_logo.png';
+import gofitLogo from '../../images/gofitlogo.png';
 import fitnessLogo from '../../images/19980.png';
 
 function Signup() {
@@ -113,7 +113,7 @@ function Signup() {
         </div>
         <div className={styles.rightSection}>
           <div className={styles.imageContainer}>
-            <img className={styles.teamfitLogo} src={teamfitLogo} alt="" />
+            <img className={styles.gofitLogo} src={gofitLogo} alt="" />
           </div>
           <form className={styles.form} onSubmit={formSubmotHandler}>
             <div>

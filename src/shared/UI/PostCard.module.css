@@ -10,3 +10,7 @@
   list-style: none;
   box-shadow: 0.5rem 0.5rem 0.5rem 2px rgb(220 220 220);
 }
+
+.card:hover {
+  background-color: transparent;
+}

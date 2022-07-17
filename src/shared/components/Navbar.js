@@ -3,7 +3,7 @@ import { Link, NavLink, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import styles from "./Navbar.module.css";
 
-import teamfitLogo from '../../images/teamfit_logo.png';
+import gofitLogo from '../../images/gofitlogo.png';
 
 function Navbar() {
   //* logo(home), add, search bar, following, explore, profile
@@ -14,7 +14,7 @@ function Navbar() {
     <header className={styles.header}>
       <div className={`${styles.homediv}`}>
         <li className={`${styles.li}`}>
-            <img onClick= {()=>history.push('/home')}className={styles.homeLogo} src={teamfitLogo} alt="" />
+            <img onClick= {()=>history.push('/home')}className={styles.homeLogo} src={gofitLogo} alt="" />
         </li>
       </div>
       <div className={`${styles.navlinks}`}>
@@ -80,7 +80,7 @@ function Navbar() {
           {auth.isLoggedIn && (
           <div className={`${styles.dropdown} ${styles.avatarlink}`}>
             <div className={`${styles.dropbtn}`}>
-            <img className={styles.avatar} src={auth.user.image} alt="user" />
+              <img className={styles.avatar} src={auth.user.image} alt="user" />
             </div>
             <div className={`${styles.content}`}>
               <p onClick={() => history.push(`/user/${auth.userId}`)}>Profile</p>
