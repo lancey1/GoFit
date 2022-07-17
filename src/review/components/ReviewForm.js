@@ -37,7 +37,7 @@ function ReviewForm(props) {
         console.log('ok')
         setSuccess(false);
         onRefresh();
-        // return history.replace(`/${auth.userId}/sent`);
+        // return history.replace(`/${auth.userId}/all`);
     }
 
     const submitReviewHandler = async (event) => {

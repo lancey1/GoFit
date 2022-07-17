@@ -93,6 +93,10 @@ function NewPost(props) {
     botRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [image])
 
+  if (!auth.userId) {
+    return history.replace('/login');
+  }
+
   return (
     <section className={`${styles.section}`}>
       {error && <ErrorModal error={error} onClear={() => { setError(null) }} />}

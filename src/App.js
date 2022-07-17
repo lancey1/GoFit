@@ -234,7 +234,7 @@ function App() {
             <UserInvitations />
           </Route>
 
-          <Route path="/:userId/sent" exact>
+          <Route path="/:userId/all" exact>
             <UserAppointments />
           </Route>
 

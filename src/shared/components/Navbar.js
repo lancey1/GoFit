@@ -40,7 +40,7 @@ function Navbar() {
 
             <div className={`${styles.content}`}>
               <p onClick={() => history.push(`/invite`)}>Send Invites</p>
-              <p onClick={() => history.push(`/${auth.userId}/sent`)}>All Invites </p>
+              <p onClick={() => history.push(`/${auth.userId}/all`)}>All Invites </p>
               <p onClick={() => history.push(`/${auth.userId}/invitations`)}>
                 Received Invites
               </p>
