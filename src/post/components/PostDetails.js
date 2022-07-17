@@ -42,7 +42,7 @@ function PostDetails(props) {
 
         if (collected) {
             try {
-                let response = await fetch(`http://localhost:5000/api/collections/remove/${collectionId}/${post.id}`, {
+                let response = await fetch(process.env.REACT_APP_BACKEND + `/collections/remove/${collectionId}/${post.id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'Application/json',
@@ -69,7 +69,7 @@ function PostDetails(props) {
         }
         if (!liked) {
             try {
-                let response = await fetch(`http://localhost:5000/api/posts/fav/${auth.userId}/${post.id}`, {
+                let response = await fetch(process.env.REACT_APP_BACKEND + `/posts/fav/${auth.userId}/${post.id}`, {
                     method: 'PATCH',
                     headers: {
                         Authorization: 'Bearer ' + auth.token,
@@ -88,7 +88,7 @@ function PostDetails(props) {
         }
         if (liked) {
             try {
-                let response = await fetch(`http://localhost:5000/api/posts/unfav/${auth.userId}/${post.id}`, {
+                let response = await fetch(process.env.REACT_APP_BACKEND + `/posts/unfav/${auth.userId}/${post.id}`, {
                     method: 'PATCH',
                     headers: {
                         Authorization: 'Bearer ' + auth.token,
@@ -111,7 +111,7 @@ function PostDetails(props) {
         event.preventDefault();
         if (!collected) {
             try {
-                let response = await fetch(`http://localhost:5000/api/collections/add/${cId}/${post.id}`, {
+                let response = await fetch(process.env.REACT_APP_BACKEND + `/collections/add/${cId}/${post.id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'Application/json',
@@ -138,7 +138,7 @@ function PostDetails(props) {
         if (auth && auth.userId) {
             (async () => {
                 try {
-                    let response = await fetch(`http://localhost:5000/api/collections/postids/${auth.userId}`);
+                    let response = await fetch(process.env.REACT_APP_BACKEND + `/collections/postids/${auth.userId}`);
                     let responseData = await response.json();
                     console.log(responseData)
                     if (!response.ok) {

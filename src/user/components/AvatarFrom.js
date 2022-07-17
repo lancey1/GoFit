@@ -38,7 +38,7 @@ function AvatarForm(props) {
             console.log(formData);
             console.log(image);
             setIsLoading(true);
-            const response = await fetch(`http://localhost:5000/api/user/image/${auth.userId}`, {
+            const response = await fetch(process.env.REACT_APP_BACKEND + `/user/image/${auth.userId}`, {
                 method: 'PATCH',
                 headers: {
                     Authorization: 'Bearer ' + auth.token

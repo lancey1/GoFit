@@ -49,7 +49,7 @@ function ReviewForm(props) {
             setError('Please leave your rating.');
         };
         try {
-            let response = await fetch(`http://localhost:5000/api/reviews`, {
+            let response = await fetch(process.env.REACT_APP_BACKEND + `/reviews`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'Application/json',

@@ -24,7 +24,7 @@ function FollowButton(props) {
     if (!isFollowing) {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/user/follow/${user}`,
+          process.env.REACT_APP_BACKEND + `/user/follow/${user}`,
           {
             method: "POST",
             headers: {
@@ -50,7 +50,7 @@ function FollowButton(props) {
     if (isFollowing) {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/user/unfollow/${user}`,
+          process.env.REACT_APP_BACKEND + `/user/unfollow/${user}`,
           {
             method: "POST",
             headers: {

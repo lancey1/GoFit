@@ -36,7 +36,7 @@ function Post(props) {
     (async () => {
       try {
         setIsloading(true);
-        let response = await fetch(`http://localhost:5000/api/posts/${postId}`);
+        let response = await fetch(process.env.REACT_APP_BACKEND + `/posts/${postId}`);
         let responseData = await response.json();
         setIsloading(false);
         if (!response.ok) {

@@ -66,7 +66,7 @@ function NewPost(props) {
       formData.append('creator', auth.userId);
 
       setIsLoading(true);
-      const response = await fetch('http://localhost:5000/api/posts/', {
+      const response = await fetch(process.env.REACT_APP_BACKEND + '/posts/', {
         method: 'POST',
         body: formData,
         headers: {

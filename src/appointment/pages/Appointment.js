@@ -24,7 +24,7 @@ function Appointment(props) {
     try {
       setIsLoading(true);
       const response = await fetch(
-        `http://localhost:5000/api/appointments/accept`,
+        process.env.REACT_APP_BACKEND + `/appointments/accept`,
         {
           method: "POST",
           headers: {
@@ -52,7 +52,7 @@ function Appointment(props) {
     try {
       setIsLoading(true);
       const response = await fetch(
-        `http://localhost:5000/api/appointments/reject`,
+        process.env.REACT_APP_BACKEND + `/appointments/reject`,
         {
           method: "POST",
           headers: {
@@ -82,7 +82,7 @@ function Appointment(props) {
       try {
         setIsLoading(true);
         const response = await fetch(
-          `http://localhost:5000/api/appointments/appointment/${appointmentId}`,
+          process.env.REACT_APP_BACKEND + `/appointments/appointment/${appointmentId}`,
           {
             method: "GET",
             headers: {

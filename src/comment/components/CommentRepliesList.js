@@ -15,7 +15,7 @@ function CommentRepliesList(props) {
         (async () => {
             try {
                 setIsloading(true);
-                let response = await fetch(`http://localhost:5000/api/comments/reply/${commentId}`);
+                let response = await fetch(process.env.REACT_APP_BACKEND + `/comments/reply/${commentId}`);
                 let responseData = await response.json();
                 setIsloading(false);
                 if (!response.ok) {

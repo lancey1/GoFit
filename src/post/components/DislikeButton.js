@@ -14,7 +14,7 @@ function DislikeButton(props) {
     const dislikePostHandler = async (event) => {
         event.preventDefault();
         try {
-            let response = await fetch(`http://localhost:5000/api/posts/dislike/${post.id}`, {
+            let response = await fetch(process.env.REACT_APP_BACKEND + `/posts/dislike/${post.id}`, {
                 method: 'PATCH',
                 headers: {
                     Authorization: 'Bearer ' + auth.token,

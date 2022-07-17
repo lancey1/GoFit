@@ -25,7 +25,7 @@ const CollectionList = (props) => {
   const addCollectionHandler = async (event) => {
     event.preventDefault();
     try {
-      let response = await fetch(`http://localhost:5000/api/collections/`, {
+      let response = await fetch(process.env.REACT_APP_BACKEND + `/collections/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'Application/json',
@@ -53,7 +53,7 @@ const CollectionList = (props) => {
     event.stopPropagation();
     console.log(cId);
     try {
-      let response = await fetch(`http://localhost:5000/api/collections/${cId}`, {
+      let response = await fetch(process.env.REACT_APP_BACKEND + `/collections/${cId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'Application/json',
@@ -77,7 +77,7 @@ const CollectionList = (props) => {
       (async () => {
         try {
           setIsLoading(true);
-          let response = await fetch(`http://localhost:5000/api/collections/${userId}`);
+          let response = await fetch(process.env.REACT_APP_BACKEND + `/collections/${userId}`);
           let responseData = await response.json();
           setIsLoading(false);
           console.log(responseData)

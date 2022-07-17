@@ -16,7 +16,7 @@ const CollectionPosts = (props) => {
         (async () => {
             try {
                 setIsLoading(true);
-                let response = await fetch(`http://localhost:5000/api/collections/posts/${collectionId}`);
+                let response = await fetch(process.env.REACT_APP_BACKEND + `/collections/posts/${collectionId}`);
                 let responseData = await response.json();
                 setIsLoading(false);
                 console.log(responseData)

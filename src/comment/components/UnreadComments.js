@@ -21,7 +21,7 @@ function UnreadComments(props) {
     const onClear = async (event) => {
         event.stopPropagation();
         try {
-            let response = await fetch(`http://localhost:5000/api/comments/reset-unread-comments/${userId}`, {
+            let response = await fetch(process.env.REACT_APP_BACKEND + `/comments/reset-unread-comments/${userId}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'Application/json',
@@ -45,7 +45,7 @@ function UnreadComments(props) {
     useEffect(() => {
         (async () => {
             try {
-                let response = await fetch(`http://localhost:5000/api/comments/unread/${userId}`, {
+                let response = await fetch(process.env.REACT_APP_BACKEND + `/comments/unread/${userId}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'Application/json',

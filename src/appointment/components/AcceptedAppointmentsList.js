@@ -15,7 +15,7 @@ function AcceptedAppointmentsList(props) {
         (async () => {
             try {
                 setIsLoading(true);
-                const response = await fetch(`http://localhost:5000/api/appointments/${userId}`);
+                const response = await fetch(process.env.REACT_APP_BACKEND + `/appointments/${userId}`);
                 const responseData = await response.json();
                 if (!response.ok) {
                     throw new Error(responseData.message);

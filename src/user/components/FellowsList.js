@@ -10,7 +10,7 @@ function FellowList(props) {
     (async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/user/${props.url}/${userId}`
+          process.env.REACT_APP_BACKEND + `/user/${props.url}/${userId}`
         );
         const responseData = await response.json();
         setData(responseData[props.url]);

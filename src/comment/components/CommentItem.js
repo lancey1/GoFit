@@ -43,7 +43,7 @@ function CommentItem(props) {
         
         if (!liked) {
             try {
-                let response = await fetch(`http://localhost:5000/api/comments/like/${id}`, {
+                let response = await fetch(process.env.REACT_APP_BACKEND + `/comments/like/${id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'Application/json',
@@ -66,7 +66,7 @@ function CommentItem(props) {
             }
         } else {
             try {
-                let response = await fetch(`http://localhost:5000/api/comments/unlike/${id}`, {
+                let response = await fetch(process.env.REACT_APP_BACKEND + `/comments/unlike/${id}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'Application/json',
@@ -105,7 +105,7 @@ function CommentItem(props) {
 
         try {
             setIsloading(true);
-            let response = await fetch(`http://localhost:5000/api/comments/reply/${id}`, {
+            let response = await fetch(process.env.REACT_APP_BACKEND + `/comments/reply/${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'Application/json',

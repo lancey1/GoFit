@@ -39,7 +39,7 @@ function TextAndComments(props) {
 
         try {
             setIsloading(true);
-            let response = await fetch(`http://localhost:5000/api/comments/post/${post.id}`, {
+            let response = await fetch(process.env.REACT_APP_BACKEND + `/comments/post/${post.id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'Application/json',
@@ -69,7 +69,7 @@ function TextAndComments(props) {
         (async () => {
             try {
                 setIsloading(true);
-                let response = await fetch(`http://localhost:5000/api/comments/post/${post.id}`);
+                let response = await fetch(process.env.REACT_APP_BACKEND + `/comments/post/${post.id}`);
                 let responseData = await response.json();
                 setIsloading(false);
                 if (!response.ok) {

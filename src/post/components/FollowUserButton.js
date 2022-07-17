@@ -30,7 +30,7 @@ function FollowUserButton(props) {
 
         if (!isFollowing) {
             try {
-                let response = await fetch(`http://localhost:5000/api/user/follow/${creator.id}`, {
+                let response = await fetch(process.env.REACT_APP_BACKEND + `/user/follow/${creator.id}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'Application/json',
@@ -54,7 +54,7 @@ function FollowUserButton(props) {
         }
         if (isFollowing) {
             try {
-                let response = await fetch(`http://localhost:5000/api/user/unfollow/${creator.id}`, {
+                let response = await fetch(process.env.REACT_APP_BACKEND + `/user/unfollow/${creator.id}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'Application/json',

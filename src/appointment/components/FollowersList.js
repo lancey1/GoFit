@@ -16,7 +16,7 @@ function FollowersList(props) {
         if (!auth.userId) return
         (async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/user/followers/${auth.userId}`);
+                const response = await fetch(process.env.REACT_APP_BACKEND + `/user/followers/${auth.userId}`);
                 const responseData = await response.json();
                 if (!response.ok) {
                     throw new Error(responseData.message);

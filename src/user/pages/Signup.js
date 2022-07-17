@@ -78,7 +78,7 @@ function Signup() {
       formData.append('address', city);
       console.log(formData);
       setIsLoading(true);
-      const response = await fetch('http://localhost:5000/api/user/signup', {
+      const response = await fetch(process.env.REACT_APP_BACKEND + '/user/signup', {
         method: 'POST',
         body: formData
       });

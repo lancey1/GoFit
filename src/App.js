@@ -53,7 +53,7 @@ function App() {
     if (!tag || tag.trim().length === 0) return
 
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/tags/${tag.trim()}`);
+      const response = await fetch(process.env.REACT_APP_BACKEND + `/posts/tags/${tag.trim()}`);
       const responseData = await response.json();
       if (!response.ok) {
         throw new Error(responseData.error);
@@ -70,7 +70,7 @@ function App() {
     setNearbySelected(false);
     console.log('Following');
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/followings/${userId}`)
+      const response = await fetch(process.env.REACT_APP_BACKEND + `/posts/followings/${userId}`)
       const responseData = await response.json();
       if (!response.ok) {
         throw new Error(responseData.error);
@@ -93,7 +93,7 @@ function App() {
     (async () => {
       try {
         // setIsLoading(true);
-        let response = await fetch('http://localhost:5000/api/posts');
+        let response = await fetch(process.env.REACT_APP_BACKEND + '/posts');
         let responseData = await response.json();
         // setIsLoading(false);
         if (!response.ok) {
@@ -114,7 +114,7 @@ function App() {
     console.log('Nearby');
     try {
       // setIsLoading(true);
-      let response = await fetch('http://localhost:5000/api/posts');
+      let response = await fetch(process.env.REACT_APP_BACKEND + '/posts');
       let responseData = await response.json();
       // setIsLoading(false);
       if (!response.ok) {
@@ -174,7 +174,7 @@ function App() {
     (async () => {
       try {
         setIsLoading(true);
-        let response = await fetch('http://localhost:5000/api/posts');
+        let response = await fetch(process.env.REACT_APP_BACKEND + '/posts');
         let responseData = await response.json();
         setIsLoading(false);
         if (!response.ok) {

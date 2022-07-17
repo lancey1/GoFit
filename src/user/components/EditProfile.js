@@ -109,7 +109,7 @@ function EditProfile(props) {
 
         try {
             setIsLoading(true);
-            const response = await fetch(`http://localhost:5000/api/user/${props.user.id}`, {
+            const response = await fetch(process.env.REACT_APP_BACKEND + `/user/${props.user.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'Application/json',
