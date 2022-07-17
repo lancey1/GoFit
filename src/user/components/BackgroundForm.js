@@ -66,7 +66,7 @@ function BackgroundForm(props) {
             {error && <ErrorModal error={error} onClear={() => { setError(false) }} />}
             <div className={`${styles.img}`} onClick={event => event.stopPropagation()}>
                 <div className={styles.upload}>
-                    <ImageUpload onInput={imageOnInputHandler} text={'Upload profile image'} />
+                    <ImageUpload onInput={imageOnInputHandler} text={'Upload Background image'} />
                 </div>
                 {image && <button onClick={submitHandler} className={`${styles.btn}`}>
                     Submit
