@@ -104,7 +104,7 @@ const UserInfo = (props) => {
   if (user) {
     var sectionStyle = {
       width: "100%",
-      height: "410px",
+      height: "420px",
       backgroundImage: `url(${user.backgroundImage})`,
       backgroundSize: `cover`,
     };
@@ -205,8 +205,8 @@ const UserInfo = (props) => {
 
             <p className={styles.whiteback}>{userAddress}</p>
 
-            {gymMembership.length > 0 && <p>Gym Membership: {gymMembership}</p>}
-            {athleteTypes.length > 0 && <p>Activities: {athleteTypes}</p>}
+            {gymMembership.length > 0 && <p className={styles.whiteback}>Gym Membership: {gymMembership}</p>}
+            {athleteTypes.length > 0 && <p className={styles.whiteback}>Activities: {athleteTypes}</p>}
 
             <div className={`${styles.follow_edit}`}>
 
