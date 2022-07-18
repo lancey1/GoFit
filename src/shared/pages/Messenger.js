@@ -62,7 +62,7 @@ const App = () => {
 
         return async () => { if (client) await client.disconnectUser(); }
 
-    }, [auth]);
+    }, [auth,client]);
 
     if (!auth.user || !auth.userId) return;
 
