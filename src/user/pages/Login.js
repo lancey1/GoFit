@@ -32,7 +32,7 @@ function Login() {
     }
     try {
       setIsLoading(true);
-      const response = await fetch("http://localhost:5000/api/user/login", {
+      const response = await fetch(process.env.REACT_APP_BACKEND + '/user/login', {
         method: "post",
         headers: {
           "content-Type": "application/json",
