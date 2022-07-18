@@ -34,19 +34,23 @@ function Post(props) {
 
   useEffect(() => {
     (async () => {
-      try {
-        setIsloading(true);
-        let response = await fetch(process.env.REACT_APP_BACKEND + `/posts/${postId}`);
-        let responseData = await response.json();
+      if (auth.userId) {
+        try {
+          console.log(auth.userId, postId);
+          setIsloading(true);
+          let response = await fetch(process.env.REACT_APP_BACKEND + `/posts/post/${auth.userId}/${postId}`);
+          let responseData = await response.json();
+          console.log(responseData);
+          setIsloading(false);
+          if (!response.ok) {
+            throw new Error(responseData.message);
+          };
+          setPost(responseData.post);
+        } catch (error) {
+          setError(error.message);
+        }
         setIsloading(false);
-        if (!response.ok) {
-          throw new Error(responseData.message);
-        };
-        setPost(responseData.post);
-      } catch (error) {
-        setError(error.message);
       }
-      setIsloading(false);
     })();
   }, [])
 
@@ -66,7 +70,7 @@ function Post(props) {
 
 
               <section className={`${styles.post_info}`} >
-                <TextAndComments post={post}/>
+                <TextAndComments post={post} />
               </section>
 
             </div>
