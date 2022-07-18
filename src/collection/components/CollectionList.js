@@ -96,6 +96,7 @@ const CollectionList = (props) => {
         id={ele.id}
         title={ele.title}
         onDelete={deleteColHandler}
+        userId={userId}
       />
     )
   })
