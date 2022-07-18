@@ -86,7 +86,7 @@ function Navbar() {
               <p onClick={() => history.push(`/user/${auth.userId}`)}>
               <i class="fa-solid fa-user"></i> Profile</p>
               <p onClick={auth.logout}> 
-              <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout </p>
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out </p>
             </div>
           </div>)}
       </div>
