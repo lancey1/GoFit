@@ -20,7 +20,6 @@ function AvatarForm(props) {
     const imageOnInputHandler = (event, pickedFile, isValid) => {
         if (isValid) {
             setImage(pickedFile);
-            console.log(pickedFile);
         };
     }
 
@@ -35,8 +34,6 @@ function AvatarForm(props) {
         try {
             const formData = new FormData();
             formData.append('image', image);
-            console.log(formData);
-            console.log(image);
             setIsLoading(true);
             const response = await fetch(process.env.REACT_APP_BACKEND + `/user/image/${auth.userId}`, {
                 method: 'PATCH',
@@ -50,12 +47,10 @@ function AvatarForm(props) {
             if (!response.ok) {
                 throw new Error(responseData.message);
             }
-            console.log(responseData);
             onHideForm();
             // history.replace(`/user/${auth.userId}`);
             history.go(0);
         } catch (error) {
-            console.log(error);
             setError(error.message || 'Unexpected error occured.');
         }
         setIsLoading(false);

@@ -21,10 +21,8 @@ function FollowersList(props) {
                 if (!response.ok) {
                     throw new Error(responseData.message);
                 }
-                console.log(responseData)
                 setFollowers(responseData.followers);
             } catch (error) {
-                console.log(error);
                 setError(error.message || 'Unexpected error occured.');
             }
         })();

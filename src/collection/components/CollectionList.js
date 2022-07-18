@@ -44,14 +44,12 @@ const CollectionList = (props) => {
       setTitle('');
       onSelectCollection();
     } catch (error) {
-      console.log(error)
       setError(error.message);
     }
   }
   //! onClick={props.onDelete.bind(this, props.id)}
   const deleteColHandler = async (cId, event) => {
     event.stopPropagation();
-    console.log(cId);
     try {
       let response = await fetch(process.env.REACT_APP_BACKEND + `/collections/${cId}`, {
         method: 'DELETE',
@@ -67,7 +65,6 @@ const CollectionList = (props) => {
       setRefresh(prev => !prev);
       onSelectCollection();
     } catch (error) {
-      console.log(error)
       setError(error.message);
     }
   }
@@ -80,14 +77,11 @@ const CollectionList = (props) => {
           let response = await fetch(process.env.REACT_APP_BACKEND + `/collections/${userId}`);
           let responseData = await response.json();
           setIsLoading(false);
-          console.log(responseData)
           if (!response.ok) {
-            console.log(response);
             throw new Error(responseData.message);
           };
           setCollections(responseData.collections)
         } catch (error) {
-          console.log(error)
           setError(error.message);
         }
         setIsLoading(false);

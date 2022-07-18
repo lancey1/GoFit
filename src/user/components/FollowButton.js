@@ -40,7 +40,6 @@ function FollowButton(props) {
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-        console.log(responseData);
         setIsFollowing(true);
         props.numChanger(+1)
       } catch (error) {
@@ -66,7 +65,6 @@ function FollowButton(props) {
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-        console.log(responseData);
         setIsFollowing(false);
         props.numChanger(-1)
       } catch (error) {

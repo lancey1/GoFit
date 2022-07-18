@@ -21,8 +21,6 @@ function EditProfile(props) {
 
     const [error, setError] = useState(null);
 
-    console.log(auth)
-
     let gymMembershipPlaceHolder;
 
     if (gymMembership.length === 0) {
@@ -100,9 +98,6 @@ function EditProfile(props) {
             athleteTypesArr = [];
         };
 
-        console.log(gymMembershipArr);
-        console.log(athleteTypesArr);
-
         if (!name || !address) {
             setError('Name or address invalid.');
         };
@@ -138,7 +133,6 @@ function EditProfile(props) {
                 responseData.user
             );
         } catch (error) {
-            console.log(error);
             setError(error.message || 'Unexpected error occured.');
         };
         setIsLoading(false);

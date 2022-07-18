@@ -55,9 +55,7 @@ function TextAndComments(props) {
             if (!response.ok) {
                 throw new Error(responseData.message);
             };
-            console.log(responseData)
         } catch (error) {
-            console.log(error)
             setError(error.message);
         }
         setIsloading(false);

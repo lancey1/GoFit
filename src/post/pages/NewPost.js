@@ -35,7 +35,6 @@ function NewPost(props) {
       tagsArr = [];
     };
     setTags(tagsArr);
-    console.log(tags)
   };
 
   const locationOnChangeHandler = (event) => {
@@ -83,7 +82,6 @@ function NewPost(props) {
       history.push(`/user/${auth.userId}`);
 
     } catch (error) {
-      console.log(error);
       setError(error.message || 'Unexpected error occured.');
     }
     setIsLoading(false);

@@ -5,7 +5,6 @@ import ReviewForm from './ReviewForm'
 function NewReview(props) {
 
     const { appointmentId, reviewRecieverId,onRefresh } = props;
-    console.log(reviewRecieverId)
 
     return (
         <section className={`${styles.container}`} onClick={event => event.stopPropagation()}>

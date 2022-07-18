@@ -66,10 +66,8 @@ const App = () => {
 
     if (!auth.user || !auth.userId) return;
 
-    console.log('here')
     if (!client) return <LoadingIndicator />;
 
-    console.log('there')
     if (client) return (
         <Chat client={client}>
             <ChannelList

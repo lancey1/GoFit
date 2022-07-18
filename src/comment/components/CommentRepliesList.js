@@ -21,10 +21,8 @@ function CommentRepliesList(props) {
                 if (!response.ok) {
                     throw new Error(responseData.message);
                 };
-                console.log(responseData)
                 setReplies(responseData.comments);
             } catch (error) {
-                console.log(error)
                 setError(error.message);
             }
             setIsloading(false);

@@ -136,7 +136,7 @@ function ReviewItem(props) {
   ];
 
   const { review } = props;
-  console.log(review);
+
   return (
     <div className={`${styles.card}`}>
       <div className={`${styles.reviewer}`}>

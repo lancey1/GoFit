@@ -24,7 +24,6 @@ function DislikeButton(props) {
             if (!response.ok) {
                 throw new Error(responseData.message);
             };
-            console.log(responseData)
             setDisliked(true);
         } catch (error) {
             console.log(error)

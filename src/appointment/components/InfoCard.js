@@ -14,7 +14,6 @@ function InfoCard(props) {
 
     const { user } = props;
 
-    console.log(user);
     const [showFollowers, setShowFollowers] = useState(false);
     const [receiver, setReceiver] = useState();
     const [receiverName, setReceiverName] = useState();
@@ -49,7 +48,6 @@ function InfoCard(props) {
         setReceiver(userId);
         setReceiverName(userName);
         setShowFollowers(false);
-        console.log(userId, userName);
     }, [])
 
     const okHandler = (event) => {
@@ -62,7 +60,6 @@ function InfoCard(props) {
             return setError('Login first');
         }
 
-        console.log(title, description, address, date, receiver, user.id);
         if (title.trim().length === 0 || description.trim().length === 0 || address.trim().length === 0 || !date) {
             return setError('Please check your inputs');
         }
@@ -93,11 +90,9 @@ function InfoCard(props) {
                 throw new Error(responseData.message);
             }
 
-            console.log(responseData);
             setSuccess(true);
 
         } catch (error) {
-            console.log(error);
             setError(error.message);
         }
     }

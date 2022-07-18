@@ -61,7 +61,6 @@ const UserInfo = (props) => {
   }, [])
 
   const onShowFeedbackHandler = () => {
-    console.log('ok');
     setShowFeedback(prev => !prev);
   }
 

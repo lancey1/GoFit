@@ -24,7 +24,6 @@ const Profile = props => {
 
     const showEditPageHandler = () => {
         setShowEditPage(true);
-        console.log('set')
     }
 
     useEffect(() => {
@@ -40,7 +39,6 @@ const Profile = props => {
                 setLikedPosts(responseData.user.likedPosts);
                 setCollections(responseData.user.collections);
             } catch (error) {
-                console.log(error)
                 setError(error.message);
             }
         })();

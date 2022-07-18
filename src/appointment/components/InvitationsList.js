@@ -19,7 +19,6 @@ function InvitationsList(props) {
                 if (!response.ok) {
                     throw new Error(responseData.message);
                 }
-                console.log(responseData);
                 setAppointments(responseData.invitations);
             } catch (error) {
                 setError(error.message);

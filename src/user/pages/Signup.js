@@ -51,7 +51,6 @@ function Signup() {
   const imageOnInputHandler = (event, pickedFile, isValid) => {
     if (isValid) {
       setImage(pickedFile);
-      console.log(pickedFile);
     };
   }
 
@@ -76,7 +75,6 @@ function Signup() {
       formData.append('image', image);
       formData.append('age', age);
       formData.append('address', city);
-      console.log(formData);
       setIsLoading(true);
       const response = await fetch(process.env.REACT_APP_BACKEND + '/user/signup', {
         method: 'POST',
@@ -87,12 +85,10 @@ function Signup() {
       if (!response.ok) {
         throw new Error(responseData.message);
       }
-      console.log(responseData);
       auth.login(responseData.user.id, responseData.token, responseData.user);
       history.replace(`/user/${responseData.user.id}`);
 
     } catch (error) {
-      console.log(error);
       setError(error.message || 'Unexpected error occured.');
     }
     setIsLoading(false);

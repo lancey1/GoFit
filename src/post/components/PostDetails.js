@@ -50,7 +50,6 @@ function PostDetails(props) {
                     }
                 });
                 let responseData = await response.json();
-                console.log(responseData)
                 if (!response.ok) {
                     throw new Error(responseData.message);
                 };
@@ -79,7 +78,6 @@ function PostDetails(props) {
                 if (!response.ok) {
                     throw new Error(responseData.message);
                 };
-                console.log(responseData)
                 setLikes(prev => prev + 1);
                 setLiked(true);
             } catch (error) {
@@ -98,7 +96,6 @@ function PostDetails(props) {
                 if (!response.ok) {
                     throw new Error(responseData.message);
                 };
-                console.log(responseData)
                 setLikes(prev => prev - 1);
                 setLiked(false);
             } catch (error) {
@@ -119,7 +116,6 @@ function PostDetails(props) {
                     }
                 });
                 let responseData = await response.json();
-                console.log(responseData)
                 if (!response.ok) {
                     throw new Error(responseData.message);
                 };
@@ -140,9 +136,7 @@ function PostDetails(props) {
                 try {
                     let response = await fetch(process.env.REACT_APP_BACKEND + `/collections/postids/${auth.userId}`);
                     let responseData = await response.json();
-                    console.log(responseData)
                     if (!response.ok) {
-                        console.log(response);
                         throw new Error(responseData.message);
                     };
                     setUserCollections(responseData.collections);

@@ -16,7 +16,6 @@ function Appointment(props) {
   const [error, setError] = useState(null);
 
   const viewProfile = () => {
-    console.log("clicked");
     history.push(`/user/${appointment.creator.id}`);
   };
 

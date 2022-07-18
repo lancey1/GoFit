@@ -34,7 +34,6 @@ function CommentItem(props) {
     }
 
     const svgClickHandler = async (event) => {
-        console.log('svg clicked')
         event.preventDefault();
         
         if (!auth || !auth.isLoggedIn) {
@@ -57,11 +56,9 @@ function CommentItem(props) {
                 if (!response.ok) {
                     throw new Error(responseData.message);
                 };
-                console.log(responseData);
                 setLiked(true);
                 setLikesNum(prev => prev + 1);
             } catch (error) {
-                console.log(error)
                 setError(error.message);
             }
         } else {
@@ -80,11 +77,9 @@ function CommentItem(props) {
                 if (!response.ok) {
                     throw new Error(responseData.message);
                 };
-                console.log(responseData);
                 setLiked(false);
                 setLikesNum(prev => prev - 1);
             } catch (error) {
-                console.log(error)
                 setError(error.message);
             }
         }
@@ -92,7 +87,6 @@ function CommentItem(props) {
     }
 
     const replyButtonHandler = async (event) => {
-        console.log(reply);
         event.preventDefault();
 
         if (reply.trim().length === 0) {
@@ -123,9 +117,7 @@ function CommentItem(props) {
             };
             // onRefresh();
             onSetShowCommentReplies(true);
-            console.log(responseData)
         } catch (error) {
-            console.log(error)
             setError(error.message);
         }
         setIsloading(false);

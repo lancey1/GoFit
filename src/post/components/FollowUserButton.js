@@ -10,10 +10,8 @@ function FollowUserButton(props) {
     const [error, setError] = useState(null);
 
     const creator = props.post.creator;
-    console.log(creator);
 
     const [isFollowing, setIsFollowing] = useState(creator.followers.includes(auth.userId));
-    console.log(isFollowing);
     const [isSelf, setIsSelf] = useState(auth.userId == creator.id);
 
 
@@ -46,7 +44,6 @@ function FollowUserButton(props) {
                 if (!response.ok) {
                     throw new Error(responseData.message);
                 };
-                console.log(responseData)
                 setIsFollowing(true);
             } catch (error) {
                 console.log(error)

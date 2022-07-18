@@ -43,7 +43,6 @@ function Login() {
         }),
       });
       const responseData = await response.json();
-      console.log(responseData);
       setIsLoading(false);
       if (!response.ok) {
         throw new Error(responseData.message);

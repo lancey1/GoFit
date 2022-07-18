@@ -30,12 +30,10 @@ function PostItem(props) {
 
   const likeClikeHandler = event => {
     event.stopPropagation();
-    console.log('Clicked on SVG');
   }
 
   const clickUserDetailHandler = event => {
     event.stopPropagation();
-    console.log('Clicked on user info.')
   }
 
   return (

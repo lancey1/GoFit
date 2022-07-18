@@ -19,14 +19,11 @@ const CollectionPosts = (props) => {
                 let response = await fetch(process.env.REACT_APP_BACKEND + `/collections/posts/${collectionId}`);
                 let responseData = await response.json();
                 setIsLoading(false);
-                console.log(responseData)
                 if (!response.ok) {
-                    console.log(response);
                     throw new Error(responseData.message);
                 };
                 setPosts(responseData.posts);
             } catch (error) {
-                console.log(error)
                 setError(error.message);
             }
             setIsLoading(false);

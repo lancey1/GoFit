@@ -5,7 +5,6 @@ import styles from './UserInvitations.module.css';
 
 function UserInvitations(props) {
     const { userId } = useParams();
-    console.log(userId)
 
     return (
         <div className={`${styles.section}`}>

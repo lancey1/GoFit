@@ -42,10 +42,8 @@ function Post(props) {
         if (!response.ok) {
           throw new Error(responseData.message);
         };
-        console.log(responseData)
         setPost(responseData.post);
       } catch (error) {
-        console.log(error)
         setError(error.message);
       }
       setIsloading(false);

@@ -29,15 +29,15 @@ function UnreadComments(props) {
                 }
             });
             let responseData = await response.json();
-            console.log(responseData)
+            
             if (!response.ok) {
-                console.log(response);
+            
                 throw new Error(responseData.message);
             };
             onChangeShowUnread();
             onChange();
         } catch (error) {
-            console.log(error);
+            
             setError(error.message);
         }
     }
@@ -53,14 +53,13 @@ function UnreadComments(props) {
                     }
                 });
                 let responseData = await response.json();
-                console.log(responseData)
+                
                 if (!response.ok) {
-                    console.log(response);
                     throw new Error(responseData.message);
                 };
                 setComments(responseData.comments);
             } catch (error) {
-                console.log(error)
+                
                 setError(error.message);
             }
         })();

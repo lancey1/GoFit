@@ -20,7 +20,6 @@ function AppointmentsList(props) {
                 if (!response.ok) {
                     throw new Error(responseData.message);
                 }
-                console.log(responseData)
                 setAppointments(responseData.appointments);
             } catch (error) {
                 setError(error.message);

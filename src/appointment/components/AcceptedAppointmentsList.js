@@ -20,7 +20,6 @@ function AcceptedAppointmentsList(props) {
                 if (!response.ok) {
                     throw new Error(responseData.message);
                 }
-                console.log(responseData)
                 setAppointments(responseData.appointments.filter(item => item.recieverAccepted === true));
             } catch (error) {
                 setError(error.message);

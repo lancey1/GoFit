@@ -6,7 +6,6 @@ import styles from './UserAppointments.module.css';
 function UserAppointments(props) {
 
     const { userId } = useParams();
-    console.log(userId)
 
     return (
         <div className={`${styles.section}`}>

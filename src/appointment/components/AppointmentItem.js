@@ -39,7 +39,6 @@ function AppointmentItem(props) {
 
     const reviewBtnClickHandler = event => {
         event.stopPropagation();
-        console.log('Now open review page');
         setShowReview(true);
     }
     const appointmentFinished = ((new Date(appointmentDate).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24) < 0);

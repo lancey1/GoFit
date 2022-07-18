@@ -14,7 +14,6 @@ function ReviewForm(props) {
 
     const { appointmentId, reviewRecieverId, all, onRefresh } = props;
 
-    console.log(reviewRecieverId);
     const auth = useContext(AuthContext);
     const history = useHistory();
 
@@ -28,13 +27,10 @@ function ReviewForm(props) {
     }
 
     const setRatingHandler = (val, event) => {
-        console.log('select')
-        console.log(val)
         setRating(val)
     }
 
     const okHandler = () => {
-        console.log('ok')
         setSuccess(false);
         onRefresh();
         // return history.replace(`/${auth.userId}/all`);
@@ -43,7 +39,6 @@ function ReviewForm(props) {
     const submitReviewHandler = async (event) => {
 
         event.preventDefault();
-        console.log(rating, text);
 
         if (!rating) {
             setError('Please leave your rating.');
@@ -68,9 +63,7 @@ function ReviewForm(props) {
                 throw new Error(responseData.message);
             };
             setSuccess(true);
-            console.log(responseData);
         } catch (error) {
-            console.log(error)
             setError(error.message);
         }
     }
