@@ -83,8 +83,10 @@ function Navbar() {
               <img className={styles.avatar} src={auth.user.image} alt="user" />
             </div>
             <div className={`${styles.content}`}>
-              <p onClick={() => history.push(`/user/${auth.userId}`)}>Profile</p>
-              <p onClick={auth.logout}> Logout </p>
+              <p onClick={() => history.push(`/user/${auth.userId}`)}>
+              <i class="fa-solid fa-user"></i> Profile</p>
+              <p onClick={auth.logout}> 
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout </p>
             </div>
           </div>)}
       </div>
