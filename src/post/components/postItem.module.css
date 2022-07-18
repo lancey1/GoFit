@@ -55,14 +55,13 @@
   padding-inline-start: 0.3rem;
 }
 
-.clickable:hover {
+/* .clickable:hover {
   cursor: pointer;
   color: rgb(255, 94, 94);
   fill: rgb(255, 94, 94);
-}
+} */
 
 .liked {
-  cursor: pointer;
   color: rgb(255, 94, 94);
   fill: rgb(255, 94, 94);
 }
