@@ -109,13 +109,15 @@ const CollectionList = (props) => {
   return (
     <div>
       {error && <ErrorModal error={error} onClear={() => setError(null)} />}
-      <form onSubmit={addCollectionHandler} >
-        <div className={styles.collectionContainer}>
-          <img className={styles.collectionIcon} src="https://cdn-icons-png.flaticon.com/512/202/202614.png" />
-          <input className={styles.colinput} type='text' placeholder="Add a New Collection?" value={title} onChange={inputChangeHandler} />
-          <button className={styles.colcreate_btn}>Create</button>
-        </div>
-      </form>
+      {auth.userId === userId && (
+        <form onSubmit={addCollectionHandler} >
+          <div className={styles.collectionContainer}>
+            <img className={styles.collectionIcon} src="https://cdn-icons-png.flaticon.com/512/202/202614.png" />
+            <input className={styles.colinput} type='text' placeholder="Add a New Collection?" value={title} onChange={inputChangeHandler} />
+            <button className={styles.colcreate_btn}>Create</button>
+          </div>
+        </form>
+      )}
       {(collections && !isLoading) && colsList}
       {(!collections && isLoading) && <h1>Loading</h1>}
 
