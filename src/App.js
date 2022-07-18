@@ -41,6 +41,7 @@ function App() {
   const [followingSelected, setFollowingSelected] = useState(false);
   const [exploreSelected, setExploreSelected] = useState(true);
   const [nearbySelected, setNearbySelected] = useState(false);
+  const [recSelected, setRecSelected] = useState(false);
 
   const [tag, setTag] = useState('');
 
@@ -64,6 +65,27 @@ function App() {
     }
   }
 
+  // Recomended posts
+const clickRecHandler = async () => {
+  setRecSelected(true);
+  setFollowingSelected(false);
+  setExploreSelected(false);
+  setNearbySelected(false);
+  console.log('Rec');
+
+  try {
+    const response = await fetch(process.env.REACT_APP_BACKEND + `/posts/recommendations/${userId}`)
+    const responseData = await response.json();
+    if (!response.ok) {
+      throw new Error(responseData.error);
+    };
+    setPosts(responseData.posts);
+  } catch (error) {
+    setError(error.message);
+  }
+}
+
+
   const clickFollowingHandler = async () => {
     setFollowingSelected(true);
     setExploreSelected(false);
@@ -86,6 +108,7 @@ function App() {
   };
 
   const clickExploreHandler = () => {
+    setRecSelected(false);
     setFollowingSelected(false);
     setExploreSelected(true);
     setNearbySelected(false);
@@ -108,6 +131,7 @@ function App() {
   };
 
   const clickNearbyHandler = async () => {
+    setRecSelected(false);
     setFollowingSelected(false);
     setExploreSelected(false);
     setNearbySelected(true);
@@ -205,6 +229,8 @@ function App() {
             <Home userId={userId} userLocation={user && user.location} address={user && user.address} posts={useMemo(() => posts, [posts])}
               tagInputHandler={tagInputHandler} tagInputSubmitHandler={tagInputSubmitHandler} clickFollowingHandler={clickFollowingHandler}
               clickExploreHandler={clickExploreHandler} clickNearbyHandler={clickNearbyHandler}
+              clickRecHandler={clickRecHandler}
+              recSelected={recSelected}
               followingSelected={followingSelected} exploreSelected={exploreSelected} nearbySelected={nearbySelected} tag={tag}
 
             />
