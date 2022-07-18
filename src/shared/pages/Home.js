@@ -173,7 +173,7 @@ function Home(props) {
           value={tag}
         />
         <button className="searchButton">
-          <i className="material-icons"></i>
+          <i className="material-icons">search</i>
         </button>
       </form>
 
