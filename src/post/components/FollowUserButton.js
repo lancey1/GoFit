@@ -67,7 +67,7 @@ function FollowUserButton(props) {
                 if (!response.ok) {
                     throw new Error(responseData.message);
                 };
-                console.log(responseData)
+                
                 setIsFollowing(false);
             } catch (error) {
                 console.log(error)

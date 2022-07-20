@@ -73,7 +73,7 @@ function TextAndComments(props) {
                 if (!response.ok) {
                     throw new Error(responseData.message);
                 };
-                console.log(responseData)
+                
                 setComments(responseData.comments);
                 setComment('');
             } catch (error) {

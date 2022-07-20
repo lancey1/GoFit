@@ -34,13 +34,13 @@ function Post(props) {
 
   useEffect(() => {
     (async () => {
-      if (auth.userId) {
+      // if (auth.userId) {
         try {
-          console.log(auth.userId, postId);
+          
           setIsloading(true);
-          let response = await fetch(process.env.REACT_APP_BACKEND + `/posts/post/${auth.userId}/${postId}`);
+          let response = await fetch(process.env.REACT_APP_BACKEND + `/posts/post/${auth.userId || 'NA'}/${postId}`);
           let responseData = await response.json();
-          console.log(responseData);
+          
           setIsloading(false);
           if (!response.ok) {
             throw new Error(responseData.message);
@@ -50,7 +50,7 @@ function Post(props) {
           setError(error.message);
         }
         setIsloading(false);
-      }
+      // }
     })();
   }, [])
 

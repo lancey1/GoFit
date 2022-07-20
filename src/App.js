@@ -226,9 +226,9 @@ function App() {
       <Navbar />
       <section id='main-section'>
 
-        <img id='chat_btn' src={send} onClick={onShowChat} />
+        {userId && <img id='chat_btn' src={send} onClick={onShowChat} />}
 
-        {showChat && <Chat user={user} onHide={onShowChat} />}
+        {(userId && showChat) && <Chat user={user} onHide={onShowChat} />}
 
         <Switch>
           <Route path="/home" exact>
