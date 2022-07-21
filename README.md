@@ -1,6 +1,7 @@
 # GoFit App
 
-GoFit is social media app built with React, for users to interact with one another. 
+GoFit is a React based social media website to promote fitness with an added goal of creating social circles.
+
 ### Features
 
 * Users can register and log in
