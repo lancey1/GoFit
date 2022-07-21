@@ -3,11 +3,11 @@
 GoFit is social media app built with React, for users to interact with one another. 
 ### Features
 
--Users can Register and Log in
--Users can create posts, like, dislike, add post to a collection, leave comments on posts
--Users can view posts via feeds
--Users can send invites to other users to facilitate a meetup
--Users can chat with other users with the messenger feature
+*Users can Register and Log in
+*Users can create posts, like, dislike, add post to a collection, leave comments on posts
+*Users can view posts via feeds
+*Users can send invites to other users to facilitate a meetup
+*Users can chat with other users with the messenger feature
 
 
 ## Final Product
