@@ -15,10 +15,13 @@ GoFit is a React based social media website to promote fitness with an added goa
 
 !["Inital View of GoFit"](https://github.com/lancey1/GoFit-React/blob/master/docs/home.png)
 - Inital View of the GoFit
+
 !["View of GoFit - Create a Post"](https://github.com/lancey1/GoFit-React/blob/master/docs/upload%20image.png)
 - View of GoFit - Create a Post
+
 !["View of GoFit - Post Details"](https://github.com/lancey1/GoFit-React/blob/master/docs/postdetails.png)
 - View of GoFit - Post Details
+
 !["View of GoFit - Invite Page"](https://github.com/lancey1/GoFit-React/blob/master/docs/invite2.png)
 - View of GoFit - Invite Page
 
